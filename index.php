@@ -20,17 +20,17 @@
 			<div id="menu-container" class="helpdesk-meu-active"> 
 				<ul> 
 					<li id="helpdesk-menu"> 
-						<a href="/helpdesk/"> 
+						<a href="#"> 
 							Helpdesk
 						</a> 
 					</li> 
 					<li id="ikmat"> 
-						<a href="/ikmat/"> 
+						<a href="#"> 
 							IK-mat
 						</a> 
 					</li> 
 					<li id="driftstans"> 
-						<a href="/driftstans/"> 
+						<a href="#"> 
 							Driftstans
 						</a> 
 					</li>
