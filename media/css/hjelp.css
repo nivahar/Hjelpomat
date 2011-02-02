@@ -1,0 +1,240 @@
+/*
+ * HEADER
+ */
+ 
+div#header-container {
+    padding-bottom: 2px;
+}
+
+div#header-container div#header-container-content {
+    width: 980px;
+    margin: 0 auto;
+}
+
+div#header-container div#header-container-content div#top-container {
+    height: 109px;
+}
+
+div#header-container div#header-container-content div#header-logo {
+    position: absolute;
+    top: 0px;
+    width: 500px;
+    height: 115px;
+}
+
+/*
+ * MENU
+ */
+ 
+div#header-container div#header-container-content div#menu-container {
+    float: left;
+    height: 39px;
+}
+
+div#header-container div#header-container-content div#menu-container li {
+    display: block;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+div#header-container div#header-container-content div#menu-container li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 11px;
+    padding: 10px 20px;
+}
+
+/* 
+ * SUB MENU
+ */
+ 
+div#header-container div#submenu-container {
+    width: 100%;
+    float: left;
+    height: 39px;
+}
+
+div#header-container div#submenu-container-content {
+    width: 980px;
+    margin: 0 auto;
+}
+
+div#header-container div#submenu-container-content li {
+    display: block;
+    float: left;
+    color: white;
+    font-size: 10px;
+    margin: 5px;
+}
+
+div#header-container div#submenu-container-content li a {
+    color: white;
+}
+
+ul.filter-menu {
+    padding-top: 3px;
+}
+
+ul.filter-menu a {
+    float: left;
+    display: block;
+    font-size: 11px;
+    height: 20px !important;
+    line-height: 20px !important;
+    margin: 0;
+    padding: 0 10px 0 10px;
+    text-decoration: none;
+}
+
+ul.filter-menu a:hover {
+    text-decoration: underline;
+}
+
+/*
+ * CUSTOM FIELDS
+ */
+ 
+select#id_date_of_birth_day {
+    width: 70px;
+}
+
+select#id_date_of_birth_month {
+    width: 150px;
+}
+
+select#id_date_of_birth_year {
+    width: 70px;
+}
+
+/* 
+ * MAIN CONTENT AREA
+ */
+ 
+div#content-container {
+    background-color: white;
+    clear: both;
+    width: 980px;
+    margin: 15px auto 15px auto;
+    min-height: 500px;
+}
+
+div#content-container h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0 15px 0;
+}
+
+div#content-container h2 {
+    font-size: 17px;
+    font-weight: bold;
+    margin: 25px 0 20px 0;
+}
+
+div#content-container h3 {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+}
+
+div#content-container p {
+    margin: 15px 0 15px 0;
+}
+
+div#content-container textarea {
+    height: 150px;
+    width: 600px;
+}
+
+div.error {
+    color: red;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    padding: 5px 0;
+}
+
+/*
+ * FORUM
+ */
+
+div#forum-breadcrumbs {
+    margin: 5px 0 20px 0;
+    font-weight: bold;
+}
+
+table.forum {
+    width: 960px;
+}
+
+table.forum tr th {
+    height: 30px;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+table.forum td, table.forum th {
+    padding: 0 10px 0 10px;
+}
+
+table.forum td.main {
+    width: 750px;
+}
+
+table.forum td.detail {
+    width: 200px;
+}
+
+table.forum tr.post {
+    border-bottom: 1px solid black;
+}
+
+table.forum tr.post td {
+    vertical-align: top;
+    padding: 5px 10px;
+}
+
+table.forum tr.post td h3 {
+    font-size: 14px !important;
+    text-decoration: none;
+}
+table.forum tr.post td span.text p {
+    line-height: 140%;
+}
+
+table.forum tr.post td p.details {
+    font-size: 90%;
+    color: #606060;
+    margin: 8px 0 5px 0 !important;
+}
+
+table.forum tr.post td p.latest-post {
+    font-size: 95%;
+    color: #606060;
+    margin: 8px 0 0 0 !important;
+}
+
+table.forum tr.post td p.edit-links {
+    font-size: 95%;
+}
+
+table.forum tr.post td p.edit-links a {
+    display: block;
+    margin-bottom: 6px;
+}
+
+ul.paginator {
+    margin: 15px 0 15px 0;
+}
+
+ul.paginator li {
+    margin: 0 2px 0 2px;
+    display: inline;
+}

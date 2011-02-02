@@ -1,0 +1,170 @@
+/*
+ * GENERAL
+ */
+ 
+body {
+    font-family: "Arial", "Verdana", helvetica, sans-serif;
+    font-size: 12px;
+}
+
+body.colored {
+    background-color: #f0f0f0;
+}
+
+/*
+ * GENERAL
+ */
+ 
+strong {
+    font-weight: bold;
+}
+
+select.disabled, input.disabled {
+    background-color: #f0f0f0;
+}
+
+/* 
+ * HIDE EMPTY IMAGE ELEMENTS (USED IN BULK WINDOW STATUS)
+ */
+ 
+img[src=""] {
+    display: none;
+}
+
+/*
+ * FORMS
+ */
+ 
+form.normal div.field-container {
+    margin: 10px 0 15px 0;
+}
+
+form.normal label {
+    display: block;
+    font-weight: bold;
+}
+
+form.normal input, form.normal textarea {
+    padding: 5px;
+    width: 400px;
+}
+
+form.normal textarea.rich-text {
+    height: 300px !important;
+    width: 600px !important;
+}
+
+form.normal input[type="checkbox"]{
+    width: auto !important;
+}
+
+form.normal textarea {
+    height: 80px;
+}
+
+form.normal select {
+    padding: 4px;
+    width: 250px;
+}
+
+form.normal select#id_time_hour, form.normal select#id_time_minute {
+    width: auto;
+}
+
+form.normal div.help-text {
+    font-size: 10px;
+    color: #888888;
+    margin: 0 0 10px 0;
+}
+
+form.normal span.checkbox input {
+    display: block;
+    float: left;
+    width: auto;
+    padding: 0;
+    margin: 0 5px 0 0;
+    line-height: 20px;
+}
+
+form.normal span.checkbox label {
+    display: block;
+    float: left;
+    line-height: 20px;
+}
+
+/*
+ * COMMON FORM SPECIFICS
+ */
+ 
+span.asterisk {
+    color: red;
+}
+
+form.normal input#id_username, form.normal input#id_password {
+    width: 200px;
+}
+
+/*
+ * HELPDESK
+ */
+ 
+div#helpdesk {
+    width: 760px;
+    float: left;
+}
+
+div#helpdesk div.helpdesk {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+div#helpdesk div.helpdesk h2 {
+    margin: 5px 0 5px 0;
+}
+
+div#helpdesk p.helpdesk-information {
+    font-size: 90%;
+    margin: 7px 0 10px 0;
+    color: #606060;
+}
+
+div#helpdesk p.helpdesk-information a {
+    color: #606060;
+}
+
+div#helpdesk div.helpdesk div.text {
+    margin: 10px 0 10px 0;
+    line-height: 130%;
+}
+
+p.helpdesk-categories a {
+    margin: 0 5px 0 5px;
+}
+
+/*
+ * FOOTER
+ */
+ 
+div#background-box {
+    width: 100%;
+    float: left;
+    background-color: white !important;
+}
+
+div#footer {
+     width: 100%;
+     float: left;
+     padding: 20px 0 20px 0;
+     border-top: 2px solid #E0E0E0;
+}
+
+div#footer div#footer-content {
+     margin: 0 auto;
+     width: 980px;
+     color: #888888;
+     font-size: 11px;
+}
+
+div#footer div#footer-content span.info {
+     font-weight: bold;
+}

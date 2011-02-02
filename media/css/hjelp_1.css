@@ -1,0 +1,92 @@
+/* 
+ * HEADER
+ */
+ 
+div#header-container {
+    background: url('../images/bg_top_1.png') repeat-x;
+}
+
+/*
+ * LOGO
+ */
+ 
+div#header-container div#header-container-content div#header-logo {
+    background: url('../images/logo_2.png') no-repeat center left;
+}
+
+/*
+ * MENU ITEM
+ */
+
+div#header-container div#header-container-content div#menu-container li a {
+     color: white;
+}
+
+div#header-container div#header-container-content div#menu-container li:hover a {
+    color: white;
+}
+ 
+div#header-container div#header-container-content div#menu-container li:hover {
+    background: url('../images/bg_menu_item_1.png') repeat-x;
+}
+
+div#header-container div#header-container-content div#menu-container.helpdesk-meu-active li#helpdesk-menu {
+    background: url('../images/bg_menu_item_1.png') repeat-x;
+}
+
+div#header-container div#header-container-content div#menu-container.information-active li#information {
+    background: url('../images/bg_menu_item_1.png') repeat-x;
+}
+
+div#header-container div#header-container-content div#menu-container.forum-active li#forum {
+    background: url('../images/bg_menu_item_1.png') repeat-x;
+}
+
+div#header-container div#header-container-content div#menu-container.logout-active li#logout {
+    background: url('../images/bg_menu_item_1.png') repeat-x;
+}
+
+div#header-container div#header-container-content div#menu-container.password-active li#password {
+    background: url('../images/bg_menu_item_1.png') repeat-x;
+}
+
+div#header-container div#header-container-content div#menu-container.helpdesk-meu-active li#helpdesk-menu a {
+    color: white;
+}
+
+div#header-container div#header-container-content div#menu-container.information-active li#information a {
+    color: white;
+}
+
+div#header-container div#header-container-content div#menu-container.forum-active li#forum a {
+    color: white;
+}
+
+div#header-container div#header-container-content div#menu-container.logout-active li#logout a {
+    color: white;
+}
+
+div#header-container div#header-container-content div#menu-container.password-active li#password a {
+    color: white;
+}
+
+/* 
+ * SUB MENU
+ */
+ 
+div#header-container div#submenu-container {
+    background: url('../images/bg_submenu_1.png') repeat-x;
+}
+
+/* 
+ * FORUM
+ */
+ 
+table.forum tr th {
+    background: transparent url('../images/table_header_1.png') repeat-x;
+    color: white;
+} 
+
+table.forum tr.post {
+    border-bottom: 1px solid #606060;
+}
