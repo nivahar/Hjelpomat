@@ -1,3 +1,6 @@
+<?php
+	require_once('includes/functions.inc.php');
+?>
 <!DOCTYPE html> 
 <html lang="no" xml:lang="no"> 
 <head> 
@@ -30,7 +33,7 @@
 		<div id="header-container-content"> 
 			
 			<div id="top-container"> 
-				<a href="/helpdesk/"> 
+				<a href="/"> 
 					<div id="header-logo"></div> 
 				</a> 
 			</div> 
@@ -38,17 +41,17 @@
 			<div id="menu-container" class="helpdesk-meu-active"> 
 				<ul> 
 					<li id="helpdesk-menu"> 
-						<a href="help_reg.php"> 
+						<a href="?page=help"> 
 							Helpdesk
 						</a> 
 					</li> 
 					<li id="ikmat"> 
-						<a href="#"> 
+						<a href="?page=ikmat"> 
 							IK-mat
 						</a> 
 					</li> 
 					<li id="driftstans"> 
-						<a href="#"> 
+						<a href="?page=drift"> 
 							Driftstans
 						</a> 
 					</li>
@@ -62,13 +65,13 @@
 			<div id="submenu-container-content"> 
 				<ul class="filter-menu"> 
 					<li> 
-						<a href="/help_reg.php">Registrer sak</a> 
+						<a href="?page=help&sub=register">Registrer sak</a> 
 					</li> 
 					<li> 
-						<a href="/help_show.php">Vis saker</a> 
+						<a href="?page=help&sub=show">Vis saker</a> 
 					</li> 
 					<li> 
-						<a href="/help_adm.php">Administrer saker</a> 
+						<a href="?page=help&sub=adm">Administrer saker</a> 
 					</li>  
 				</ul> 
 			</div>
