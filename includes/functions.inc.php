@@ -1,5 +1,5 @@
 <?php
-	function page($page){
+	function page($page, $subpage){
 	// Shows the correct page according to the 
 
 		$content_path = 'includes/content/';

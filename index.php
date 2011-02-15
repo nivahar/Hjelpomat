@@ -4,7 +4,7 @@
 ?>
 		
 <?php
-	include_once(page($_GET['page']));
+	include_once(page($_GET['page'], $_GET['sub']));
 ?>
 
 <?php
