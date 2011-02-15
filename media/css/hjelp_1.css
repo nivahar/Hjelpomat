@@ -34,41 +34,26 @@ div#header-container div#header-container-content div#menu-container.helpdesk-me
     background: url('../images/bg_menu_item_1.png') repeat-x;
 }
 
-div#header-container div#header-container-content div#menu-container.information-active li#information {
+div#header-container div#header-container-content div#menu-container.ikmat-menu-active li#ikmat-menu {
     background: url('../images/bg_menu_item_1.png') repeat-x;
 }
 
-div#header-container div#header-container-content div#menu-container.forum-active li#forum {
+div#header-container div#header-container-content div#menu-container.drift-menu-active li#drift-menu {
     background: url('../images/bg_menu_item_1.png') repeat-x;
 }
 
-div#header-container div#header-container-content div#menu-container.logout-active li#logout {
-    background: url('../images/bg_menu_item_1.png') repeat-x;
-}
-
-div#header-container div#header-container-content div#menu-container.password-active li#password {
-    background: url('../images/bg_menu_item_1.png') repeat-x;
-}
-
-div#header-container div#header-container-content div#menu-container.helpdesk-meu-active li#helpdesk-menu a {
+div#header-container div#header-container-content div#menu-container.helpdesk-active li#helpdesk a {
     color: white;
 }
 
-div#header-container div#header-container-content div#menu-container.information-active li#information a {
+div#header-container div#header-container-content div#menu-container.ikmat-active li#ikmat a {
     color: white;
 }
 
-div#header-container div#header-container-content div#menu-container.forum-active li#forum a {
+div#header-container div#header-container-content div#menu-container.drift-active li#drift a {
     color: white;
 }
 
-div#header-container div#header-container-content div#menu-container.logout-active li#logout a {
-    color: white;
-}
-
-div#header-container div#header-container-content div#menu-container.password-active li#password a {
-    color: white;
-}
 
 /* 
  * SUB MENU

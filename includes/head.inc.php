@@ -38,19 +38,35 @@
 				</a> 
 			</div> 
 			
-			<div id="menu-container" class="helpdesk-meu-active"> 
+			<?php
+				switch ($_GET['page']){
+					case 'help':
+						$active = 'helpdesk-menu';
+						break;
+					case 'drift':
+						$active = 'drift-menu';
+						break;
+					case 'ikmat':
+						$active = 'ikmat-menu';
+						break;
+					default:
+						$active = 'helpdesk-menu';
+				}
+			?>
+			
+			<div id="menu-container" class="<?php echo $active; ?>-active"> 
 				<ul> 
 					<li id="helpdesk-menu"> 
 						<a href="?page=help"> 
 							Helpdesk
 						</a> 
 					</li> 
-					<li id="ikmat"> 
+					<li id="ikmat-menu"> 
 						<a href="?page=ikmat"> 
 							IK-mat
 						</a> 
 					</li> 
-					<li id="driftstans"> 
+					<li id="drift-menu"> 
 						<a href="?page=drift"> 
 							Driftstans
 						</a> 
