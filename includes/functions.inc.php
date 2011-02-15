@@ -1,6 +1,6 @@
 <?php
 	function page($page, $subpage){
-	// Shows the correct page according to the 
+	// Shows the page content according to the selected page
 
 		$content_path = 'includes/content/';
 
@@ -18,5 +18,55 @@
 		}
 		
 		return $content_path.$show_page;
+	}
+	
+	function submenu($page){
+	// Shows the submenu according to the selected page
+		
+		switch ($page){
+			case 'help':
+				return '<li> 
+						<a href="?page=help&sub=register">Registrer sak</a> 
+					</li> 
+					<li> 
+						<a href="?page=help&sub=show">Vis saker</a> 
+					</li> 
+					<li> 
+						<a href="?page=help&sub=adm">Administrer saker</a> 
+					</li>';
+				break;
+			case 'ikmat':
+				return '<li> 
+						<a href="?page=&sub=register">Registrer sak</a> 
+					</li> 
+					<li> 
+						<a href="?page=help&sub=show">Vis saker</a> 
+					</li> 
+					<li> 
+						<a href="?page=help&sub=adm">Administrer saker</a> 
+					</li>';
+				break;
+			case 'drift':
+				return '<li> 
+						<a href="?page=help&sub=register">Registrer sak</a> 
+					</li> 
+					<li> 
+						<a href="?page=help&sub=show">Vis saker</a> 
+					</li> 
+					<li> 
+						<a href="?page=help&sub=adm">Administrer saker</a> 
+					</li>';
+				break;
+			default:
+				return '<li> 
+						<a href="?page=help&sub=register">Registrer sak</a> 
+					</li> 
+					<li> 
+						<a href="?page=help&sub=show">Vis saker</a> 
+					</li> 
+					<li> 
+						<a href="?page=help&sub=adm">Administrer saker</a> 
+					</li>';
+		}
 	}
 ?>
