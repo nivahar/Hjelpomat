@@ -3,3 +3,6 @@ Dette er et dokumenet med linje1
 Linje2
 
 Linje3
+
+
+Ny linje etter 1 commit
