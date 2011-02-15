@@ -1,0 +1,5 @@
+Dette er et dokumenet med linje1
+
+Linje2
+
+Linje3
