@@ -10,8 +10,11 @@
 		elseif($page == 'help'){
 			$show_page = 'help.php';
 		}
+		elseif($page == 'ikmat'){
+			$show_page = 'ikmat.php';
+		}
 		else{
-			return NULL;
+			$show_page = 'default.php';
 		}
 		
 		return $content_path.$show_page;
