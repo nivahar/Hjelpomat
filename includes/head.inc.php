@@ -80,15 +80,9 @@
 		
 			<div id="submenu-container-content"> 
 				<ul class="filter-menu"> 
-					<li> 
-						<a href="?page=help&sub=register">Registrer sak</a> 
-					</li> 
-					<li> 
-						<a href="?page=help&sub=show">Vis saker</a> 
-					</li> 
-					<li> 
-						<a href="?page=help&sub=adm">Administrer saker</a> 
-					</li>  
+					<?php
+					  	echo submenu($_GET['page']);
+					?>  
 				</ul> 
 			</div>
 		

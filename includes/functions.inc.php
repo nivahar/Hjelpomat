@@ -37,24 +37,24 @@
 				break;
 			case 'ikmat':
 				return '<li> 
-						<a href="?page=&sub=register">Registrer sak</a> 
+						<a href="?page=ikmat&sub=register">Registrer sak</a> 
 					</li> 
 					<li> 
-						<a href="?page=help&sub=show">Vis saker</a> 
+						<a href="?page=ikmat&sub=show">Vis saker</a> 
 					</li> 
 					<li> 
-						<a href="?page=help&sub=adm">Administrer saker</a> 
+						<a href="?page=ikmat&sub=adm">Administrer saker</a> 
 					</li>';
 				break;
 			case 'drift':
 				return '<li> 
-						<a href="?page=help&sub=register">Registrer sak</a> 
+						<a href="?page=drift&sub=register">Registrer sak</a> 
 					</li> 
 					<li> 
-						<a href="?page=help&sub=show">Vis saker</a> 
+						<a href="?page=drift&sub=show">Vis saker</a> 
 					</li> 
 					<li> 
-						<a href="?page=help&sub=adm">Administrer saker</a> 
+						<a href="?page=drift&sub=adm">Administrer saker</a> 
 					</li>';
 				break;
 			default:
