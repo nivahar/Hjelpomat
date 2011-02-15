@@ -6,3 +6,5 @@ Linje3
 
 
 Ny linje etter 1 commit
+
+Enda en linje, denne gangen fra Fredrik
