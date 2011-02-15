@@ -20,3 +20,63 @@
 	<link rel="stylesheet" type="text/css" href="/media/css/hjelp_1.css" />
  
 </head> 
+
+<body class="colored"> 
+ 
+	
+ 
+	<div id="header-container"> 
+		
+		<div id="header-container-content"> 
+			
+			<div id="top-container"> 
+				<a href="/helpdesk/"> 
+					<div id="header-logo"></div> 
+				</a> 
+			</div> 
+			
+			<div id="menu-container" class="helpdesk-meu-active"> 
+				<ul> 
+					<li id="helpdesk-menu"> 
+						<a href="help_reg.php"> 
+							Helpdesk
+						</a> 
+					</li> 
+					<li id="ikmat"> 
+						<a href="#"> 
+							IK-mat
+						</a> 
+					</li> 
+					<li id="driftstans"> 
+						<a href="#"> 
+							Driftstans
+						</a> 
+					</li>
+				</ul> 
+			</div> 
+			
+		</div>
+	
+		<div id="submenu-container"> 
+		
+			<div id="submenu-container-content"> 
+				<ul class="filter-menu"> 
+					<li> 
+						<a href="/help_reg.php">Registrer sak</a> 
+					</li> 
+					<li> 
+						<a href="/help_show.php">Vis saker</a> 
+					</li> 
+					<li> 
+						<a href="/help_adm.php">Administrer saker</a> 
+					</li>  
+				</ul> 
+			</div>
+		
+		</div>
+	 
+		<div style="clear: both"></div> 
+		
+	</div> 
+	<div id="background-box"> 
+		<div id="content-container" class=""> 
