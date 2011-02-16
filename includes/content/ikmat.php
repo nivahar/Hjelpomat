@@ -1,4 +1,4 @@
-			<h1>Registrer IK-mat sak</h1> 
+			<h1>Registrer IK-mat hendelse</h1> 
 			<p>
 				Felter merket <span class="mandatory">*</span> er påkrevd!
 			</p>

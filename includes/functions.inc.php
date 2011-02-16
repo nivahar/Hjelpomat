@@ -37,10 +37,10 @@
 				break;
 			case 'ikmat':
 				return '<li> 
-						<a href="?page=ikmat&sub=register">Registrer sak</a> 
+						<a href="?page=ikmat&sub=register">Registrer hendelse</a> 
 					</li> 
 					<li> 
-						<a href="?page=ikmat&sub=show">Vis saker</a> 
+						<a href="?page=ikmat&sub=show">Vis hendelser</a> 
 					</li> 
 					<li> 
 						<a href="?page=ikmat&sub=adm">Administrer saker</a> 
