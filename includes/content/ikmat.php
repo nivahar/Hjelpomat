@@ -4,7 +4,7 @@
 			</p>
 			<div id="form">
 				
-				<form action="#" method="post" name="reg_help" id="reg_help" class="normal">
+				<form action="" method="post" name="reg_help" id="reg_help" class="normal">
 					
 					<label for="help_title">
 						Problemtittel <span class="mandatory">*</span>
@@ -20,15 +20,18 @@
 						Problemkategori <span class="mandatory">*</span>
 					</label>
 					<select name="help_cat" id="help_cat">
-						<option value="select_help" selected="selected">Velg en kategori...</option>
-						<optgroup label="Attraksjoner">
-							<option value="1">Kontrollpanel</option>
+						<option value="select_help" selected="selected">Velg hentelsessted...</option>
+						<optgroup label="Restaurant">
+							<option value="1">Vertshuset</option>
+							<option value="2">Rockburgern</option>
 						</optgroup>
-						<optgroup label="Kasser">
-							<option value="2">Skjerm</option>
-							<option value="3">Tastatur</option>
-							<option value="4">Bongskriver</option>
-							<option value="5">Kasseskuff</option>
+						<optgroup label="Butikk">
+							<option value="3">Toppen</option>
+						</optgroup>
+						<optgroup label="Sukkerland">
+							<option value="4">Slushfabrikken</option>
+							<option value="5">Præriekiosken</option>
+							<option value="6">Poppen</option>
 						</optgroup>
 					</select>
 					
