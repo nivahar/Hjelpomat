@@ -12,7 +12,7 @@
 					<input type="text" name="help_title" id="help_title" placeholder="Overskrift" required />
 					
 					<label for="emp_no">
-						Ansattnummer <span class="mandatory">*</span>
+						Ditt ansattnummer <span class="mandatory">*</span>
 					</label>
 					<input type="number" name="emp_no" id="emp_no" max="9999" min="1" step="1" required />
 					
