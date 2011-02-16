@@ -23,6 +23,10 @@ select.disabled, input.disabled {
     background-color: #f0f0f0;
 }
 
+a, a:hover, a:visited {
+    color: #8d1248;
+}
+
 /* 
  * HIDE EMPTY IMAGE ELEMENTS (USED IN BULK WINDOW STATUS)
  */
@@ -102,6 +106,16 @@ span.asterisk {
 
 form.normal input#id_username, form.normal input#id_password {
     width: 200px;
+}
+
+.mandatory {
+	
+	font-weight: bold;
+	
+	font-size: 1.5em;
+	
+	color: #ff0024;
+	
 }
 
 /*

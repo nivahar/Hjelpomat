@@ -22,6 +22,18 @@ div#header-container div#header-container-content div#header-logo {
     height: 115px;
 }
 
+div#header-container {
+    background: url('../images/bg_top_1.png') repeat-x;
+}
+
+/*
+ * LOGO
+ */
+ 
+div#header-container div#header-container-content div#header-logo {
+    background: url('../images/logo_2.png') no-repeat center left;
+}
+
 /*
  * MENU
  */
@@ -49,6 +61,46 @@ div#header-container div#header-container-content div#menu-container li a {
     font-weight: 600;
     font-size: 11px;
     padding: 10px 20px;
+}
+
+/*
+ * MENU ITEM
+ */
+
+div#header-container div#header-container-content div#menu-container li a {
+     color: white;
+}
+
+div#header-container div#header-container-content div#menu-container li:hover a {
+    color: white;
+}
+ 
+div#header-container div#header-container-content div#menu-container li:hover {
+    background: url('../images/bg_menu_item_1.png') repeat-x;
+}
+
+div#header-container div#header-container-content div#menu-container.helpdesk-meu-active li#helpdesk-menu {
+    background: url('../images/bg_menu_item_1.png') repeat-x;
+}
+
+div#header-container div#header-container-content div#menu-container.ikmat-menu-active li#ikmat-menu {
+    background: url('../images/bg_menu_item_1.png') repeat-x;
+}
+
+div#header-container div#header-container-content div#menu-container.drift-menu-active li#drift-menu {
+    background: url('../images/bg_menu_item_1.png') repeat-x;
+}
+
+div#header-container div#header-container-content div#menu-container.helpdesk-active li#helpdesk a {
+    color: white;
+}
+
+div#header-container div#header-container-content div#menu-container.ikmat-active li#ikmat a {
+    color: white;
+}
+
+div#header-container div#header-container-content div#menu-container.drift-active li#drift a {
+    color: white;
 }
 
 /* 
@@ -95,6 +147,10 @@ ul.filter-menu a {
 
 ul.filter-menu a:hover {
     text-decoration: underline;
+}
+
+div#header-container div#submenu-container {
+    background: url('../images/bg_submenu_1.png') repeat-x;
 }
 
 /*
@@ -161,7 +217,7 @@ div.error {
 }
 
 /*
- * FORUM
+ * FORUM (Possibly obsolete)
  */
 
 div#forum-breadcrumbs {
@@ -237,4 +293,13 @@ ul.paginator {
 ul.paginator li {
     margin: 0 2px 0 2px;
     display: inline;
+}
+ 
+table.forum tr th {
+    background: transparent url('../images/table_header_1.png') repeat-x;
+    color: white;
+} 
+
+table.forum tr.post {
+    border-bottom: 1px solid #606060;
 }
