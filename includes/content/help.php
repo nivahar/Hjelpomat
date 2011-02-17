@@ -1,4 +1,4 @@
-			//<h1>Registrer sak</h1> 
+			<h1>Registrer sak</h1> 
 			<p>
 				Felter merket <span class="mandatory">*</span> er påkrevd!
 			</p>
