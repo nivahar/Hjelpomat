@@ -79,7 +79,7 @@ div#header-container div#header-container-content div#menu-container li:hover {
     background: url('../images/bg_menu_item_1.png') repeat-x;
 }
 
-div#header-container div#header-container-content div#menu-container.helpdesk-meu-active li#helpdesk-menu {
+div#header-container div#header-container-content div#menu-container.helpdesk-menu-active li#helpdesk-menu {
     background: url('../images/bg_menu_item_1.png') repeat-x;
 }
 
