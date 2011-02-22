@@ -1,10 +1,13 @@
+<?php if(isset($_POST['reg_help_submit'])): ?>
+<h1>Sendt</h1>
+<?php else: ?>
 			<h1>Registrer sak</h1> 
 			<p>
 				Felter merket <span class="mandatory">*</span> er påkrevd!
 			</p>
 			<div id="form">
 				
-				<form action="#" method="post" name="reg_help" id="reg_help" class="normal">
+				<form action="" method="post" name="reg_help" id="reg_help" class="normal">
 					
 					<label for="help_title">
 						Problemtittel <span class="mandatory">*</span>
@@ -37,9 +40,10 @@
 					</label>
 					<textarea name="help_desc" id="help_desc" required></textarea>
 					<p class="buttons">
-						<button type="submit">Registrer</button>
+						<input type="submit" name="reg_help_submit">Registrer</input>
 						<button type="reset" onclick="return confirm('Vil du tømme skjemaet?');">Tøm skjema</button>
 					</p>
 				</form>
 				
 			</div>
+<?php endif; ?>
