@@ -1,6 +1,10 @@
-<?php if(isset($_POST['reg_help_submit'])): ?>
-<h1>Sendt</h1>
-<?php else: ?>
+		<?php if(isset($_POST['reg_help_submit'])):
+			echo '<p class="success">Saken ble registrert.</p>
+				<h1>'.$_POST['help_title'].'</h1>
+				<p>Ansattnr. '.$_POST['emp_no'].', kategori '.$_POST['help_cat'].'</p>
+				<h2>Beskrivelse</h2>
+				<p>'.$_POST['help_desc'].'</p>';
+		else: ?>
 			<h1>Registrer sak</h1> 
 			<p>
 				Felter merket <span class="mandatory">*</span> er påkrevd!
