@@ -1,4 +1,11 @@
 		<?php if(isset($_POST['reg_help_submit'])):
+			/*
+if(connect_to_tf()){
+				echo '<p class="success">Koblingen fungerer!</p>';
+			}else{
+				echo '<p class="error">Kunne ikke koble til databasen.</p>';
+			}
+*/
 			echo '<p class="success">Saken ble registrert.</p>
 				<h1>'.$_POST['help_title'].'</h1>
 				<p>Ansattnr. '.$_POST['emp_no'].', kategori '.$_POST['help_cat'].'</p>

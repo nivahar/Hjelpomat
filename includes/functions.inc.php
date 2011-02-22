@@ -70,9 +70,16 @@
 		}
 	}
 	
-	function connect_to_tf(){
+	/*
+function connect_to_tf(){
 		require 'db_secure.php';
 		$login = db_login();
-		if(!($connection = mssql_connect($login['adress'], $login['user'], $login['pass'])))
+		if(!($connection = mssql_connect($login['adress'], $login['user'], $login['pass']))){
+			return FALSE;
+		}
+		else{
+			return TRUE;
+		} 
 	}
+*/
 ?>
