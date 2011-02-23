@@ -73,7 +73,7 @@
     					"nname":"validate2fields",
     					"alertText":"* Du må ha fornavn og etternavn"},
     				"empNumber":{
-    					"regex":/^[0-9\ ]+$/,
+    					"regex":/^[0-9\ ]{4}$/,
     					"alertText":"* Ikke et gyldig ansattnummer"}
 					};
 					
