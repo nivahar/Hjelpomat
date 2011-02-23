@@ -23,18 +23,18 @@ if(connect_to_tf()){
 					<label for="help_title">
 						Problemtittel <span class="mandatory">*</span>
 					</label>
-					<input type="text" name="help_title" id="help_title" placeholder="Overskrift" required />
+					<input type="text" name="help_title" id="help_title" placeholder="Overskrift" required class="validate[required]" />
 					
 					<label for="emp_no">
 						Ditt ansattnummer <span class="mandatory">*</span>
 					</label>
-					<input type="number" name="emp_no" id="emp_no" max="9999" min="1" step="1" required />
+					<input type="number" name="emp_no" id="emp_no" max="9999" min="1" step="1" required class="validate[required,custom[empNumber],maxSize[4]] text-input" />
 					
 					<label for="help_cat">
 						Problemkategori <span class="mandatory">*</span>
 					</label>
-					<select name="help_cat" id="help_cat">
-						<option value="select_help" selected="selected">Velg en kategori...</option>
+					<select name="help_cat" id="help_cat" class="validate[required]">
+						<option value="" selected="selected">Velg en kategori...</option>
 						<optgroup label="Attraksjoner">
 							<option value="1">Kontrollpanel</option>
 						</optgroup>
@@ -49,7 +49,7 @@ if(connect_to_tf()){
 					<label for="help_desc">
 						Problembeskrivelse <span class="mandatory">*</span>
 					</label>
-					<textarea name="help_desc" id="help_desc" required></textarea>
+					<textarea name="help_desc" id="help_desc" required class="validate[required]"></textarea>
 					<p class="buttons">
 						<input type="submit" name="reg_help_submit">Registrer</input>
 						<button type="reset" onclick="return confirm('Vil du tømme skjemaet?');">Tøm skjema</button>
