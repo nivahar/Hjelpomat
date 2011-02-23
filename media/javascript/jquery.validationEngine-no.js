@@ -74,7 +74,7 @@
     					"alertText":"* Du må ha fornavn og etternavn"},
     				"empNumber":{
     					"regex":/^[0-9\ ]{4}$/,
-    					"alertText":"* Ikke et gyldig ansattnummer"}
+    					"alertText":"* Ikke et gyldig ansattnummer (fire siffer, kun tall)"}
 					};
 					
 		}
