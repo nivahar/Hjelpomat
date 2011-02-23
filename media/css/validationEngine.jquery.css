@@ -21,10 +21,10 @@
 
 .formError .formErrorContent {
 	width: 100%;
-	background: #ee0101;
+	background: #fbe3e4;
 	position:relative;
 	z-index:5001;
-	color: #fff;
+	color: #8a1f11;
 	width: 150px;
 	font-family: tahoma;
 	font-size: 11px;
@@ -70,7 +70,7 @@
 	-webkit-box-shadow: 0 2px 3px #444;
 	font-size: 0px;
 	height: 1px;
-	background: #ee0101;
+	background: #fbe3e4;
 	margin: 0 auto;
 	line-height: 0;
 	font-size: 0;
