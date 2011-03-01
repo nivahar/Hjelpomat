@@ -15,7 +15,7 @@ connect_to_tf();
 $sp = mssql_query("select * from [tbl.user]");
 $rad = mssql_fetch_array($sp);
 
-//* HENTE EVT RESULTAT
+//* HENTE / printe EVT RESULTAT
 print_r($rad);
 
 echo mssql_get_last_message();
