@@ -1,8 +1,0 @@
-<Cat
-
-Hei
-
-Eirik sin linje 
-
-
-Linje 2
