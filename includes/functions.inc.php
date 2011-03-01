@@ -71,13 +71,19 @@
 	}
 	
 	function connect_to_tf(){
+                //Login data finnes i fil:
 		require 'db_secure.php';
+                //Kobler til server
 		$login = db_login();
 		if(!($connection = mssql_connect($login['address'], $login['user'], $login['pass']))){
 			return FALSE;
 		}
 		else{
 			return TRUE;
-		} 
-	}
+		}
+                // Setter database
+                mssql_select_db('hjelpomat',$login);
+           }
+
 ?>
+

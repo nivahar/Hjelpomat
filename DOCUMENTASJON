@@ -1,0 +1,41 @@
+
+
+// Database
+
+
+
+//Tabell: tbl.case_status
+Inneholder de forskjellige typene niv� en sak kan ha.
+bla:
+- regisrert
+- under utbedring
+- venter p� varer
+- fullf�rt
+
+linket til: helpdesk_case
+
+//Tabell: Department
+
+
+
+//Tabell: user
+Innheolder brukerdata
+- id
+- navn
+- tilgangs niv�
+
+////////////////////////////////////////////////
+///////// Enkel oppkobling for å hente data
+////////////////////////////////////////////////
+require_once('./includes/functions.inc.php');
+
+connect_to_tf();
+
+//Spørring
+$sp = mssql_query("select * from [tbl.user]");
+$rad = mssql_fetch_array($sp);
+
+
+print_r($rad);
+
+echo mssql_get_last_message();
