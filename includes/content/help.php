@@ -44,7 +44,7 @@
 					</label>
 					<textarea name="help_desc" id="help_desc" required class="validate[required]"></textarea>
 					<p class="buttons">
-						<input type="submit" name="reg_help_submit">Registrer</input>
+						<input type="submit" name="reg_help_submit" value="Registrer" />
 						<button type="reset" onclick="return confirm('Vil du tømme skjemaet?');">Tøm skjema</button>
 					</p>
 				</form>
