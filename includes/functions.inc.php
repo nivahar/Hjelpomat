@@ -81,11 +81,9 @@
 		else{
 			return TRUE;
 		}
-                // Setter database
-                mssql_select_db('hjelpomat',$login);
-           }
-
-        
-
+		
+		// Setter database
+		mssql_select_db('hjelpomat',$login);
+	}
 ?>
 
