@@ -85,5 +85,7 @@
                 mssql_select_db('hjelpomat',$login);
            }
 
+        
+
 ?>
 
