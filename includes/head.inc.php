@@ -21,6 +21,7 @@
 	<script src="/media/javascript/jquery-1.5.min.js" type="text/javascript"></script>  
 	<script src="/media/javascript/jquery.validationEngine-no.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/media/javascript/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/media/javascript/bruker.js" type="text/javascript"></script>
 
 	<script>
 		jQuery(document).ready(function(){
