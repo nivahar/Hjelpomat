@@ -71,3 +71,72 @@ ul.errorlist {
     color: red;
     font-weight: bold;
 }
+
+/* Innlogging
+------------------------------------------------------------- */
+form#login {
+	margin-right: auto;
+	margin-left: auto;
+	color: #282828;
+    text-transform: uppercase;
+    text-shadow: 1px 1px white;
+    
+    width: 250px;
+    padding: 20px;
+    border: 1px solid #243b44;
+
+    /*** Adding in CSS3 ***/
+
+    /*** Rounded Corners ***/
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+
+    /*** Background Gradient - 2 declarations one for Firefox and one for Webkit ***/
+    background:  -moz-linear-gradient(19% 75% 90deg,#B8E2FF, #B8E2FF);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#B8E2FF), to(#72C0F7));
+
+    /*** Shadow behind the box ***/
+    -moz-box-shadow:0px -5px 300px #b1d6eb;
+    -webkit-box-shadow:0px -5px 300px #b1d6eb;
+}
+
+form#login input, form#login select {
+    border-top-color: #b1d6eb;
+    width: 230px;
+    background: #b8e2ff;
+    padding: 6px;
+    margin-bottom: 10px;
+    border-top: 1px solid;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+
+    /*** Adding CSS3 ***/
+
+    /*** Transition Selectors - What properties to animate and how long ***/
+    -webkit-transition-property: -webkit-box-shadow, background;
+    -webkit-transition-duration: 0.25s;
+
+    /*** Adding a small shadow ***/
+    -moz-box-shadow: 0px 0px 2px #000;
+    -webkit-box-shadow: 0px 0px 2px #000;
+}
+
+form#login input:hover {
+    -webkit-box-shadow: 0px 0px 4px #000;
+    background: #dcfffc;
+}
+
+form#login input.submit {
+    border-top-color: #9ec4df;
+    width: 100px;
+    color: #282828;
+    text-transform: uppercase;
+    text-shadow: 1px 1px white;
+    border-top: 1px solid;
+    margin-top: 10px;
+
+    /*** Adding CSS3 Gradients ***/
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#B8E2FF), to(#B8E2FF));
+    background:  -moz-linear-gradient(19% 75% 90deg,#B8E2FF, #B8E2FF);
+}
