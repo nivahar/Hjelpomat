@@ -1,4 +1,8 @@
 <?php
+
+/*
+ * Hovedmeny
+ */
 	function page($page, $subpage){
 	// Shows the page content according to the selected page
 
@@ -19,7 +23,10 @@
 		
 		return $content_path.$show_page;
 	}
-	
+
+/*
+ * Under meny / Del meny
+ */
 	function submenu($page){
 	// Shows the submenu according to the selected page
 		
@@ -69,7 +76,11 @@
 					</li>';
 		}
 	}
-	
+
+
+/*
+ * Database kobling info
+ */
 	function connect_to_tf(){
                 //Login data finnes i fil:
 		require 'db_secure.php';
@@ -85,5 +96,28 @@
 		// Setter database
 		mssql_select_db('hjelpomat',$login);
 	}
-?>
 
+
+
+
+/*
+ * Funksjon for å lagre data fra skjema helpdesk
+ */
+        function save_help_case($title,$employee_number,$category_id,$descrition){
+
+            // Database kobling for å lagre.
+            connect_to_tf();
+
+        $sql = "INSERT INTO [tbl.help_case](help_case_title,case_problem_type,help_case_description) VALUES('$title','$category_id','$descrition')";
+
+
+        
+
+
+
+        }
+
+
+
+
+?>
