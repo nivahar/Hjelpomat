@@ -19,17 +19,20 @@
 	<div id="background-box"> 
 		<div id="content-container" class=""> 
 			<?php
-				connect_to_tf();
+			//Database
+                        connect_to_tf();
 
 				//Spørring
 				$sql = "select * from [tbl.user]";
 				$brukere = array();
+                                $auth_level = array();
 				$resultat = mssql_query($sql);
 				while($rad = mssql_fetch_array($resultat)){
 					$brukere[] = $rad['user_name'];
+                                        $auth_level[] = $rad['user_level'];
 				}
 			?>
-			<form id="login">
+			<form id="login" method="POST" action="auth.php">
 				<label>Brukernavn:</label>
 					<select name="username" onchange="showHint(this.value)">
 						<option value="">Velg brukernavn...</option>
