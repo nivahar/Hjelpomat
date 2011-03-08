@@ -144,4 +144,47 @@ $reg_user = '1'; // må settes til aktiv bruker - session ?
 
 
 
+/*
+ * Funksjon save food case
+ *
+ * 1. Lagre food_case data
+ * 2. finne id av nr 1
+ * 3. Lagre food_case data i main_case
+ *
+ */
+ function save_food_case($title,$employee_number,$id_food_problem,$descrition){
+
+              //Database kobling
+                connect_to_tf();
+
+              // DEL 1 tbl.help_case
+              //Sette inn data unik fo helpdesk, input fra funksjon
+                  $sql = "INSERT INTO [tbl.food_case](food_case_title,id_food_problem_type, food_case_description) VALUES('$title','$id_food_problem','$descrition')";
+              //Utføre sql kommando
+                  mssql_query($sql);
+
+
+             //DEL 2
+             // Trenger ID til å putte i hovedtabell
+                $sql = 'SELECT SCOPE_IDENTITY() AS ID';
+                $help_id = mssql_query($sql);
+                $id = mssql_fetch_array($help_id);
+                $food_case_id = $id["ID"];
+
+
+    //TEMP
+$reg_user = '1'; // må settes til aktiv bruker - session ?
+
+            //DEL 3
+            // tbl.main_case
+                $dato = 'GETDATE()'; // lagrer timestamp server.
+            //Sette inn data unik fo helpdesk, input fra funksjon
+                $sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case)VALUES ($dato,'$reg_user','$employee_number','$food_case_id')";
+            //Lagre data i tbl.man_case
+                mssql_query($sql);
+
+        }
+
+
+
 ?>
