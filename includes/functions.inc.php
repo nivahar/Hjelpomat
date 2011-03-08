@@ -102,19 +102,43 @@
 
 /*
  * Funksjon for å lagre data fra skjema helpdesk
+ *
+ * 1. Lagre detaljer om en helpdesk sak som er unikt for helpdesk
+ * 2. Hente ID til sak registrert i 1 for å kunne lagre den i felles tabellen
+ * 3. lagre data om sak i hovedtabellen.
+ * 
  */
         function save_help_case($title,$employee_number,$category_id,$descrition){
 
-            // Database kobling for å lagre.
-            connect_to_tf();
+              //Database kobling
+                connect_to_tf();
 
-        $sql = "INSERT INTO [tbl.help_case](help_case_title,case_problem_type,help_case_description) VALUES('$title','$category_id','$descrition')";
+              // DEL 1 tbl.help_case
+              //Sette inn data unik fo helpdesk, input fra funksjon
+                  $sql = "INSERT INTO [tbl.help_case](help_case_title,case_problem_type,help_case_description) VALUES('$title','$category_id','$descrition')";
+              //Utføre sql kommando
+                  mssql_query($sql);
 
 
-        
+             //DEL 2
+             // Trenger ID til å putte i hovedtabell
+                $sql = 'SELECT SCOPE_IDENTITY() AS ID';
+                $help_id = mssql_query($sql);
+                $id = mssql_fetch_array($help_id);
+                $help_case_id = $id["ID"];
 
+            
+    //TEMP
+$reg_user = '1'; // må settes til aktiv bruker - session ?
 
-
+            //DEL 3
+            // tbl.main_case
+                $dato = 'GETDATE()'; // lagrer timestamp server.
+            //Sette inn data unik fo helpdesk, input fra funksjon
+                $sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case)VALUES ($dato,'$reg_user','$employee_number','$help_case_id')";
+            //Lagre data i tbl.man_case
+                mssql_query($sql);
+       
         }
 
 
