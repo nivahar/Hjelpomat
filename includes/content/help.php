@@ -11,7 +11,7 @@
 			</p>
 			<div id="form">
 				
-				<form action="./includes/content/reg_help.php" method="post" name="reg_help" id="reg_help" class="normal">
+				<form action="" method="post" name="reg_help" id="reg_help" class="normal">
 					
 					<label for="help_title">
 						Problemtittel <span class="mandatory">*</span>
