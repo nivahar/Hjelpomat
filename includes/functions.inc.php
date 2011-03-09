@@ -238,7 +238,9 @@
 	 	$resultat = mssql_query($sql);
 	 	$kategorier = array();
 	 	while($rad = mssql_fetch_array($resultat)){
-	 		$kategorier[] = $rad['help_problem_type_description'];
+	 		$id = $rad['id_help_problem_type'];
+	 		$kategorier[$id]['description'] = $rad['help_problem_type_description'];
+	 		$kategorier[$id]['parent'] = $rad['parent_help_problem_id'];
 	 	}
 	 	return $kategorier;
 	 }
