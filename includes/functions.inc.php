@@ -234,7 +234,7 @@
 	 */
 	 function get_categories(){
 	 	connect_to_tf();
-	 	$sql = "SELECT * FROM tbl.help_problem_type";
+	 	$sql = "SELECT * FROM [tbl.help_problem_type]";
 	 	$resultat = mssql_query($sql);
 	 	$kategorier = array();
 	 	while($rad = mssql_fetch_array($resultat)){
