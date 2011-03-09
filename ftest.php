@@ -1,3 +1,6 @@
 <?php
 	require_once('includes/functions.inc.php');
-	print_r(get_categories());
+	foreach(get_categories() as $key => $value){
+		echo "ID er $key<br/>";
+		//print_r $value;
+	}
