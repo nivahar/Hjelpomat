@@ -233,7 +233,8 @@
 	 * Henter alle kategorier
 	 */
 	 function get_categories(){
-	 	$sql = "SELECT * FROM help_problem_type";
+	 	connect_to_tf();
+	 	$sql = "SELECT * FROM tbl.help_problem_type";
 	 	$resultat = mssql_query($sql);
 	 	$kategorier = array();
 	 	while($rad = mssql_fetch_array($resultat)){
