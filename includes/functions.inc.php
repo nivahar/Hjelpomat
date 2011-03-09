@@ -82,13 +82,13 @@
  * Database kobling info
  */
 	function connect_to_tf(){
-                //Login data finnes i fil:
+		//Login data finnes i fil:
 		require 'db_secure.php';
-                //Kobler til server
+		//Kobler til server
 		$login = db_login();
 		if(!($connection = mssql_connect($login['address'], $login['user'], $login['pass']))){
 			return FALSE;
-		}
+		}	
 		else{
 			return TRUE;
 		}
@@ -96,7 +96,6 @@
 		// Setter database
 		mssql_select_db('hjelpomat',$login);
 	}
-
 
 
 
@@ -108,38 +107,57 @@
  * 3. lagre data om sak i hovedtabellen.
  * 
  */
-        function save_help_case($title,$employee_number,$category_id,$descrition){
+	function save_help_case($title,$employee_number,$category_id,$description){
 
-              //Database kobling
-                connect_to_tf();
+		//Database kobling
+		if(!connect_to_tf()){
+			return FALSE;
+			exit;
+		}
 
-              // DEL 1 tbl.help_case
-              //Sette inn data unik fo helpdesk, input fra funksjon
-                  $sql = "INSERT INTO [tbl.help_case](help_case_title,case_problem_type,help_case_description) VALUES('$title','$category_id','$descrition')";
-              //Utføre sql kommando
-                  mssql_query($sql);
+	      // DEL 1 tbl.help_case
+	      //Sette inn data unik fo helpdesk, input fra funksjon
+		  $sql = "INSERT INTO [tbl.help_case](help_case_title,case_problem_type,help_case_description) 
+		  		VALUES('$title','$category_id','$description')";
+		//Utføre sql kommando
+		if(!mssql_query($sql)){
+			return FALSE;
+			exit;
+		}
 
 
-             //DEL 2
-             // Trenger ID til å putte i hovedtabell
-                $sql = 'SELECT SCOPE_IDENTITY() AS ID';
-                $help_id = mssql_query($sql);
-                $id = mssql_fetch_array($help_id);
-                $help_case_id = $id["ID"];
+     	//DEL 2
+     	// Trenger ID til å putte i hovedtabell
+		$sql = 'SELECT SCOPE_IDENTITY() AS ID';
+		
+		if(!$help_id = mssql_query($sql)){
+			return FALSE;
+			exit;
+		}
+		
+		if(!$id = mssql_fetch_array($help_id)){
+			return FALSE;
+			exit;
+		}
+		$help_case_id = $id["ID"];
 
-            
-    //TEMP
-$reg_user = '1'; // må settes til aktiv bruker - session ?
+    	
+		//TEMP
+		$reg_user = '1'; // må settes til aktiv bruker - session ?
 
-            //DEL 3
-            // tbl.main_case
-                $dato = 'GETDATE()'; // lagrer timestamp server.
-            //Sette inn data unik fo helpdesk, input fra funksjon
-                $sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case)VALUES ($dato,'$reg_user','$employee_number','$help_case_id')";
-            //Lagre data i tbl.man_case
-                mssql_query($sql);
-       
-        }
+    	//DEL 3
+    	// tbl.main_case
+		$dato = 'GETDATE()'; // lagrer timestamp server.
+    	//Sette inn data unik fo helpdesk, input fra funksjon
+		$sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case)
+				VALUES ($dato,'$reg_user','$employee_number','$help_case_id')";
+    	//Lagre data i tbl.man_case
+		if(!mssql_query($sql)){
+			return FALSE;
+			exit;
+		}
+		return TRUE;
+	}
 
 
 
@@ -154,36 +172,61 @@ $reg_user = '1'; // må settes til aktiv bruker - session ?
  */
  function save_food_case($title,$employee_number,$id_food_problem,$descrition){
 
-              //Database kobling
-                connect_to_tf();
+      	//Database kobling
+		if(!connect_to_tf()){
+			return FALSE;
+			exit;
+		}
 
-              // DEL 1 tbl.help_case
-              //Sette inn data unik fo helpdesk, input fra funksjon
-                  $sql = "INSERT INTO [tbl.food_case](food_case_title,id_food_problem_type, food_case_description) VALUES('$title','$id_food_problem','$descrition')";
-              //Utføre sql kommando
-                  mssql_query($sql);
+      	// DEL 1 tbl.help_case
+      	//Sette inn data unik fo helpdesk, input fra funksjon
+  		$sql = "INSERT INTO [tbl.food_case](food_case_title,id_food_problem_type, food_case_description) 
+  				VALUES('$title','$id_food_problem','$descrition')";
+      	//Utføre sql kommando
+  		if(!mssql_query($sql)){
+  			return FALSE;
+			exit;
+  		}
 
 
-             //DEL 2
-             // Trenger ID til å putte i hovedtabell
-                $sql = 'SELECT SCOPE_IDENTITY() AS ID';
-                $help_id = mssql_query($sql);
-                $id = mssql_fetch_array($help_id);
-                $food_case_id = $id["ID"];
+     	//DEL 2
+     	// Trenger ID til å putte i hovedtabell
+		$sql = 'SELECT SCOPE_IDENTITY() AS ID';
+		
+		if(!$help_id = mssql_query($sql)){
+			return FALSE;
+			exit;
+		}
+		
+		if(!$id = mssql_fetch_array($help_id)){
+			return FALSE;
+			exit;
+		}
+		$food_case_id = $id["ID"];
 
 
-    //TEMP
-$reg_user = '1'; // må settes til aktiv bruker - session ?
+    	//Midlertidig
+		$reg_user = '1'; // må settes til aktiv bruker - session ?
 
-            //DEL 3
-            // tbl.main_case
-                $dato = 'GETDATE()'; // lagrer timestamp server.
-            //Sette inn data unik fo helpdesk, input fra funksjon
-                $sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case)VALUES ($dato,'$reg_user','$employee_number','$food_case_id')";
-            //Lagre data i tbl.man_case
-                mssql_query($sql);
-
-        }
+    	//DEL 3
+    	// tbl.main_case
+		$dato = 'GETDATE()'; // lagrer timestamp server.
+    	//Sette inn data unik fo helpdesk, input fra funksjon
+		$sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case)
+				VALUES ($dato,'$reg_user','$employee_number','$food_case_id')";
+    	// Lagre data i tbl.man_case
+		if(!mssql_query($sql)){
+			return FALSE;
+			exit;
+		}
+		
+		// Frigjør ressursen (ikke testet enda)
+		//mssql_free_result($id);
+		
+		// Lukker databasetilkobling (trenger en link)
+		//mssql_close();
+		return TRUE;
+	}
 
 
 
