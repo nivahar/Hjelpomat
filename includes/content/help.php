@@ -3,7 +3,7 @@
 			$title = $_POST['help_title'];
 			$employee_number = $_POST['emp_no'];
 			$category_id = $_POST['help_cat'];
-			$description = $POST['help_desc'];
+			$description = $_POST['help_desc'];
 			
 			if(save_help_case($title,$employee_number,$category_id,$description)){
 				echo '<p class="success">Saken ble registrert.</p>
