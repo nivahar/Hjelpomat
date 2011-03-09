@@ -242,4 +242,17 @@
 	 	return $kategorier;
 	 }
 
+
+
+
+         function get_department(){
+             // koble til server og base
+             connect_to_tf();
+             $sql ="SELECT * FROM tbl.department";
+             $resultat = mssql_query($sql);
+             $avdelinger = array();
+             while($rad = mssql_fetch_array($resultat)){
+                    $avdelinger[] = $rad['']
+             }
+         }
 ?>
