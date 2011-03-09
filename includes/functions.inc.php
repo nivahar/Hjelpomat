@@ -170,7 +170,7 @@
  * 3. Lagre food_case data i main_case
  *
  */
- function save_food_case($title,$employee_number,$id_food_problem,$descrition){
+ function save_food_case($title,$employee_number,$id_food_problem,$description){
 
       	//Database kobling
 		if(!connect_to_tf()){
@@ -181,7 +181,7 @@
       	// DEL 1 tbl.help_case
       	//Sette inn data unik fo helpdesk, input fra funksjon
   		$sql = "INSERT INTO [tbl.food_case](food_case_title,id_food_problem_type, food_case_description) 
-  				VALUES('$title','$id_food_problem','$descrition')";
+  				VALUES('$title','$id_food_problem','$description')";
       	//Utføre sql kommando
   		if(!mssql_query($sql)){
   			return FALSE;
@@ -228,6 +228,18 @@
 		return TRUE;
 	}
 
-
+	
+	/*
+	 * Henter alle kategorier
+	 */
+	 function get_categories(){
+	 	$sql = "SELECT * FROM help_problem_type";
+	 	$resultat = mssql_query($sql);
+	 	$kategorier = array();
+	 	while($rad = mssql_fetch_array($resultat)){
+	 		$kategorier[] = $rad['help_problem_type_description'];
+	 	}
+	 	return $kategorier;
+	 }
 
 ?>
