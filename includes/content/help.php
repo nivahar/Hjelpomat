@@ -1,9 +1,20 @@
 		<?php if(isset($_POST['reg_help_submit'])):
-			echo '<p class="success">Saken ble registrert.</p>
-				<h1>'.$_POST['help_title'].'</h1>
-				<p>Ansattnr. '.$_POST['emp_no'].', kategori '.$_POST['help_cat'].'</p>
-				<h2>Beskrivelse</h2>
-				<p>'.$_POST['help_desc'].'</p>';
+			
+			$title = $_POST['help_title'];
+			$employee_number = $_POST['emp_no'];
+			$category_id = $_POST['help_cat'];
+			$description = $POST['help_desc'];
+			
+			if(save_help_case($title,$employee_number,$category_id,$description)){
+				echo '<p class="success">Saken ble registrert.</p>
+					<h1>'.$_POST['help_title'].'</h1>
+					<p>Ansattnr. '.$_POST['emp_no'].', kategori '.$_POST['help_cat'].'</p>
+					<h2>Beskrivelse</h2>
+					<p>'.$_POST['help_desc'].'</p>';
+			}else{
+				echo '<p class="error">Saken ble ikke registrert. Pokker.</p>';
+			}
+			
 		else: ?>
 			<h1>Registrer sak</h1> 
 			<p>
