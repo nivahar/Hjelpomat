@@ -253,7 +253,8 @@
              $resultat = mssql_query($sql);
              $avdelinger = array();
              while($rad = mssql_fetch_array($resultat)){
-                    $avdelinger[] = $rad['']
+                    $avdelinger[] = $rad['id_department'];
              }
+             return $avdelinger;
          }
 ?>

@@ -5,5 +5,4 @@
  */
 include('functions.inc.php');
 print_r(get_department());
-echo nøff;
 ?>
