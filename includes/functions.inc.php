@@ -252,11 +252,13 @@
          function get_department(){
              // koble til server og base
              connect_to_tf();
-             $sql ="SELECT * FROM tbl.department";
+             $sql =  "SELECT * FROM [tbl.department]";
              $resultat = mssql_query($sql);
              $avdelinger = array();
              while($rad = mssql_fetch_array($resultat)){
-                    $avdelinger[] = $rad['id_department'];
+                    $id = $rad['id_department'];
+                    $avdelinger[$id]['number'] = $rad['department_number'];
+                    $avdelinger[$id]['name'] = $rad['department_name'];
              }
              return $avdelinger;
          }
