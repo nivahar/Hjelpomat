@@ -14,6 +14,12 @@
 		elseif($page == 'help'){
 			$show_page = 'help.php';
 		}
+                elseif($page == 'help_list'){
+			$show_page = 'help_list.php';
+		}
+                elseif($page == 'help_singlecase'){
+			$show_page = 'help_singlecase.php';
+		}
 		elseif($page == 'ikmat'){
 			$show_page = 'ikmat.php';
 		}
@@ -36,10 +42,13 @@
 						<a href="?page=help&amp;sub=register">Registrer sak</a> 
 					</li> 
 					<li> 
-						<a href="?page=help&amp;sub=show">Vis saker</a> 
+						<a href="?page=help_list&amp;sub=show">Vis saker</a>
 					</li> 
 					<li> 
 						<a href="?page=help&amp;sub=adm">Administrer saker</a> 
+					</li>
+                                        <li>
+						<a href="?page=help_singlecase&amp;sub=adm">Admin Enkeltsak</a>
 					</li>';
 				break;
 			case 'ikmat':
@@ -160,6 +169,59 @@
 		return TRUE;
 	}
 
+/*
+ * Funksjon for å oppdatere en enkeltsak bassert på input
+ */
+	function update_help_case($case_id,$title,$employee_number,$category_id,$description){
+
+		//Database kobling
+		if(!connect_to_tf()){
+			return FALSE;
+			exit;
+		}
+
+	      // DEL 1 tbl.help_case
+	      //Sette inn data unik fo helpdesk, input fra funksjon
+		  $sql = "";
+		//Utføre sql kommando
+		if(!mssql_query($sql)){
+			return FALSE;
+			exit;
+		}
+
+
+     	//DEL 2
+     	// Trenger ID til å putte i hovedtabell
+		$sql = 'SELECT SCOPE_IDENTITY() AS ID';
+
+		if(!$help_id = mssql_query($sql)){
+			return FALSE;
+			exit;
+		}
+
+		if(!$id = mssql_fetch_array($help_id)){
+			return FALSE;
+			exit;
+		}
+		$help_case_id = $id["ID"];
+
+
+		//TEMP
+		$reg_user = '1'; // må settes til aktiv bruker - session ?
+
+    	//DEL 3
+    	// tbl.main_case
+		$dato = 'GETDATE()'; // lagrer timestamp server.
+                $is_help_case = '1';
+    	//Sette inn data unik fo helpdesk, input fra funksjon
+		$sql = "";
+    	//Lagre data i tbl.man_case
+		if(!mssql_query($sql)){
+			return FALSE;
+			exit;
+		}
+		return TRUE;
+	}
 
 
 
@@ -262,4 +324,64 @@
              }
              return $avdelinger;
          }
+
+
+/*
+ * Henter ut liste over alle heldesk saker fra view på sql server
+ */
+   function helpdesk_list(){
+//Database kobling
+        connect_to_tf();
+
+       // Spørring
+       $sql = "SELECT [id_main_case]
+      , CAST([created_date] as CHAR(10)) AS [created_date]
+      ,[reg_user]
+      ,[reg_employee]
+      ,[id_help_case]
+      ,[help_case_title]
+      ,[case_problem_type]
+      ,[help_case_description]
+      ,[help_case_solution]
+      ,[help_case_status]
+      ,[is_help_case]
+      FROM [v.help_case]";
+
+       // Kjør spørring
+       $data = mssql_query($sql);
+       // Tabell Overskrift
+        echo "<tr><th>ID Sak</th><th>".
+                          "Dato</th><th>".
+                      //    "Bruker ID</th><th>".
+                          "Ansatt ID</th><th>".
+                          "HelpcaseID</th><th>".
+                          "tittel</th><th>".
+                          "Problemtype</th><th>".
+                          "SaksBeskrivelse</th><th>".
+                          "Løsning</th><th>".
+                          "Status</th><th>".
+                          "Helpdesk ja/nei</th><th>".
+                "</th></tr>";
+
+       while($row = mssql_fetch_array($data)){
+         //lager tabell
+           echo "<tr><td>".$row['id_main_case']."</td><td>".
+                           $row['created_date']."</td><td>".
+                      //     $row['reg_user']."</td><td>".
+                           $row['reg_employee']."</td><td>".
+                           $row['id_help_case']."</td><td>".
+                           $row['help_case_title']."</td><td>".
+                           $row['case_problem_type']."</td><td>".
+                           $row['help_case_description']."</td><td>".
+                           $row['help_case_solution']."</td><td>".
+                           $row['help_case_status']."</td><td>".
+                           $row['is_help_case']."</td><td>".
+                "</td></tr>";
+       }
+
+}
+
+
+
+
 ?>
