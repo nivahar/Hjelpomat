@@ -148,9 +148,10 @@
     	//DEL 3
     	// tbl.main_case
 		$dato = 'GETDATE()'; // lagrer timestamp server.
+                $is_help_case = '1';
     	//Sette inn data unik fo helpdesk, input fra funksjon
-		$sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case)
-				VALUES ($dato,'$reg_user','$employee_number','$help_case_id')";
+		$sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case,is_help_case)
+				VALUES ($dato,'$reg_user','$employee_number','$help_case_id','$is_help_case')";
     	//Lagre data i tbl.man_case
 		if(!mssql_query($sql)){
 			return FALSE;
@@ -234,11 +235,13 @@
 	 */
 	 function get_categories(){
 	 	connect_to_tf();
-	 	$sql = "SELECT * FROM tbl.help_problem_type";
+	 	$sql = "SELECT * FROM [tbl.help_problem_type]";
 	 	$resultat = mssql_query($sql);
 	 	$kategorier = array();
 	 	while($rad = mssql_fetch_array($resultat)){
-	 		$kategorier[] = $rad['help_problem_type_description'];
+	 		$id = $rad['id_help_problem_type'];
+	 		$kategorier[$id]['description'] = $rad['help_problem_type_description'];
+	 		$kategorier[$id]['parent'] = $rad['parent_help_problem_id'];
 	 	}
 	 	return $kategorier;
 	 }
