@@ -101,6 +101,7 @@ form#login {
 }
 
 form#login input, form#login select {
+    font-size: 1.2em;
     border-top-color: #b1d6eb;
     width: 230px;
     background: #b8e2ff;
