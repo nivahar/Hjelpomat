@@ -334,6 +334,23 @@
              }
              return $avdelinger;
          }
+         
+         
+        /*
+         * Sjekker bruker mot DB
+         */
+		function user_exists($username){
+			connect_to_tf();
+			$sql = "SELECT * FROM [tbl.user]
+					WHERE user_name = ´Eirik´";
+			$resultat = mssql_query($sql);
+			$bruker = array();
+			while($rad = mssql_fetch_array($resultat))
+			{
+				$bruker[] = $rad['user_name'];
+			}
+			return $bruker;
+		}
 
 
 /*
