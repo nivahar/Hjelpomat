@@ -31,7 +31,11 @@ $q=$_GET["q"];
 
 // Sjekker brukernivået til brukeren
 if(in_array($q, $a)){
-	echo '<p class="success">Dittbrukernivå er '.$level[$q].'</p>';
+	if($level[$q] > 1)
+	{
+		echo '<label>Passord:</label><input type="password" name="password"  />';
+	}
+	//echo '<p class="success">Dittbrukernivå er '.$level[$q].'</p>';
 }else{
 	echo '<p class="error">Noe gikk galt.</p>';
 }
