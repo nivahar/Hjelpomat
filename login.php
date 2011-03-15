@@ -28,22 +28,35 @@
                                 $auth_level = array();
 				$resultat = mssql_query($sql);
 				while($rad = mssql_fetch_array($resultat)){
-					$brukere[] = $rad['user_name'];
-                                        $auth_level[] = $rad['user_level'];
+					$bruker[$rad['user_name']] = $rad['id_user_level'];
+                    $auth_level[] = $rad['id_user_level'];
 				}
 			?>
-			<form id="login" method="POST" action="auth.php">
+			<form id="login" method="POST" action="">
 				<label>Brukernavn:</label>
 					<select name="username" onchange="showHint(this.value)">
 						<option value="">Velg brukernavn...</option>
 						<?php
-							foreach($brukere as $brukernavn){
-								echo '<option value="'.$brukernavn.'">'.$brukernavn.'</option>';
+							asort($bruker);
+							foreach($bruker as $brukernavn => $level){
+								if($level == 1)
+								{
+									echo '<option value="'.$brukernavn.'">'.$brukernavn.'</option>';
+								}
 							}
+							echo '<optgroup label="Administratorer">';
+							foreach($bruker as $brukernavn => $level){
+								if($level > 1)
+								{
+									echo '<option value="'.$brukernavn.'">'.$brukernavn.'</option>';
+								}
+							}
+							echo '</optgroup>';
 						?>
 					</select>
-				<label>Passord:</label>
-					<input type="password" name="password"  />
+				<span id="passField">
+					
+				</span>
 					<input type="submit" value="Logg inn" name="submit" class="submit" />
 			</form>
 			<span id="brukerInfo"></span>
