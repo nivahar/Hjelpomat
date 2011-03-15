@@ -303,58 +303,73 @@
 		return TRUE;
 	}
 
-	
-	/*
-	 * Henter alle kategorier
-	 */
-	 function get_categories(){
-	 	connect_to_tf();
-	 	$sql = "SELECT * FROM [tbl.help_problem_type]";
-	 	$resultat = mssql_query($sql);
-	 	$kategorier = array();
-	 	while($rad = mssql_fetch_array($resultat)){
-	 		$id = $rad['id_help_problem_type'];
-	 		$kategorier[$id]['description'] = $rad['help_problem_type_description'];
-	 		$kategorier[$id]['parent'] = $rad['parent_help_problem_id'];
-	 	}
-	 	return $kategorier;
-	 }
+
+/*
+ * Henter alle kategorier
+ */
+ function get_categories(){
+ 	connect_to_tf();
+ 	$sql = "SELECT * FROM [tbl.help_problem_type]";
+ 	$resultat = mssql_query($sql);
+ 	$kategorier = array();
+ 	while($rad = mssql_fetch_array($resultat)){
+ 		$id = $rad['id_help_problem_type'];
+ 		$kategorier[$id]['description'] = $rad['help_problem_type_description'];
+ 		$kategorier[$id]['parent'] = $rad['parent_help_problem_id'];
+ 	}
+ 	return $kategorier;
+ }
 
 
-         /*
-          * Henter avdelinger
-          */
+     /*
+      * Henter avdelinger
+      */
 
-         function get_department(){
-             // koble til server og base
-             connect_to_tf();
-             $sql =  "SELECT * FROM [tbl.department]";
-             $resultat = mssql_query($sql);
-             $avdelinger = array();
-             while($rad = mssql_fetch_array($resultat)){
-                    $id = $rad['id_department'];
-                    $avdelinger[$id]['number'] = $rad['department_number'];
-                    $avdelinger[$id]['name'] = $rad['department_name'];
-             }
-             return $avdelinger;
+     function get_department(){
+         // koble til server og base
+         connect_to_tf();
+         $sql =  "SELECT * FROM [tbl.department]";
+         $resultat = mssql_query($sql);
+         $avdelinger = array();
+         while($rad = mssql_fetch_array($resultat)){
+                $id = $rad['id_department'];
+                $avdelinger[$id]['number'] = $rad['department_number'];
+                $avdelinger[$id]['name'] = $rad['department_name'];
          }
-         
-         
-        /*
-         * Sjekker bruker mot DB
-         */
-		function user_exists($username){
-			connect_to_tf();
-			$sql = "SELECT * FROM [tbl.user]
-					WHERE user_name = ´Eirik´";
-			$resultat = mssql_query($sql);
-			$bruker = array();
-			while($rad = mssql_fetch_array($resultat))
-			{
-				$bruker[] = $rad['user_name'];
-			}
-			return $bruker;
+         return $avdelinger;
+     }
+
+
+/*
+ * Henter info om brukeren
+ */
+	function user_info($userId)
+	{
+		connect_to_tf();
+		$sql = "SELECT id_user, user_name, id_department, real_name, id_user_level
+				FROM [tbl.user]
+				WHERE id_user = $userId";
+		$resultat = mssql_query($sql);
+		
+		return NULL;
+	}	
+
+
+/*
+ * Sjekker bruker mot DB
+ */
+	function user_exists($username){
+		connect_to_tf();
+		$sql = "SELECT * FROM [tbl.user]
+				WHERE user_name = ´Eirik´";
+		$resultat = mssql_query($sql);
+		$bruker = array();
+		while($rad = mssql_fetch_array($resultat))
+		{
+			$bruker[] = $rad['user_name'];
 		}
+		return $bruker;
+	}
 
 
 
