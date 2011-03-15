@@ -8,25 +8,32 @@
 
 		$content_path = 'includes/content/';
 
-		if(!isset($page)){
+		if(!isset($page))
+		{
 			$show_page = 'default.php';
 		}
-		elseif($page == 'help'){
+		elseif($page == 'help')
+		{
 			$show_page = 'help.php';
 		}
-                elseif($page == 'help_list'){
+        elseif($page == 'help_list')
+        {
 			$show_page = 'help_list.php';
 		}
-                elseif($page == 'help_admin'){
+        elseif($page == 'help_admin')
+        {
 			$show_page = 'help_admin.php';
 		}
-                elseif($page == 'help_singlecase'){
+        elseif($page == 'help_singlecase')
+        {
 			$show_page = 'help_singlecase.php';
 		}
-		elseif($page == 'ikmat'){
+		elseif($page == 'ikmat')
+		{
 			$show_page = 'ikmat.php';
 		}
-		else{
+		else
+		{
 			$show_page = 'default.php';
 		}
 		
