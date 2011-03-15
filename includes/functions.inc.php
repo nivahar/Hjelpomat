@@ -319,7 +319,9 @@
 	 }
 
 
-
+         /*
+          * Henter avdelinger
+          */
 
          function get_department(){
              // koble til server og base
