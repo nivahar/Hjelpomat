@@ -338,6 +338,7 @@
          }
 
 
+
 /*
  * Henter ut liste over alle heldesk saker fra view på sql server
  */
@@ -353,6 +354,7 @@
       ,[id_help_case]
       ,[help_case_title]
       ,[case_problem_type]
+      ,[help_problem_type_description]
       ,[help_case_description]
       ,[help_case_solution]
       ,[help_case_status]
@@ -366,41 +368,35 @@
                           "Dato</th><th>".
                       //    "Bruker ID</th><th>".
                           "Ansatt ID</th><th>".
-                          "HelpcaseID</th><th>".
+                      //    "HelpcaseID</th><th>".
                           "tittel</th><th>".
+                      //    "Problemtype ID</th><th>".
                           "Problemtype</th><th>".
                           "SaksBeskrivelse</th><th>".
                           "Løsning</th><th>".
                           "Status</th><th>".
                           "Helpdesk ja/nei</th><th>".
                 "</th></tr>";
-		$alt = 0; // Sørger for alternerende bakgrunn
-		while($row = mssql_fetch_array($data)){
+
+       while($row = mssql_fetch_array($data)){
          //lager tabell
-           echo "<tr id=\"row$alt\"><td>".$row['id_main_case']."</td><td>".
+           echo "<tr><td>".$row['id_main_case']."</td><td>".
                            $row['created_date']."</td><td>".
                       //     $row['reg_user']."</td><td>".
                            $row['reg_employee']."</td><td>".
-                           $row['id_help_case']."</td><td>".
+                      //     $row['id_help_case']."</td><td>".
                            $row['help_case_title']."</td><td>".
-                           $row['case_problem_type']."</td><td>".
+                      //     $row['case_problem_type']."</td><td>".
+                           $row['help_problem_type_description']."</td><td>".
                            $row['help_case_description']."</td><td>".
                            $row['help_case_solution']."</td><td>".
                            $row['help_case_status']."</td><td>".
                            $row['is_help_case']."</td><td>".
+                           "<input type=\"button\" value=\"Endre\" name=\"edit\" /></td><td>".
                 "</td></tr>";
-                if($alt == 0)
-                {
-                	$alt = 1;
-                }
-                elseif($alt == 1)
-                {
-                	$alt = 0;
-                }
        }
 
 }
-
 
 /*
  * Henter ut liste over alle heldesk saker fra view på sql server
