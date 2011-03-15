@@ -146,3 +146,14 @@ form#login input.submit {
 form#reg_help input {
 		
 }
+
+/* Stil på helpdesk-liste
+------------------------------------------------------------- */
+table tr#row1 {
+	
+	background-color: #eaeaea;
+}
+
+table#helpdesk_list td {
+	
+}

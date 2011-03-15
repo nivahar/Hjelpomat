@@ -372,10 +372,10 @@
                           "Status</th><th>".
                           "Helpdesk ja/nei</th><th>".
                 "</th></tr>";
-
-       while($row = mssql_fetch_array($data)){
+		$alt = 0; // Sørger for alternerende bakgrunn
+		while($row = mssql_fetch_array($data)){
          //lager tabell
-           echo "<tr><td>".$row['id_main_case']."</td><td>".
+           echo "<tr id=\"row$alt\"><td>".$row['id_main_case']."</td><td>".
                            $row['created_date']."</td><td>".
                       //     $row['reg_user']."</td><td>".
                            $row['reg_employee']."</td><td>".
@@ -387,6 +387,14 @@
                            $row['help_case_status']."</td><td>".
                            $row['is_help_case']."</td><td>".
                 "</td></tr>";
+                if($alt == 0)
+                {
+                	$alt = 1;
+                }
+                elseif($alt == 1)
+                {
+                	$alt = 0;
+                }
        }
 
 }
