@@ -50,7 +50,7 @@
 				($("#field2").val() == "") &&
 				($("#field3").val() == "")
 			) {
-				return "At least one field is required";
+				return "Minst ett felt er påkrevd";
 			} else {
 				jQuery("#formID").validationEngine("closePrompt", $($("#field1").get(0)));
 				jQuery("#formID").validationEngine("closePrompt", $($("#field2").get(0)));
