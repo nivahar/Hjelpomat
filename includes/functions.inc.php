@@ -133,11 +133,12 @@
 			return FALSE;
 			exit;
 		}
-
+                // Verdi må settes for status på sak
+                $help_case_status = '1';
 	      // DEL 1 tbl.help_case
 	      //Sette inn data unik fo helpdesk, input fra funksjon
-		  $sql = "INSERT INTO [tbl.help_case](help_case_title,case_problem_type,help_case_description) 
-		  		VALUES('$title','$category_id','$description')";
+		  $sql = "INSERT INTO [tbl.help_case](help_case_title,case_problem_type,help_case_description,help_case_status)
+		  		VALUES('$title','$category_id','$description','$help_case_status)";
 		//Utføre sql kommando
 		if(!mssql_query($sql)){
 			return FALSE;
