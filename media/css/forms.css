@@ -140,3 +140,9 @@ form#login input.submit {
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#B8E2FF), to(#B8E2FF));
     background:  -moz-linear-gradient(19% 75% 90deg,#B8E2FF, #B8E2FF);
 }
+
+/* Stil på helpdesk-form
+------------------------------------------------------------- */
+form#reg_help input {
+		
+}
