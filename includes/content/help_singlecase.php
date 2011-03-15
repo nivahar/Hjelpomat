@@ -16,10 +16,8 @@
 			}
 
 		else: ?>
-			<h1>Registrer sak</h1>
-			<p>
-				Felter merket <span class="mandatory">*</span> er påkrevd!
-			</p>
+			<h1>Sak - her må alle felter fylles ut av systemet når en kommer fra tabelloversikten</h1>
+			
 			<div id="form">
 
 				<form action="" method="post" name="reg_help" id="reg_help" class="normal">
@@ -28,9 +26,15 @@
 						Problemtittel <span class="mandatory">*</span>
 					</label>
 					<input type="text" name="help_title" id="help_title" placeholder="Overskrift" required class="validate[required]" />
-
+                                        Status:<select name="help_case_status" id="help_case_status" >
+						<option value="" selected="selected">Velg Status</option>
+							<option value="1">Lest</option>
+							<option value="2">Under utarbeidelse</option>
+							<option value="3">Venter på deler</option>
+							<option value="4">Ferdig</option>
+						</select>
 					<label for="emp_no">
-						Ditt ansattnummer <span class="mandatory">*</span>
+						Ansattnummer <span class="mandatory">*</span>
 					</label>
 					<input type="number" name="emp_no" id="emp_no" max="9999" min="1" step="1" required class="validate[required,custom[empNumber],maxSize[4]] text-input" />
 

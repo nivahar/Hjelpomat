@@ -1,7 +1,15 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+
+/*
+ * Henter funksjon
  */
+include('../includes/functions.php');
+
+
 
 ?>
+<table>
+    <?php  //Skriver ut innhold i view
+     echo helpdesk_list();
+     ?>
+</table>

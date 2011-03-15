@@ -17,6 +17,9 @@
                 elseif($page == 'help_list'){
 			$show_page = 'help_list.php';
 		}
+                elseif($page == 'help_admin'){
+			$show_page = 'help_admin.php';
+		}
                 elseif($page == 'help_singlecase'){
 			$show_page = 'help_singlecase.php';
 		}
@@ -42,10 +45,10 @@
 						<a href="?page=help&amp;sub=register">Registrer sak</a> 
 					</li> 
 					<li> 
-						<a href="?page=help_list&amp;sub=show">Vis saker</a>
+						<a href="?page=help_list&amp;sub=show">Vis Brukers Saker</a>
 					</li> 
 					<li> 
-						<a href="?page=help&amp;sub=adm">Administrer saker</a> 
+						<a href="?page=help_admin&amp;sub=adm">Administrer saker</a>
 					</li>
                                         <li>
 						<a href="?page=help_singlecase&amp;sub=adm">Admin Enkeltsak</a>
@@ -152,7 +155,7 @@
 
     	
 		//TEMP
-		$reg_user = '1'; // må settes til aktiv bruker - session ?
+		$reg_user = '1078'; // må settes til aktiv bruker - session ?
 
     	//DEL 3
     	// tbl.main_case
@@ -269,7 +272,7 @@
 
 
     	//Midlertidig
-		$reg_user = '1'; // må settes til aktiv bruker - session ?
+		$reg_user = '1078'; // må settes til aktiv bruker - session ?
 
     	//DEL 3
     	// tbl.main_case
@@ -382,6 +385,70 @@
 }
 
 
+/*
+ * Henter ut liste over alle heldesk saker fra view på sql server
+ * INputt parameter brukerens id som må hentes fra session.
+ *
+ * $user_id
+ */
+
+   function user_helpdesk_list(){
+//Database kobling
+        connect_to_tf();
+
+       // Spørring
+       $sql = "SELECT [id_main_case]
+      , CAST([created_date] as CHAR(10)) AS [created_date]
+      ,[reg_user]
+      ,[reg_employee]
+      ,[id_help_case]
+      ,[help_case_title]
+      ,[case_problem_type]
+      ,[help_case_description]
+      ,[help_case_solution]
+      ,[help_case_status]
+      ,[help_case_status_description]
+      ,[is_help_case]
+      FROM [v.help_case]
+      WHERE [reg_user] = '1078' ";
+
+       // Kjør spørring
+       $data = mssql_query($sql);
+       // Tabell Overskrift
+        echo "<tr><th>ID Sak</th><th>".
+                          "Velg Sak</th><th>".
+                          "Dato</th><th>".
+                      //    "Bruker ID</th><th>".
+                          "Ansatt ID</th><th>".
+                      //    "HelpcaseID</th><th>".
+                          "tittel</th><th>".
+                          "Problemtype</th><th>".
+                          "SaksBeskrivelse</th><th>".
+                      //    "Løsning</th><th>".
+                      //    "Status id</th><th>".
+                          "Status</th><th>".
+                      //    "Helpdesk ja/nei</th><th>".
+                "</th></tr>";
+
+       while($row = mssql_fetch_array($data)){
+         //lager tabell
+           echo "<tr><td>".$row['id_main_case']."</td><td>".
+                           "<input type=\"checkbox\" name=\"case_id\" value=\"case_id\" /></th><th>".
+                           $row['created_date']."</td><td>".
+                      //     $row['reg_user']."</td><td>".
+                           $row['reg_employee']."</td><td>".
+                      //     $row['id_help_case']."</td><td>".
+                           $row['help_case_title']."</td><td>".
+                           $row['case_problem_type']."</td><td>".
+                           $row['help_case_description']."</td><td>".
+                      //     $row['help_case_solution']."</td><td>".
+                      //     $row['help_case_status']."</td><td>".
+                           $row['help_case_status_description']."</td><td>".
+                      //     $row['is_help_case']."</td><td>".
+                "</td></tr>";
+       }
+
+}
 
 
 ?>
