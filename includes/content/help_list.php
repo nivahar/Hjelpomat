@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Henter funksjon
+ * Henter funksjoner
  */
 include('../includes/functions.php');
 

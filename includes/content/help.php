@@ -1,10 +1,10 @@
 		<?php if(isset($_POST['reg_help_submit'])):
-			
 			$title = $_POST['help_title'];
 			$employee_number = $_POST['emp_no'];
 			$category_id = $_POST['help_cat'];
 			$description = $_POST['help_desc'];
-			
+
+                        // Save POST data to database
 			if(save_help_case($title,$employee_number,$category_id,$description)){
 				echo '<p class="success">Saken ble registrert.</p>
 					<h1>'.$_POST['help_title'].'</h1>
