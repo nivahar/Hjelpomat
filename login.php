@@ -17,38 +17,52 @@
 		</div>
 	</div>
 	<div id="background-box"> 
-		<div id="content-container" class=""> 
+		<div id="content-container" class="">
 			<?php
-			//Database
-                        connect_to_tf();
+				// Sjekker om "Logg inn"-knappen er trykket
+				if(isset($_REQUEST['submit']))
+				{
+					echo "Her skal du logges inn :)";
+				}
+				
+				// Hvis du er logget inn...
+				if($_SEESION['loggedin']):
+			?>
+			<p>Du er logget inn.</p>
+			<?php
+				// Hvis du ikke er logget inn...
+				else:
+				// Koble til database
+				connect_to_tf();
 
-				//Spørring
-				$sql = "select * from [tbl.user]";
-				$brukere = array();
-                                $auth_level = array();
+				//Spørring som henter alle brukere
+				$sql = "SELECT id_user, user_name, id_user_level FROM [tbl.user]";
+				// SQL kjøres
 				$resultat = mssql_query($sql);
+				
+				// Legger brukerinfo i array
 				while($rad = mssql_fetch_array($resultat)){
 					$bruker[$rad['user_name']] = $rad['id_user_level'];
-                    $auth_level[] = $rad['id_user_level'];
+					$id[$rad['user_name']] = $rad['id_user'];
 				}
 			?>
-			<form id="login" method="POST" action="">
+			<form id="login" method="GET" action="">
 				<label>Brukernavn:</label>
-					<select name="username" onchange="showHint(this.value)">
+					<select name="user_id" onchange="showHint(this.value)">
 						<option value="">Velg brukernavn...</option>
 						<?php
-							asort($bruker);
+							ksort($bruker);
 							foreach($bruker as $brukernavn => $level){
 								if($level == 1)
 								{
-									echo '<option value="'.$brukernavn.'">'.$brukernavn.'</option>';
+									echo '<option value="'.$id[$brukernavn].'">'.$brukernavn.'</option>';
 								}
 							}
 							echo '<optgroup label="Administratorer">';
 							foreach($bruker as $brukernavn => $level){
 								if($level > 1)
 								{
-									echo '<option value="'.$brukernavn.'">'.$brukernavn.'</option>';
+									echo '<option value="'.$id[$brukernavn].'">'.$brukernavn.'</option>';
 								}
 							}
 							echo '</optgroup>';
@@ -63,5 +77,6 @@
 
 
 <?php
+	endif;
 	include_once('includes/foot.inc.php');
 ?>
