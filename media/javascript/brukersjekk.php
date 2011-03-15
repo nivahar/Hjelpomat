@@ -22,8 +22,8 @@ $a = array();
 $resultat = mssql_query($sql);
 
 while($rad = mssql_fetch_array($resultat)){
-	$a[] = $rad['user_name'];
-	$level[$rad['user_name']] = $rad['id_user_level'];
+	$a[] = $rad['id_user'];
+	$level[$rad['id_user']] = $rad['id_user_level'];
 }
 
 //get the q parameter from URL
