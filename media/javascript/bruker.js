@@ -25,7 +25,7 @@ function stateChanged()
 {
 if (xmlhttp.readyState==4)
   {
-  document.getElementById("brukerInfo").innerHTML=xmlhttp.responseText;
+  document.getElementById("passField").innerHTML=xmlhttp.responseText;
   }
 }
 
