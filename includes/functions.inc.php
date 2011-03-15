@@ -133,8 +133,9 @@
 			return FALSE;
 			exit;
 		}
-                // Verdi må settes for status på sak
-                $help_case_status = '1';
+                // Verdi må settes for status på sak for at sak skal dukke opp
+
+                $help_case_status = '1'; //DEFAULT må settes 1 = Registrert
 	      // DEL 1 tbl.help_case
 	      //Sette inn data unik fo helpdesk, input fra funksjon
 		  $sql = "INSERT INTO [tbl.help_case](help_case_title,case_problem_type,help_case_description,help_case_status)
@@ -403,6 +404,7 @@
  * Henter ut liste over alle heldesk saker fra view på sql server
  * INputt parameter brukerens id som må hentes fra session.
  *
+ * Tar Alle Felter i databasen
  * $user_id
  */
 
