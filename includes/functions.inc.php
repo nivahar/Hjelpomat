@@ -98,9 +98,9 @@
 
 
 /*
- * Database kobling info
+ * Databasetilkobling. Med argumentet "close" vil koblingen lukkes.
  */
-	function connect_to_tf(){
+	function connect_to_tf($action = "open"){
 		//Login data finnes i fil:
 		require 'db_secure.php';
 		//Kobler til server
@@ -112,10 +112,17 @@
 			return TRUE;
 		}
 		
-		// Setter database
-		mssql_select_db('hjelpomat',$login);
+		if($action == "close")
+		{
+			mssql_close($connection);
+		}
+		else
+		{
+			// Setter database
+			mssql_select_db('hjelpomat',$login);
+		}
 	}
-
+	
 
 
 /*
@@ -350,8 +357,15 @@
 				FROM [tbl.user]
 				WHERE id_user = $userId";
 		$resultat = mssql_query($sql);
+		while($rad = mssql_fetch_assoc($resultat))
+		{
+			$bruker['id'] = $rad['id_user'];
+			$bruker['name'] = $rad['user_name'];
+			$bruker['dept'] = $rad['id_department'];
+			$bruker['level'] = $rad['id_user_level'];
+		}
 		
-		return NULL;
+		return $bruker;
 	}	
 
 
