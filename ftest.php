@@ -4,7 +4,7 @@
 	echo "<strong>Innhold i session:</strong><br/>";
 	echo $_SESSION['user_name'];
 	
-	/*
+	
 	echo "<strong>Sjekk av avdelinger :</strong><br/>";
 	foreach(get_categories() as $key => $value){
 		echo "ID: $key<br/>";
@@ -28,8 +28,11 @@
 	//$bruker = user_exists('Eirik');
 	//echo $bruker."nei";
 	
-	connect_to_tf("close");
-	*/
+	if(close_db())
+	{
+		echo "Kobling lukket.<br/>";
+	}
+	
 	
 	echo "<br/><br/><strong>Test av brukerinfohenter:</strong><br/>";
 	print_r(user_info(1));
