@@ -27,38 +27,7 @@ function send_case_email(){
 
 
 
-/*
- * GET NUMBER OF HELPCASE CASES
- */
-function get_count_helpdesk(){
-connect_to_tf();
 
-$sql="SELECT COUNT(id_main_case) AS helpdesk_cases from [v.help_case];";
-if(!$data=mssql_query($sql)){
-    return FALSE;
-    exit;
-}
-$mail=mssql_fetch_array($data);
-return $mail['helpdesk_cases'];
-
-}
-
-/*
- * GET NUMBER OF FOOD CASES
- */
-function get_count_helpdesk(){
-connect_to_tf();
-
-$sql="SELECT COUNT(id_main_case) AS food_cases from [v.food_case];";
-if(!$data=mssql_query($sql)){
-    return FALSE;
-    exit;
-}
-$mail=mssql_fetch_array($data);
-return $mail['food_cases'];
-
-}
-
-
+echo get_user_email('1');
 
 ?>
