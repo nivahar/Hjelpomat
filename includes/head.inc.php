@@ -1,6 +1,10 @@
 <?php
 	session_start();
 	require_once('includes/functions.inc.php');
+	if(isset($_GET['logout']))
+	{
+		unset($_SESSION);
+	}
 ?>
 <!DOCTYPE html> 
 <html lang="no" xml:lang="no"> 
