@@ -1,5 +1,10 @@
 <?php
 	require_once('includes/functions.inc.php');
+	
+	echo "<strong>Innhold i session:</strong><br/>";
+	echo $_SESSION['user_name'];
+	
+	/*
 	echo "<strong>Sjekk av avdelinger :</strong><br/>";
 	foreach(get_categories() as $key => $value){
 		echo "ID: $key<br/>";
@@ -19,7 +24,13 @@
 	echo "Listing av brukere: ";
 	print_r($bruker);
 	
-	echo "<br/><strong>Sjekk om bruker eksisterer:<strong/> ";
-	$bruker = user_exists('Eirik');
-	echo $bruker."nei";
+	//echo "<br/><strong>Sjekk om bruker eksisterer:<strong/> ";
+	//$bruker = user_exists('Eirik');
+	//echo $bruker."nei";
+	
+	connect_to_tf("close");
+	*/
+	
+	echo "<br/><br/><strong>Test av brukerinfohenter:</strong><br/>";
+	print_r(user_info(1));
 ?>
