@@ -21,14 +21,15 @@
 				// Sjekker om "Logg inn"-knappen er trykket
 				if(isset($_REQUEST['submit']))
 				{
-					//$_SESSION['user_level'] = $user_level;
-					//$_SESSION['user_name'] = $user_name;
-					//$_SESSION['user_id'] = $user_id;
-					echo "Her skal du logges inn :)";
+					$bruker = user_info($_REQUEST['user_id']);
+					$_SESSION['user_level'] = $bruker['level'];
+					$_SESSION['user_name'] = $bruker['name'];
+					$_SESSION['user_id'] = $bruker['id'];
+					$_SESSION['loggedin'] = TRUE;
 				}
 				
 				// Hvis du er logget inn...
-				if($_SEESION['loggedin']):
+				if($_SESSION['loggedin']):
 			?>
 			<p>Du er logget inn.</p>
 			<?php
