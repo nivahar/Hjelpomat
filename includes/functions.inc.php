@@ -539,7 +539,7 @@ return $mail['helpdesk_cases'];
 /*
  * GET NUMBER OF FOOD CASES
  */
-function get_count_helpdesk(){
+function get_count_food(){
 connect_to_tf();
 
 $sql="SELECT COUNT(id_main_case) AS food_cases from [v.food_case];";
