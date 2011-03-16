@@ -182,3 +182,21 @@ div#footer div#footer-content {
 div#footer div#footer-content span.info {
      font-weight: bold;
 }
+
+/* TABELL */
+
+table{
+    width: 100%
+
+   
+}
+tr{
+    
+}
+th{
+
+    background-color: #b7b7b8;
+}
+td{
+    
+}
