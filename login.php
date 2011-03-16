@@ -30,9 +30,9 @@
 				
 				// Hvis du er logget inn...
 				if($_SESSION['loggedin']):
-			?>
-			<p>Du er logget inn.</p>
-			<?php
+			
+				echo "<p>Du er logget inn som ".$_SESSION['user_name'].".</p>";
+			
 				// Hvis du ikke er logget inn...
 				else:
 				// Koble til database
