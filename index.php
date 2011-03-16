@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	require_once('includes/head.inc.php');
 	include_once('includes/body.inc.php');
 ?>
