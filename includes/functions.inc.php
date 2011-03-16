@@ -98,28 +98,39 @@
 
 
 /*
- * Databasetilkobling. Med argumentet "close" vil koblingen lukkes.
+ * Databasetilkobling og lukking.
  */
-	function connect_to_tf($action = "open"){
-		//Login data finnes i fil:
-		require 'db_secure.php';
-		//Kobler til server
-		$login = db_login();
-		if(!($connection = mssql_connect($login['address'], $login['user'], $login['pass']))){
-			return FALSE;
-		}	
-		else{
-			return TRUE;
-		}
-		
-		if($action == "close")
+	//Login data finnes i fil:
+	require 'db_secure.php';
+	// Legger logindata i et array.
+	$dbLogin = db_login();
+	$dbConnection = mssql_connect($dbLogin['address'], $dbLogin['user'], $dbLogin['pass']);
+	
+	function connect_to_tf()
+	{
+		global $dbConnection;
+		// Setter database
+		if(mssql_select_db('hjelpomat', $dbConnection))
 		{
-			mssql_close($connection);
+			$retur = TRUE;
 		}
 		else
 		{
-			// Setter database
-			mssql_select_db('hjelpomat',$login);
+			$retur = FALSE;
+		}
+		return $retur;
+	}
+	
+	function close_db()
+	{
+		global $dbConnection;
+		if(mssql_close($dbConnection))
+		{
+			$retur = TRUE;
+		}
+		else
+		{
+			$retur = FALSE;
 		}
 	}
 	
@@ -136,7 +147,7 @@
 	function save_help_case($title,$employee_number,$category_id,$description){
 
 		//Database kobling
-		if(!connect_to_tf()){
+		if(connect_to_tf()){
 			return FALSE;
 			exit;
 		}
@@ -185,6 +196,7 @@
 			return FALSE;
 			exit;
 		}
+		connect_to_tf($dbLink);
 		return TRUE;
 	}
 
