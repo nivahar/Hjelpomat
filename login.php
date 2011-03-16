@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	require_once('includes/head.inc.php');
 ?>
 
@@ -22,6 +21,9 @@
 				// Sjekker om "Logg inn"-knappen er trykket
 				if(isset($_REQUEST['submit']))
 				{
+					//$_SESSION['user_level'] = $user_level;
+					//$_SESSION['user_name'] = $user_name;
+					//$_SESSION['user_id'] = $user_id;
 					echo "Her skal du logges inn :)";
 				}
 				
