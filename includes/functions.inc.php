@@ -370,7 +370,7 @@
 	function user_info($userId)
 	{
 		//connect_to_tf();
-		$sql = "SELECT id_user, user_name, id_department, real_name, id_user_level
+		$sql = "SELECT id_user, user_name, id_department, real_name, id_user_level, password
 				FROM [tbl.user]
 				WHERE id_user = $userId";
 		$resultat = mssql_query($sql);
@@ -380,6 +380,7 @@
 			$bruker['user_name'] = $rad['user_name'];
 			$bruker['id_department'] = $rad['id_department'];
 			$bruker['id_user_levellevel'] = $rad['id_user_level'];
+			$bruker['password'] = $rad['password'];
 		}
 		
 		return $bruker;
