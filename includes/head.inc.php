@@ -2,6 +2,23 @@
 	session_start();
 	require_once('includes/functions.inc.php');
 	
+	
+	/*
+	 * Kobling til database
+	 */
+	 
+	//Login data finnes i fil:
+	require 'db_secure.php';
+	// Legger logindata i et array.
+	$dbLogin = db_login();
+	$dbConnection = mssql_connect($dbLogin['address'], $dbLogin['user'], $dbLogin['pass']);
+	
+	// Setter database
+	if(!mssql_select_db('hjelpomat', $dbConnection))
+	{
+		die('Kunne ikke koble til database');
+	}
+	
 	// Tømmer session-variabelen dersom brukeren har klikket på "logg ut"
 	if(isset($_GET['logout']))
 	{

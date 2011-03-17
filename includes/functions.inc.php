@@ -100,7 +100,8 @@
 /*
  * Databasetilkobling og lukking.
  */
-	//Login data finnes i fil:
+	/*
+//Login data finnes i fil:
 	require 'db_secure.php';
 	// Legger logindata i et array.
 	$dbLogin = db_login();
@@ -133,6 +134,7 @@
 			$retur = FALSE;
 		}
 	}
+*/
 	
 
 
@@ -371,10 +373,10 @@
 		$resultat = mssql_query($sql);
 		while($rad = mssql_fetch_assoc($resultat))
 		{
-			$bruker['id'] = $rad['id_user'];
-			$bruker['name'] = $rad['user_name'];
-			$bruker['dept'] = $rad['id_department'];
-			$bruker['level'] = $rad['id_user_level'];
+			$bruker['id_user'] = $rad['id_user'];
+			$bruker['user_name'] = $rad['user_name'];
+			$bruker['id_department'] = $rad['id_department'];
+			$bruker['id_user_levellevel'] = $rad['id_user_level'];
 		}
 		
 		return $bruker;

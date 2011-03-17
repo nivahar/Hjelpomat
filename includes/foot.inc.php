@@ -30,3 +30,6 @@
  
 </body> 
 </html>
+<?php
+	mssql_close($dbConnection);
+?>
