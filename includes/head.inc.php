@@ -1,9 +1,11 @@
 <?php
 	session_start();
 	require_once('includes/functions.inc.php');
+	
+	// Tømmer session-variabelen dersom brukeren har klikket på "logg ut"
 	if(isset($_GET['logout']))
 	{
-		unset($_SESSION);
+		$_SESSION = array();
 	}
 ?>
 <!DOCTYPE html> 
