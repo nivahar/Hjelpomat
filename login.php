@@ -44,7 +44,8 @@
 				$resultat = mssql_query($sql);
 				
 				// Legger brukerinfo i array
-				while($rad = mssql_fetch_array($resultat)){
+				while($rad = mssql_fetch_array($resultat))
+				{
 					$bruker[$rad['user_name']] = $rad['id_user_level'];
 					$id[$rad['user_name']] = $rad['id_user'];
 				}
@@ -55,14 +56,16 @@
 						<option value="">Velg brukernavn...</option>
 						<?php
 							ksort($bruker);
-							foreach($bruker as $brukernavn => $level){
+							foreach($bruker as $brukernavn => $level)
+							{
 								if($level == 1)
 								{
 									echo '<option value="'.$id[$brukernavn].'">'.$brukernavn.'</option>';
 								}
 							}
 							echo '<optgroup label="Administratorer">';
-							foreach($bruker as $brukernavn => $level){
+							foreach($bruker as $brukernavn => $level)
+							{
 								if($level > 1)
 								{
 									echo '<option value="'.$id[$brukernavn].'">'.$brukernavn.'</option>';
