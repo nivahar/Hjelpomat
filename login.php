@@ -34,9 +34,7 @@
 				echo "<p>Du er logget inn som ".$_SESSION['user_name'].".</p>";
 			
 				// Hvis du ikke er logget inn...
-				else:
-				// Koble til database
-				connect_to_tf();
+				else:				
 
 				//Spørring som henter alle brukere
 				$sql = "SELECT id_user, user_name, id_user_level FROM [tbl.user]";
