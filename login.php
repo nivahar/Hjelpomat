@@ -21,11 +21,29 @@
 				// Sjekker om "Logg inn"-knappen er trykket
 				if(isset($_REQUEST['submit']))
 				{
-					$bruker = user_info($_REQUEST['user_id']);
-					$_SESSION['user_level'] = $bruker['level'];
-					$_SESSION['user_name'] = $bruker['name'];
-					$_SESSION['user_id'] = $bruker['id'];
-					$_SESSION['loggedin'] = TRUE;
+					$bruker = user_info($_POST['user_id']);
+					if($bruker['id_user_level'] > 1)
+					{
+						if($bruker['password'] == $_POST['password'])
+						{
+							$_SESSION['user_level'] = $bruker['level'];
+							$_SESSION['user_name'] = $bruker['name'];
+							$_SESSION['user_id'] = $bruker['id'];
+							$_SESSION['loggedin'] = TRUE;
+						}
+						else
+						{
+							$_SESSION['loggedin'] = FALSE;
+						}
+					}
+					elseif($bruker['id_user_level'] == 1)
+					{
+						$_SESSION['user_level'] = $bruker['level'];
+						$_SESSION['user_name'] = $bruker['name'];
+						$_SESSION['user_id'] = $bruker['id'];
+						$_SESSION['loggedin'] = TRUE;	
+					}
+					unset($bruker);
 				}
 				
 				// Hvis du er logget inn...
@@ -48,7 +66,7 @@
 					$id[$rad['user_name']] = $rad['id_user'];
 				}
 			?>
-			<form id="login" method="GET" action="">
+			<form id="login" method="POST" action="">
 				<label>Brukernavn:</label>
 					<select name="user_id" onchange="showHint(this.value)">
 						<option value="">Velg brukernavn...</option>
