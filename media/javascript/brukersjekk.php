@@ -13,7 +13,7 @@ mssql_select_db('hjelpomat',$login);
 
 
 //Spørring
-$sql = "select * from [tbl.user]";
+$sql = "SELECT id_user, id_user_level FROM [tbl.user]";
 
 // Initialiserer array
 $a = array();
@@ -21,7 +21,8 @@ $a = array();
 // Fyller arrayet
 $resultat = mssql_query($sql);
 
-while($rad = mssql_fetch_array($resultat)){
+while($rad = mssql_fetch_array($resultat))
+{
 	$a[] = $rad['id_user'];
 	$level[$rad['id_user']] = $rad['id_user_level'];
 }
