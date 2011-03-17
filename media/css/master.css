@@ -50,7 +50,7 @@ form.normal label {
 
 form.normal input, form.normal textarea {
     padding: 5px;
-    width: 400px;
+    width: 90px;
 }
 
 form.normal textarea.rich-text {
