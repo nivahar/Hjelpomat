@@ -149,17 +149,18 @@
 	function save_help_case($title,$employee_number,$category_id,$description){
 
 		//Database kobling
-		if(connect_to_tf()){
+		/*if(connect_to_tf()){
 			return FALSE;
 			exit;
-		}
-                // Verdi må settes for status på sak for at sak skal dukke opp
-
-                $help_case_status = '1'; //DEFAULT må settes 1 = Registrert
-	      // DEL 1 tbl.help_case
-	      //Sette inn data unik fo helpdesk, input fra funksjon
-		  $sql = "INSERT INTO [tbl.help_case](help_case_title,case_problem_type,help_case_description,help_case_status)
+		}*/
+		
+		// Verdi må settes for status på sak for at sak skal dukke opp
+		$help_case_status = '1'; //DEFAULT må settes 1 = Registrert
+		// DEL 1 tbl.help_case
+		//Sette inn data unik fo helpdesk, input fra funksjon
+		$sql = "INSERT INTO [tbl.help_case](help_case_title,case_problem_type,help_case_description,help_case_status)
 		  		VALUES('$title','$category_id','$description','$help_case_status')";
+		
 		//Utføre sql kommando
 		if(!mssql_query($sql)){
 			return FALSE;
@@ -198,7 +199,7 @@
 			return FALSE;
 			exit;
 		}
-		connect_to_tf($dbLink);
+		//connect_to_tf($dbLink);
 		return TRUE;
 	}
 
@@ -208,10 +209,10 @@
 	function update_help_case($case_id,$title,$employee_number,$category_id,$description){
 
 		//Database kobling
-		if(!connect_to_tf()){
+		/*if(!connect_to_tf()){
 			return FALSE;
 			exit;
-		}
+		}*/
 
 	      // DEL 1 tbl.help_case
 	      //Sette inn data unik fo helpdesk, input fra funksjon
@@ -269,10 +270,12 @@
  function save_food_case($title,$employee_number,$id_food_problem,$description){
 
       	//Database kobling
+/*
 		if(!connect_to_tf()){
 			return FALSE;
 			exit;
 		}
+*/
 
       	// DEL 1 tbl.help_case
       	//Sette inn data unik fo helpdesk, input fra funksjon
@@ -329,7 +332,7 @@
  * Henter alle kategorier
  */
  function get_categories(){
- 	connect_to_tf();
+ 	//connect_to_tf();
  	$sql = "SELECT * FROM [tbl.help_problem_type]";
  	$resultat = mssql_query($sql);
  	$kategorier = array();
@@ -348,7 +351,7 @@
 
      function get_department(){
          // koble til server og base
-         connect_to_tf();
+         //connect_to_tf();
          $sql =  "SELECT * FROM [tbl.department]";
          $resultat = mssql_query($sql);
          $avdelinger = array();
@@ -366,7 +369,7 @@
  */
 	function user_info($userId)
 	{
-		connect_to_tf();
+		//connect_to_tf();
 		$sql = "SELECT id_user, user_name, id_department, real_name, id_user_level
 				FROM [tbl.user]
 				WHERE id_user = $userId";
@@ -387,7 +390,7 @@
  * Sjekker bruker mot DB
  */
 	function user_exists($username){
-		connect_to_tf();
+		//connect_to_tf();
 		$sql = "SELECT * FROM [tbl.user]
 				WHERE user_name = ´Eirik´";
 		$resultat = mssql_query($sql);
@@ -406,7 +409,7 @@
  */
    function helpdesk_list(){
 //Database kobling
-        connect_to_tf();
+        //connect_to_tf();
 
        // Spørring
        $sql = "SELECT [id_main_case]
@@ -472,7 +475,7 @@
 
    function user_helpdesk_list(){
 //Database kobling
-        connect_to_tf();
+        //connect_to_tf();
 
        // Spørring
        $sql = "SELECT [id_main_case]
@@ -536,7 +539,7 @@
  * GET MAIL ADDRESS FROM USER ID
  */
 function get_user_email($user_id){
-    connect_to_tf();
+    //connect_to_tf();
 
         $sql="SELECT user_email from [tbl.user] where id_user = $user_id;";
         if(!$data=mssql_query($sql)){
@@ -552,7 +555,7 @@ function get_user_email($user_id){
  * GET NUMBER OF HELPCASE CASES
  */
 function get_count_helpdesk(){
-connect_to_tf();
+//connect_to_tf();
 
 $sql="SELECT COUNT(id_main_case) AS helpdesk_cases from [v.help_case];";
 if(!$data=mssql_query($sql)){
@@ -568,7 +571,7 @@ return $mail['helpdesk_cases'];
  * GET NUMBER OF FOOD CASES
  */
 function get_count_food(){
-connect_to_tf();
+//connect_to_tf();
 
 $sql="SELECT COUNT(id_main_case) AS food_cases from [v.food_case];";
 if(!$data=mssql_query($sql)){
