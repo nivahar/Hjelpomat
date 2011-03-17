@@ -1,5 +1,6 @@
 <?php
-	require_once('includes/functions.inc.php');
+	require_once('includes/head.inc.php');
+	include_once('includes/body.inc.php');
 	
 	echo "<strong>Innhold i session:</strong><br/>";
 	echo $_SESSION['user_name'];
@@ -36,4 +37,6 @@
 	
 	echo "<br/><br/><strong>Test av brukerinfohenter:</strong><br/>";
 	print_r(user_info(1));
+
+	include_once('includes/foot.inc.php');
 ?>
