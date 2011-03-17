@@ -150,11 +150,15 @@ form#reg_help input {
 
 /* Stil på helpdesk-liste
 ------------------------------------------------------------- */
-table tr#row1 {
+table tr.row1 {
 	
 	background-color: #eaeaea;
 }
 
 table#helpdesk_list td {
 	
+}
+
+table#helpdesk_list th {
+	background-color: #AED3DE;
 }
