@@ -1,3 +1,38 @@
+<body class="colored"> 
+ 
+	
+ 
+	<div id="header-container"> 
+		
+		<div id="header-container-content"> 
+			
+			<div id="top-container"> 
+				<a href="/"> 
+					<div id="header-logo"></div> 
+				</a> 
+			</div> 
+			
+			
+			<div id="menu-container"> 
+				
+			</div> 
+			
+		</div>
+	
+		<div id="submenu-container"> 
+		
+			<div id="submenu-container-content"> 
+				
+			</div>
+		
+		</div>
+	 
+		<div style="clear: both"></div> 
+		
+	</div> 
+	<div id="background-box"> 
+<div id="content-container" class=""> 
+
 <?php
 	// Sjekker om "Logg inn"-knappen er trykket
 	if(isset($_REQUEST['submit']))
