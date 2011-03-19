@@ -329,14 +329,14 @@
  * Sjekker bruker mot DB
  */
 	function user_exists($username){
-		//connect_to_tf();
-		$sql = "SELECT * FROM [tbl.user]
-				WHERE user_name = ´Eirik´";
+		$sql = "SELECT user_name, id_user FROM [tbl.user]
+				WHERE user_name = '$username'";
 		$resultat = mssql_query($sql);
 		$bruker = array();
 		while($rad = mssql_fetch_array($resultat))
 		{
-			$bruker[] = $rad['user_name'];
+			$bruker['user_name'] = $rad['user_name'];
+			$bruker['id_user'] = $rad['id_user'];
 		}
 		return $bruker;
 	}
