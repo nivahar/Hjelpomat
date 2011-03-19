@@ -317,7 +317,7 @@
 			$bruker['id_user'] = $rad['id_user'];
 			$bruker['user_name'] = $rad['user_name'];
 			$bruker['id_department'] = $rad['id_department'];
-			$bruker['id_user_levellevel'] = $rad['id_user_level'];
+			$bruker['id_user_level'] = $rad['id_user_level'];
 			$bruker['password'] = $rad['password'];
 		}
 		
