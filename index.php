@@ -4,7 +4,14 @@
 ?>
 		
 <?php
-	include_once(page($_GET['page'], $_GET['sub']));
+	if($_SESSION['loggedin'])
+	{
+		include_once(page($_GET['page'], $_GET['sub']));
+	}
+	else
+	{
+		include_once('login.php');
+	}
 ?>
 
 <?php
