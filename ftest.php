@@ -25,18 +25,17 @@
 	echo "Listing av brukere: ";
 	print_r($bruker);
 	
-	//echo "<br/><strong>Sjekk om bruker eksisterer:<strong/> ";
-	//$bruker = user_exists('Eirik');
-	//echo $bruker."nei";
-	
-	if(close_db())
+	echo "<br/><strong>Sjekk om bruker eksisterer:</strong><br/>";
+	$bruker = user_exists('fredrik');
+	if($bruker)
 	{
-		echo "Kobling lukket.<br/>";
+		echo "Ja! Info:<br/>";
+		print_r(user_info($bruker['id_user']));	
 	}
-	
-	
-	echo "<br/><br/><strong>Test av brukerinfohenter:</strong><br/>";
-	print_r(user_info(1));
+	else
+	{
+		echo "Nei.";	
+	}
 
 	include_once('includes/foot.inc.php');
 ?>
