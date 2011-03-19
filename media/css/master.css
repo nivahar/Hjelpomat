@@ -50,7 +50,11 @@ form.normal label {
 
 form.normal input, form.normal textarea {
     padding: 5px;
-    width: 90px;
+    width: 400px;
+}
+
+form.normal input[type="submit"] {
+	width: 90px; 
 }
 
 form.normal textarea.rich-text {
@@ -194,8 +198,7 @@ tr{
     
 }
 th{
-
-    background-color: #b7b7b8;
+	
 }
 td{
     

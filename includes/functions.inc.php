@@ -366,15 +366,15 @@
  	// Kjør spørring
  	$data = mssql_query($sql);
  	// Tabell Overskrift
-	echo "<tr><th>ID Sak</th><th>".
+	echo "<tr><th>ID-Sak</th><th>".
   				"Dato</th><th>".
     			//    "Bruker ID</th><th>".
-  				"Ansatt ID</th><th>".
+  				"Ansatt-ID</th><th>".
     			//    "HelpcaseID</th><th>".
-  				"tittel</th><th>".
+  				"Tittel</th><th>".
     			//    "Problemtype ID</th><th>".
   				"Problemtype</th><th>".
-  				"SaksBeskrivelse</th><th>".
+  				"Saksbeskrivelse</th><th>".
   				"Løsning</th><th>".
   				"Status</th><th>".
   				"Helpdesk ja/nei</th><th>".
@@ -438,15 +438,15 @@
  	$data = mssql_query($sql);
  	// Tabell Overskrift
   	echo "<tr><th>Velg</th><th>".
-  				"ID sak</th><th>".
+  				"ID-sak</th><th>".
   				"Dato</th><th>".
     			//    "Bruker ID</th><th>".
-  				"Ansatt ID</th><th>".
+  				"Ansatt-ID</th><th>".
     			//    "HelpcaseID</th><th>".
-  				"tittel</th><th>".
+  				"Tittel</th><th>".
     			//    "Problemtype ID</th><th>".
   				"Problemtype</th><th>".
-  				"SaksBeskrivelse</th><th>".
+  				"Saksbeskrivelse</th><th>".
     			//    "Løsning</th><th>".
     			//    "Status id</th><th>".
   				"Status</th><th>".
