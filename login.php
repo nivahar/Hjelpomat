@@ -50,6 +50,9 @@
 				$_SESSION['user_name'] = $bruker['user_name'];
 				$_SESSION['user_id'] = $bruker['id_user'];
 				$_SESSION['loggedin'] = TRUE;
+				
+				// Sender brukeren til forsiden når innloggingen er vellykket.
+				echo "<script>location.href='index.php'</script>";
 			}
 			else
 			{
@@ -63,6 +66,9 @@
 			$_SESSION['user_name'] = $bruker['user_name'];
 			$_SESSION['user_id'] = $bruker['id_user'];
 			$_SESSION['loggedin'] = TRUE;	
+			
+			// Sender brukeren til forsiden når innloggingen er vellykket.
+			echo "<script>location.href='index.php'</script>";
 		}
 		else
 		{
