@@ -37,5 +37,5 @@
 		echo "Nei.";	
 	}
 
-	include_once('includes/foot.inc.php');
+	include_once('includes/foot.inc.php'); 
 ?>
