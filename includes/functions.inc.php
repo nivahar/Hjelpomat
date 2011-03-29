@@ -52,10 +52,10 @@
 						<a href="?page=help&amp;sub=register">Registrer sak</a> 
 					</li> 
 					<li> 
-						<a href="?page=help_list&amp;sub=show">Vis dine saker</a>
+						<a href="?page=help&amp;sub=show">Vis dine saker</a>
 					</li> 
 					<li> 
-						<a href="?page=help_admin&amp;sub=adm">Administrer saker</a>
+						<a href="?page=help&amp;sub=adm">Administrer saker</a>
 					</li>
     						<li>
 						<a href="?page=help_singlecase&amp;sub=adm">Admin Enkeltsak</a>

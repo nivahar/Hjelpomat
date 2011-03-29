@@ -1,4 +1,6 @@
-		<?php if(isset($_POST['reg_help_submit'])):
+<?php 
+	// Hvis en sak er registrert:
+	if(isset($_POST['reg_help_submit'])):
 			$title = $_POST['help_title'];
 			$employee_number = $_POST['emp_no'];
 			$category_id = $_POST['help_cat'];
@@ -14,8 +16,25 @@
 			}else{
 				echo '<p class="error">Saken ble ikke registrert. Pokker.</p>';
 			}
-			
-		else: ?>
+		
+		// Hvis man har valgt å vise sine saker:
+		elseif($_GET['sub'] == "show"):
+?>
+		<table id="helpdesk_list">
+			<?php user_helpdesk_list(); ?>
+		</table>
+		 	
+	<?php
+		// Hvis man har valgt administrasjon:
+		elseif($_GET['sub'] == "adm"):
+	?>
+		<table id="helpdesk_list">
+			<?php helpdesk_list(); ?>
+		</table>
+	<?php
+		// Default: å registrere sak. 
+		else: 
+	?>
 			<h1>Registrer sak</h1> 
 			<p>
 				Felter merket <span class="mandatory">*</span> er påkrevd!
