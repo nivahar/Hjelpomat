@@ -520,4 +520,12 @@ return $mail['food_cases'];
 
 }
 
+function get_helpdesk_status(){
+
+    $sql = "select * from [tbl.help_case_status]";
+
+}
+
+
+
 ?>
