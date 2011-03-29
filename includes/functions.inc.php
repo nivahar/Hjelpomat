@@ -16,16 +16,16 @@
 		{
 			$show_page = 'help.php';
 		}
-  	elseif($page == 'help_list')
-  	{
+		elseif($page == 'help_list')
+		{
 			$show_page = 'help_list.php';
 		}
-  	elseif($page == 'help_admin')
-  	{
+		elseif($page == 'help_admin')
+		{
 			$show_page = 'help_admin.php';
 		}
-  	elseif($page == 'help_singlecase')
-  	{
+		elseif($page == 'help_singlecase')
+		{
 			$show_page = 'help_singlecase.php';
 		}
 		elseif($page == 'ikmat')
@@ -52,7 +52,7 @@
 						<a href="?page=help&amp;sub=register">Registrer sak</a> 
 					</li> 
 					<li> 
-						<a href="?page=help_list&amp;sub=show">Vis Brukers Saker</a>
+						<a href="?page=help_list&amp;sub=show">Vis dine saker</a>
 					</li> 
 					<li> 
 						<a href="?page=help_admin&amp;sub=adm">Administrer saker</a>
