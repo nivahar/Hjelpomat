@@ -469,7 +469,7 @@
     			//     $row['help_case_status']."</td><td>".
    				$row['help_case_status_description']."</td><td>".
     			//     $row['is_help_case']."</td><td>".
-    				"<input type=\"button\" value=\"Endre\" name=\"edit\" /></td><td>".
+    				'<a href="?page=help&sub=single&id='.$row['id_main_case'].'">Endre</a></td><td>'.
     		"</td></tr>";
  	}
 
