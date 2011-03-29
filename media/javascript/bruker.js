@@ -1,6 +1,6 @@
 var xmlhttp
 
-function showHint(str)
+function showPassword(str)
 {
 if (str.length==0)
   {
