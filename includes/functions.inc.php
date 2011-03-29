@@ -160,7 +160,7 @@
 	}
 
 /*
- * Funksjon for å oppdatere en enkeltsak bassert på input
+ * Funksjon for å oppdatere en enkeltsak basert på input
  */
 	function update_help_case($case_id,$title,$employee_number,$category_id,$description){
 
