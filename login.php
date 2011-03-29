@@ -117,7 +117,7 @@
 ?>
 <form id="login" method="POST" action="">
 	<label>Brukernavn:</label>
-		<select name="user_id" onchange="showHint(this.value)">
+		<select name="user_id" onchange="showPassword(this.value)">
 			<option value="">Velg brukernavn...</option>
 			<?php
 				ksort($bruker);
