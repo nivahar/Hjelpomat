@@ -303,7 +303,8 @@
 
 
 /*
- * Henter info om brukeren
+ * Henter info om brukeren.
+ * Tar bruker id som inndata.
  */
 	function user_info($userId)
 	{
@@ -382,8 +383,9 @@
 		
 		// For alternerende bakgrunn på radene.
 		$rad = 0;
+		
 		while($row = mssql_fetch_array($data)){
-   	//lager tabell
+		//lager tabell
      	echo "<tr class=\"row$rad\"><td>".$row['id_main_case']."</td><td>".
    				$row['created_date']."</td><td>".
     			//     $row['reg_user']."</td><td>".
@@ -412,8 +414,6 @@
  * Tar Alle Felter i databasen
  * $user_id
  */
-
-
 
    function user_helpdesk_list(){
 
