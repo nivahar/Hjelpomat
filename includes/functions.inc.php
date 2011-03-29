@@ -455,7 +455,7 @@
 
  	while($row = mssql_fetch_array($data)){
    	//lager tabell
-     	echo "<tr><td>"."<input type=\"checkbox\" name=\"case_id\" value=\"case_id\" /></th><th>".
+     	echo "<tr><td>"."<input type=\"checkbox\" name=\"case_id\" value=\"".$row['id_main_case']."\" /></th><th>".
    				$row['id_main_case']."</td><td>".
    				$row['created_date']."</td><td>".
     			//     $row['reg_user']."</td><td>".
