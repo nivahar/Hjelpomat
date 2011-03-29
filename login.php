@@ -39,8 +39,10 @@
 	{
 		$bruker = user_info($_POST['user_id']);
 		
-		// Debug. Viser all info om brukeren som er valgt, også passord.
-		// print_r($bruker);
+		if($debug) // Viser all info om brukeren som er valgt, også passord.
+		{
+			print_r($bruker);
+		}
 		
 		if($bruker['id_user_level'] > 1)
 		{
@@ -51,8 +53,14 @@
 				$_SESSION['user_id'] = $bruker['id_user'];
 				$_SESSION['loggedin'] = TRUE;
 				
-				// Sender brukeren til forsiden når innloggingen er vellykket.
-				echo "<script>location.href='index.php'</script>";
+				echo '<h3>Innlogging vellykket!</h3>';
+				echo '<a href="index.php">Trykk her dersom nettlesern din ikke videresender deg</a>';
+				
+				if(!$debug)
+				{
+					// Sender brukeren til forsiden når innloggingen er vellykket.
+					echo "<script>location.href='index.php'</script>";
+				}
 			}
 			else
 			{
@@ -67,8 +75,14 @@
 			$_SESSION['user_id'] = $bruker['id_user'];
 			$_SESSION['loggedin'] = TRUE;	
 			
-			// Sender brukeren til forsiden når innloggingen er vellykket.
-			echo "<script>location.href='index.php'</script>";
+			echo '<h3>Innlogging vellykket!</h3>';
+			echo '<a href="index.php">Trykk her dersom nettlesern din ikke videresender deg</a>';
+			
+			if(!$debug)
+			{
+				// Sender brukeren til forsiden når innloggingen er vellykket.
+				echo "<script>location.href='index.php'</script>";
+			}
 		}
 		else
 		{
@@ -80,6 +94,11 @@
 	if($_SESSION['loggedin']):
 
 	echo "<p>Du er logget inn som ".$_SESSION['user_name'].".</p>";
+	
+	echo '<a href="index.php">Trykk her dersom nettlesern din ikke videresender deg</a>';
+			
+	// Sender brukeren til forsiden når innloggingen er vellykket.
+	echo "<script>location.href='index.php'</script>";
 
 	// Hvis du ikke er logget inn...
 	else:				
