@@ -2,6 +2,8 @@
 	session_start();
 	require_once('includes/functions.inc.php');
 	
+	// For utvikling:
+	$debug = FALSE; // TRUE viser debug-info (utvikling), FALSE skjuler (default).
 	
 	/*
 	 * Kobling til database
