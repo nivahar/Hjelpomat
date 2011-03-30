@@ -520,10 +520,21 @@ return $mail['food_cases'];
 
 }
 
+
+/*
+ * Hente ut saksstatuser for bruk i skjema
+ */
 function get_helpdesk_status(){
 
-    $sql = "select * from [tbl.help_case_status]";
 
+
+$sql = "select * from [tbl.help_case_status]";
+if(!$data=mssql_query($sql)){
+    return FALSE;
+    exit;
+}
+$mail=mssql_fetch_array($data);
+return $mail; //['help_case_status_description'];
 }
 
 
