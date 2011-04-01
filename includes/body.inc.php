@@ -24,7 +24,7 @@
 						$active = 'ikmat-menu';
 						break;
 					default:
-						$active = 'helpdesk-menu';
+						$active = NULL;
 				}
 			?>
 			
