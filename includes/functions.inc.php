@@ -16,18 +16,6 @@
 		{
 			$show_page = 'help.php';
 		}
-		elseif($page == 'help_list')
-		{
-			$show_page = 'help_list.php';
-		}
-		elseif($page == 'help_admin')
-		{
-			$show_page = 'help_admin.php';
-		}
-		elseif($page == 'help_singlecase')
-		{
-			$show_page = 'help_singlecase.php';
-		}
 		elseif($page == 'ikmat')
 		{
 			$show_page = 'ikmat.php';
@@ -83,6 +71,7 @@
 						<a href="?page=drift&amp;sub=adm">Administrer saker</a> 
 					</li>';
 				break;
+			/* Deaktivert standard undermeny
 			default:
 				return '<li> 
 						<a href="?page=help&amp;sub=register">Registrer sak</a> 
@@ -93,6 +82,7 @@
 					<li> 
 						<a href="?page=help&amp;sub=adm">Administrer saker</a> 
 					</li>';
+			*/
 		}
 	}
 
@@ -409,16 +399,22 @@
 
 /*
  * Henter ut liste over alle heldesk saker fra view på sql server
- * INputt parameter brukerens id som må hentes fra session.
+ * Input parameter brukerens id som må hentes fra session.
  *
  * Tar Alle Felter i databasen
  * $user_id
  */
 
-   function user_helpdesk_list(){
+	function user_helpdesk_list($user_id){
+	
+	if($_SESSION['debug'])
+	{
+		// Setter $user_id til 1078 (Eirik) for testing
+		$user_id = 1078;
+	}
 
- 	// Spørring
- 	$sql = "SELECT [id_main_case]
+	// Spørring
+	$sql = "SELECT [id_main_case]
 	, CAST([created_date] as CHAR(10)) AS [created_date]
 	,[reg_user]
 	,[reg_employee]
@@ -432,7 +428,7 @@
 	,[help_case_status_description]
 	,[is_help_case]
 	FROM [v.help_case]
-	WHERE [reg_user] = '1078' ";
+	WHERE [reg_user] = '$user_id' ";
 
  	// Kjør spørring
  	$data = mssql_query($sql);
