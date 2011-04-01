@@ -39,7 +39,7 @@
 	{
 		$bruker = user_info($_POST['user_id']);
 		
-		if($debug) // Viser all info om brukeren som er valgt, også passord.
+		if($_SESSION['debug']) // Viser all info om brukeren som er valgt, også passord.
 		{
 			print_r($bruker);
 		}
@@ -56,7 +56,7 @@
 				echo '<h3>Innlogging vellykket!</h3>';
 				echo '<a href="index.php">Trykk her dersom nettlesern din ikke videresender deg</a>';
 				
-				if(!$debug)
+				if(!$_SESSION['debug'])
 				{
 					// Sender brukeren til forsiden når innloggingen er vellykket.
 					echo "<script>location.href='index.php'</script>";
