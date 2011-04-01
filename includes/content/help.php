@@ -22,10 +22,16 @@
 		// Hvis man har valgt å vise sine saker:
 		elseif($_GET['sub'] == "show"):
 ?>
-		<table id="helpdesk_list">
-			<?php user_helpdesk_list($_SESSION['user_id']); ?>
-		</table>
-		 	
+		<form action="index.php?page=help&sub=show" method="get">
+			<table id="helpdesk_list">
+				<?php user_helpdesk_list($_SESSION['user_id']); ?>
+			</table>
+			<select name="action">
+				<option id="print">Skriv ut</option>
+				<option id="delete">Slett</option>
+			</select>
+			<input type="submit" name="helplist_do" value="Utfør" />
+		 </form>
 	
 	
 	<?php
