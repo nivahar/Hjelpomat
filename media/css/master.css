@@ -203,3 +203,13 @@ th{
 td{
     
 }
+
+table#helpdesk_list td,th{
+	
+	padding: 5px;
+	
+}
+
+table#helpdesk_list tr.row1 td{
+	background-color: #e6e6e6;
+}

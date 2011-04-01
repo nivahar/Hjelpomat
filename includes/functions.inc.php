@@ -448,10 +448,10 @@
   				"Status</th><th>".
     			//    "Helpdesk ja/nei</th><th>".
     		"</th></tr>";
-
+	$radnummer = 0;
  	while($row = mssql_fetch_array($data)){
    	//lager tabell
-     	echo "<tr><td>"."<input type=\"checkbox\" name=\"case_id\" value=\"".$row['id_main_case']."\" /></th><th>".
+     	echo "<tr class=\"row$radnummer\"><td>"."<input type=\"checkbox\" name=\"case_id\" value=\"".$row['id_main_case']."\" /></td><td>".
    				$row['id_main_case']."</td><td>".
    				$row['created_date']."</td><td>".
     			//     $row['reg_user']."</td><td>".
@@ -467,6 +467,7 @@
     			//     $row['is_help_case']."</td><td>".
     				'<a href="?page=help&sub=single&id='.$row['id_main_case'].'">Endre</a></td><td>'.
     		"</td></tr>";
+    	$radnummer = 1 - $radnummer;
  	}
 
 }
