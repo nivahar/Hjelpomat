@@ -7,6 +7,13 @@
 	{
 		include_once('includes/body.inc.php');
 		include_once(page($_GET['page'], $_GET['sub']));
+		
+		// Utfører ønsket handling fra helpdesk-liste
+		if(isset($_GET['helplist_do'])) // debug
+		//if(isset($_POST['helplist_do']))
+		{
+			
+		}
 	}
 	else
 	{
