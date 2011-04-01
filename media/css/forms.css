@@ -155,10 +155,8 @@ table tr.row1 {
 	background-color: #eaeaea;
 }
 
-table#helpdesk_list td {
-	
-}
-
 table#helpdesk_list th {
-	background-color: #AED3DE;
+	border-bottom-color: #656565;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
 }
