@@ -23,7 +23,7 @@
 		elseif($_GET['sub'] == "show"):
 ?>
 		<table id="helpdesk_list">
-			<?php user_helpdesk_list(); ?>
+			<?php user_helpdesk_list($_SESSION['user_id']); ?>
 		</table>
 		 	
 	
