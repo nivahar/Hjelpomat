@@ -34,6 +34,23 @@
 							<option value="6">Poppen</option>
 						</optgroup>
 					</select>
+
+                                         <label for="ikmat_unit">
+                                                Hvilken enhet er det feil med <span class="mandatory">*</span>
+                                        </label>
+                                        <select name="ikmat_unit" id="ikmat_unit">
+                                            <option value="select_ikmat_unit" selected="selected_unit">Velg enhet...</option>
+                                            <optgroup label="Isbitmaskin">
+                                                    <option value="1">Kompressor</option>
+                                                    <option value="2">Vanntilkobling</option>
+                                            </optgroup>
+                                            <optgroup label="Kjøleskap">
+                                                    <option value="3">Nr1</option>
+                                                    <option value="4">Nr2</option>
+                                                    <option value="5">Nr3</option>
+                                            </optgroup>
+                                        </select>
+
 										
 					<label for="ikmat_desc">
 						Problembeskrivelse <span class="mandatory">*</span>
