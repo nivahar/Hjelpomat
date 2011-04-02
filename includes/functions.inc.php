@@ -497,13 +497,13 @@ function get_user_email($user_id){
  */
 function get_count_helpdesk(){
 
-$sql="SELECT COUNT(id_main_case) AS helpdesk_cases from [v.help_case];";
-if(!$data=mssql_query($sql)){
-    return FALSE;
-    exit;
-}
-$mail=mssql_fetch_array($data);
-return $mail['helpdesk_cases'];
+	$sql="SELECT COUNT(id_main_case) AS helpdesk_cases from [v.help_case];";
+	if(!$data=mssql_query($sql)){
+	    return FALSE;
+	    exit;
+	}
+	$mail=mssql_fetch_array($data);
+	return $mail['helpdesk_cases'];
 
 }
 
@@ -512,13 +512,13 @@ return $mail['helpdesk_cases'];
  */
 function get_count_food(){
 
-$sql="SELECT COUNT(id_main_case) AS food_cases from [v.food_case];";
-if(!$data=mssql_query($sql)){
-    return FALSE;
-    exit;
-}
-$mail=mssql_fetch_array($data);
-return $mail['food_cases'];
+	$sql="SELECT COUNT(id_main_case) AS food_cases from [v.food_case];";
+	if(!$data=mssql_query($sql)){
+	    return FALSE;
+	    exit;
+	}
+	$mail=mssql_fetch_array($data);
+	return $mail['food_cases'];
 
 }
 
@@ -529,14 +529,14 @@ return $mail['food_cases'];
 function get_helpdesk_status(){
 
 
-
-$sql = "select * from [tbl.help_case_status]";
-if(!$data=mssql_query($sql)){
-    return FALSE;
-    exit;
-}
-$mail=mssql_fetch_array($data);
-return $mail; //['help_case_status_description'];
+	
+	$sql = "select * from [tbl.help_case_status]";
+	if(!$data=mssql_query($sql)){
+	    return FALSE;
+	    exit;
+	}
+	$mail=mssql_fetch_array($data);
+	return $mail; //['help_case_status_description'];
 }
 
 
@@ -546,29 +546,38 @@ return $mail; //['help_case_status_description'];
  */
 function get_helpdesk_status_drop_down(){
 
-//Spørring
-$sql = "select id_help_case_status, help_case_status_description  from [tbl.help_case_status]";
-//Sjekk av gjennomført spørring
-if(!$data=mssql_query($sql)){
-     return FALSE;
-    exit;
+	//Spørring
+	$sql = "select id_help_case_status, help_case_status_description  from [tbl.help_case_status]";
+	//Sjekk av gjennomført spørring
+	if(!$data=mssql_query($sql)){
+	     return FALSE;
+	    exit;
+	}
+	// Start av dropdown
+	$start = "<select>";
+	// Henter alle verdier
+	$tekst = "";
+	while($list=mssql_fetch_array($data)){
+	$tekst.= "<option value=\"".$list['id_help_case_status']."\">".$list['help_case_status_description']."</option>";
+	
+	
+	}
+	//Slutt på dropdown
+	$slutt = "</select>";
+	
+	return $start.$tekst.$slutt;
 }
-// Start av dropdown
-$start = "<select>";
-// Henter alle verdier
-$tekst = "";
-while($list=mssql_fetch_array($data)){
-$tekst.= "<option value=\"".$list['id_help_case_status']."\">".$list['help_case_status_description']."</option>";
 
 
+/*
+ * Sanitering av strenger.
+ */
+ 
+function sanitize_string($string_in)
+{
+	$sting_in = $string_out;
+	return $string_out;
 }
-//Slutt på dropdown
-$slutt = "</select>";
-
-return $start.$tekst.$slutt;
-}
-
-
 
 
 
