@@ -72,11 +72,11 @@
                                             </optgroup>
                                         </select>
                                          <label for="ikmat_problem_type">
-                                                Hvilken enhet er det feil med <span class="mandatory">*</span>
+                                                Hva slags type ikmat avvik er dette <span class="mandatory">*</span>
                                         </label>
                                         <select name="ikmat_problem_type" id="ikmat_problem_type">
-                                            <option value="select_ikmat_unit" selected="selected_unit">Velg enhet...</option>
-                                            
+                                            <option value="select_ikmat_unit" selected="selected_unit">Velg type problem...</option>
+                                            <?php echo get_ikmat_type_drop_down();?>
                                            
                                         </select>
 
