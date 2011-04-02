@@ -78,7 +78,7 @@
 			echo '<h3>Innlogging vellykket!</h3>';
 			echo '<a href="index.php">Trykk her dersom nettlesern din ikke videresender deg</a>';
 			
-			if(!$debug)
+			if(!$_SESSION['debug'])
 			{
 				// Sender brukeren til forsiden når innloggingen er vellykket.
 				echo "<script>location.href='index.php'</script>";
@@ -95,12 +95,6 @@
 
 	echo "<p>Du er logget inn som ".$_SESSION['user_name'].".</p>";
 	
-	echo '<a href="index.php">Trykk her dersom nettlesern din ikke videresender deg</a>';
-			
-	// Sender brukeren til forsiden når innloggingen er vellykket.
-	echo "<script>location.href='index.php'</script>";
-
-	// Hvis du ikke er logget inn...
 	else:				
 
 	//Spørring som henter alle brukere
