@@ -91,7 +91,10 @@ print_r($list);
 
 
 
-$sql = "select id_help_case_status, help_case_status_description  from [tbl.help_case_status]";
+$sql = "SELECT   A.help_problem_type_description AS level_1, B.id_help_problem_type AS ID, B.help_problem_type_description AS level_2
+  FROM [hjelpomat].[dbo].[tbl.help_problem_type] AS A
+  INNER JOIN [hjelpomat].[dbo].[tbl.help_problem_type] AS B ON (A.id_help_problem_type = B.parent_help_problem_id)
+  Order by A.parent_help_problem_id asc";
 //Sjekk av gjennomført spørring
 if(!$data=mssql_query($sql)){
      return FALSE;
@@ -102,7 +105,7 @@ $start = "<select>";
 // Henter alle verdier
 $tekst = "";
 while($list=mssql_fetch_array($data)){
-$tekst.= "<option value=\"".$list['id_help_case_status']."\">".$list['help_case_status_description']."</option>";
+$tekst.= "<option value=\"".$list['ID']."\">".$list['level_1']." - ".$list['level_2']."</option>";
 
 
 }

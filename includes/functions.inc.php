@@ -580,6 +580,35 @@ function sanitize_string($string_in)
 }
 
 
+/*
+ * Henter ut drop down valg for bruk i registrering av hellpdesk saker
+ */
+
+function get_helpdesk_type_drop_down(){
+
+    $sql = "SELECT   A.help_problem_type_description AS level_1, B.id_help_problem_type AS ID, B.help_problem_type_description AS level_2
+  FROM [hjelpomat].[dbo].[tbl.help_problem_type] AS A
+  INNER JOIN [hjelpomat].[dbo].[tbl.help_problem_type] AS B ON (A.id_help_problem_type = B.parent_help_problem_id)
+  Order by A.parent_help_problem_id asc";
+//Sjekk av gjennomført spørring
+if(!$data=mssql_query($sql)){
+     return FALSE;
+    exit;
+}
+// Start av dropdown
+
+// Henter alle verdier
+$option = "";
+while($list=mssql_fetch_array($data)){
+$option.= "<option value=\"".$list['ID']."\">".$list['level_1']." - ".$list['level_2']."</option>";
+
+
+}
+//Slutt på dropdown
+
+
+return $option;
+}
 
 
 
