@@ -571,6 +571,209 @@
 
 }
 
+
+/*
+ * Henter ut liste over alle ikmat saker fra view pÃ¥ sql server
+ */
+   function ikmat_list(){
+//Database kobling
+  	//connect_to_tf();
+
+ 	// SpÃ¸rring
+ 	$sql = "SELECT [id_main_case]
+	, CAST([created_date] as CHAR(10)) AS [created_date]
+	,[reg_user]
+	,[reg_employee]
+	,[id_food_case]
+	,[food_case_title]
+	,[id_food_problem_type]
+	,[food_case_description]
+	,[food_case_solution]
+	,[food_case_status]
+        ,[id_food_case_location]
+	,[is_food_case]
+	FROM [v.food_case]";
+
+ 	// KjÃ¸r spÃ¸rring
+ 	$data = mssql_query($sql);
+ 	// Tabell Overskrift
+	echo "<tr><th>ID-Sak</th><th>".
+  				"Dato</th><th>".
+    			//    "Bruker ID</th><th>".
+  				"Ansatt-ID</th><th>".
+    			//    "FoodcaseID</th><th>".
+  				"Tittel</th><th>".
+    			//    "Problemtype ID</th><th>".
+  				"Problemtype</th><th>".
+  				"Saksbeskrivelse</th><th>".
+  				"LÃ¸sning</th><th>".
+  				"Status</th><th>".
+                                "Lokasjon</th><th>".
+  				"Helpdesk ja/nei</th><th>".
+                                "</th></tr>";
+
+		// For alternerende bakgrunn pÃ¥ radene.
+		$rad = 0;
+		while($row = mssql_fetch_array($data)){
+   	//lager tabell
+     	echo "<tr class=\"row$rad\"><td>".$row['id_food_case']."</td><td>".
+   				$row['created_date']."</td><td>".
+    			//     $row['reg_user']."</td><td>".
+   				$row['reg_employee']."</td><td>".
+    			//     $row['id_help_case']."</td><td>".
+   				$row['food_case_title']."</td><td>".
+    			//     $row['case_problem_type']."</td><td>".
+   				$row['id_food_problem_type']."</td><td>".
+   				$row['food_case_description']."</td><td>".
+   				$row['food_case_solution']."</td><td>".
+   				$row['food_case_status']."</td><td>".
+                                $row['id_food_case_location']."</td><td>".
+   				$row['is_food_case']."</td><td>".
+   				"<input type=\"button\" value=\"Endre\" name=\"edit\" /></td><td>".
+    		"</td></tr>";
+
+    		// Annenhver gang 1 og 0
+    		$rad = 1 - $rad;
+ 	}
+
+}
+
+
+   function user_helpdesk_list(){
+//Database kobling
+  	//connect_to_tf();
+
+ 	// SpÃ¸rring
+ 	$sql = "SELECT [id_main_case]
+	, CAST([created_date] as CHAR(10)) AS [created_date]
+	,[reg_user]
+	,[reg_employee]
+	,[id_help_case]
+	,[help_case_title]
+	,[case_problem_type]
+	,[help_problem_type_description]
+	,[help_case_description]
+	,[help_case_solution]
+	,[help_case_status]
+	,[help_case_status_description]
+	,[is_help_case]
+	FROM [v.help_case]
+	WHERE [reg_user] = '1078' ";
+
+ 	// KjÃ¸r spÃ¸rring
+ 	$data = mssql_query($sql);
+ 	// Tabell Overskrift
+  	echo "<tr><th>Velg</th><th>".
+  				"ID-sak</th><th>".
+  				"Dato</th><th>".
+    			//    "Bruker ID</th><th>".
+  				"Ansatt-ID</th><th>".
+    			//    "HelpcaseID</th><th>".
+  				"Tittel</th><th>".
+    			//    "Problemtype ID</th><th>".
+  				"Problemtype</th><th>".
+  				"Saksbeskrivelse</th><th>".
+    			//    "LÃ¸sning</th><th>".
+    			//    "Status id</th><th>".
+  				"Status</th><th>".
+    			//    "Helpdesk ja/nei</th><th>".
+    		"</th></tr>";
+
+ 	while($row = mssql_fetch_array($data)){
+   	//lager tabell
+     	echo "<tr><td>"."<input type=\"checkbox\" name=\"case_id\" value=\"case_id\" /></th><th>".
+   				$row['id_main_case']."</td><td>".
+   				$row['created_date']."</td><td>".
+    			//     $row['reg_user']."</td><td>".
+   				$row['reg_employee']."</td><td>".
+    			//     $row['id_help_case']."</td><td>".
+   				$row['help_case_title']."</td><td>".
+    			//     $row['case_problem_type']."</td><td>".
+   				$row['help_problem_type_description']."</td><td>".
+   				$row['help_case_description']."</td><td>".
+    			//     $row['help_case_solution']."</td><td>".
+    			//     $row['help_case_status']."</td><td>".
+   				$row['help_case_status_description']."</td><td>".
+    			//     $row['is_help_case']."</td><td>".
+    				"<input type=\"button\" value=\"Endre\" name=\"edit\" /></td><td>".
+    		"</td></tr>";
+ 	}
+
+}
+/*
+ * Henter ut liste over alle ikmat saker fra view pÃ¥ sql server
+ * INputt parameter brukerens id som mÃ¥ hentes fra session.
+ *
+ * Tar Alle Felter i databasen
+ * $user_id
+ */
+
+
+
+   function user_ikmat_list(){
+//Database kobling
+  	//connect_to_tf();
+
+ 	// SpÃ¸rring
+ 	$sql = "SELECT [id_main_case]
+	, CAST([created_date] as CHAR(10)) AS [created_date]
+	,[reg_user]
+	,[reg_employee]
+	,[id_food_case]
+	,[food_case_title]
+	,[id_food_problem_type]
+	,[food_case_description]
+	,[food_case_solution]
+	,[food_case_status]
+        ,[id_food_case_location]
+	,[is_food_case]
+        FROM [v.food_case]
+	WHERE [reg_user] = '1078' ";
+
+ 	// KjÃ¸r spÃ¸rring
+ 	$data = mssql_query($sql);
+ 	// Tabell Overskrift
+  	echo "<tr><th>Velg</th><th>".
+  				"ID-sak</th><th>".
+  				"Dato</th><th>".
+    			//    "Bruker ID</th><th>".
+  				"Ansatt-ID</th><th>".
+    			//    "HelpcaseID</th><th>".
+  				"Tittel</th><th>".
+    			//    "Problemtype ID</th><th>".
+  				"Problemtype</th><th>".
+  				"Saksbeskrivelse</th><th>".
+    			//    "LÃ¸sning</th><th>".
+    			//    "Status id</th><th>".
+  				"Status</th><th>".
+                                "Lokasjon</th><th>".
+    			//    "Ikmat ja/nei</th><th>".
+    		"</th></tr>";
+
+ 	while($row = mssql_fetch_array($data)){
+   	//lager tabell
+     	echo "<tr><td>"."<input type=\"checkbox\" name=\"case_id\" value=\"case_id\" /></th><th>".
+   				$row['id_main_case']."</td><td>".
+   				$row['created_date']."</td><td>".
+    			//     $row['reg_user']."</td><td>".
+   				$row['reg_employee']."</td><td>".
+    			//     $row['id_food_case']."</td><td>".
+   				$row['food_case_title']."</td><td>".
+    			//     $row['case_problem_type']."</td><td>".
+   				$row['id_food_problem_type']."</td><td>".
+   				$row['food_case_description']."</td><td>".
+    			//     $row['food_case_solution']."</td><td>".
+    			//     $row['food_case_status']."</td><td>".
+   				$row['food_case_status']."</td><td>".
+                                $row['id_food_case_location']."</td><td>".
+    			//     $row['is_food_case']."</td><td>".
+    				"<input type=\"button\" value=\"Endre\" name=\"edit\" /></td><td>".
+    		"</td></tr>";
+ 	}
+
+}
+
+
 /*
  * GET MAIL ADDRESS FROM USER ID
  */
