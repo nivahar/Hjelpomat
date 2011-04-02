@@ -458,7 +458,7 @@
   				"Saksbeskrivelse</th><th>".
   				"Løsning</th><th>".
   				"Status</th><th>".
-  				"Helpdesk ja/nei</th><th>".
+  				//"Helpdesk ja/nei</th><th>".
     		"</th></tr>";
 		
 		// For alternerende bakgrunn på radene.
@@ -475,6 +475,7 @@
     			//     $row['case_problem_type']."</td><td>".
    				$row['help_problem_type_description']."</td><td>".
    				$row['help_case_description']."</td><td>".
+                                get_helpdesk_status_drop_down()."</td><td>".
    				$row['help_case_solution']."</td><td>".
    				$row['help_case_status']."</td><td>".
    				$row['is_help_case']."</td><td>".
@@ -694,6 +695,64 @@ function get_helpdesk_status_drop_down(){
 	//Slutt på dropdown
 	$slutt = "</select>";
 	
+	return $start.$tekst.$slutt;
+}
+/*
+ * Hente ut saksstatuser for bruk i skjema
+ */
+
+/**
+ * get_foodcase_status function.
+ *
+ * @access public
+ * @return void
+ */
+function get_ikmat_status(){
+
+
+
+	$sql = "select * from [tbl.food_case_status]";
+	if(!$data=mssql_query($sql)){
+	    return FALSE;
+	    exit;
+	}
+	$mail=mssql_fetch_array($data);
+	return $mail; //['ikmat_case_status_description'];
+}
+
+
+
+/*
+ * Hente ut saksstatuser for bruk i skjema
+ */
+
+/**
+ * get_foodcase_status_drop_down function.
+ *
+ * @access public
+ * @return void
+ */
+function get_foodcase_status_drop_down(){
+
+	//Spørring
+	$sql = "select id_food_case_status, food_case_status_description  from [tbl.food_case_status]";
+	//Sjekk av gjennomført spørring
+	if(!$data=mssql_query($sql)){
+	     return FALSE;
+	    exit;
+	}
+	// Start av dropdown
+	$start = "<select>";
+	// Henter alle verdier
+	$tekst = "";
+	while($list=mssql_fetch_array($data)){
+	$tekst.= "<option value=\"".$list['id_food_case_status']."\">".$list['food_case_status_description']."</option>";
+
+
+	}
+	//Slutt på dropdown
+	$slutt = "</select>";
+
 	return $start.$tekst.$slutt;
 }
 
