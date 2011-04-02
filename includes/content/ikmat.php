@@ -42,18 +42,7 @@
 					</label>
 					<select name="ikmat_place" id="ikmat_place">
 						<option value="select_ikmat" selected="selected">Velg hentelsessted...</option>
-						<optgroup label="Restaurant">
-							<option value="1">Vertshuset</option>
-							<option value="2">Rockburgern</option>
-						</optgroup>
-						<optgroup label="Butikk">
-							<option value="3">Toppen</option>
-						</optgroup>
-						<optgroup label="Sukkerland">
-							<option value="4">Slushfabrikken</option>
-							<option value="5">Præriekiosken</option>
-							<option value="6">Poppen</option>
-						</optgroup>
+						<?php echo get_ikmat_place_drop_down(); ?>
 					</select>
 
                                          <label for="ikmat_unit">
