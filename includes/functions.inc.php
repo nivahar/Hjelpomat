@@ -772,4 +772,32 @@ $option.= "<option value=\"".$list['id_food_problem_type']."\">".$list['food_pro
 //print ut
 return $option;
 }
+
+ /*
+ * Henter ut drop down valg for typer ikmat avvik
+ */
+
+function get_ikmat_unit_drop_down(){
+
+    $sql = "SELECT[id_food_problem_type],[food_problem_description]
+  FROM [hjelpomat].[dbo].[tbl.food_problem_type]";
+//Sjekk av gjennomført spørring
+if(!$data=mssql_query($sql)){
+     return FALSE;
+    exit;
+}
+
+
+// Henter alle verdier
+$option = "";
+while($list=mssql_fetch_array($data)){
+$option.= "<option value=\"".$list['id_food_problem_type']."\">".$list['food_problem_description']."</option>";
+
+
+}
+//print ut
+return $option;
+}
+
+
 ?>
