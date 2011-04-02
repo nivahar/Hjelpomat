@@ -463,7 +463,8 @@
    				$row['help_case_description']."</td><td>".
     			//     $row['help_case_solution']."</td><td>".
     			//     $row['help_case_status']."</td><td>".
-   				$row['help_case_status_description']."</td><td>".
+   			//	$row['help_case_status_description']."</td><td>".
+                        	get_helpdesk_status_drop_down()."</td><td>".
     			//     $row['is_help_case']."</td><td>".
     				'<a href="?page=help&sub=single&id='.$row['id_main_case'].'">Endre</a></td><td>'.
     		"</td></tr>";
@@ -533,6 +534,36 @@ if(!$data=mssql_query($sql)){
 $mail=mssql_fetch_array($data);
 return $mail; //['help_case_status_description'];
 }
+
+
+
+/*
+ * Hente ut saksstatuser for bruk i skjema
+ */
+function get_helpdesk_status_drop_down(){
+
+//Spørring
+$sql = "select id_help_case_status, help_case_status_description  from [tbl.help_case_status]";
+//Sjekk av gjennomført spørring
+if(!$data=mssql_query($sql)){
+     return FALSE;
+    exit;
+}
+// Start av dropdown
+$start = "<select>";
+// Henter alle verdier
+$tekst = "";
+while($list=mssql_fetch_array($data)){
+$tekst.= "<option value=\"".$list['id_help_case_status']."\">".$list['help_case_status_description']."</option>";
+
+
+}
+//Slutt på dropdown
+$slutt = "</select>";
+
+return $start.$tekst.$slutt;
+}
+
 
 
 
