@@ -790,7 +790,7 @@ if(!$data=mssql_query($sql)){
      return FALSE;
     exit;
 }
-// Start av dropdown
+
 
 // Henter alle verdier
 $option = "";
@@ -799,12 +799,66 @@ $option.= "<option value=\"".$list['ID']."\">".$list['level_1']." - ".$list['lev
 
 
 }
-//Slutt på dropdown
-
-
+//print ut
 return $option;
 }
 
+
+
+        
+ /*
+ * Henter ut drop down valg for typer ikmat avvik
+ */
+
+function get_ikmat_type_drop_down(){
+
+    $sql = "SELECT[id_food_problem_type],[food_problem_description]      
+  FROM [hjelpomat].[dbo].[tbl.food_problem_type]";
+//Sjekk av gjennomført spørring
+if(!$data=mssql_query($sql)){
+     return FALSE;
+    exit;
+}
+
+
+// Henter alle verdier
+$option = "";
+while($list=mssql_fetch_array($data)){
+$option.= "<option value=\"".$list['id_food_problem_type']."\">".$list['food_problem_description']."</option>";
+
+
+}
+//print ut
+return $option;
+}
+
+ /*
+ * Henter ut drop down valg for typer ikmat avvik
+ */
+
+function get_ikmat_unit_drop_down(){
+
+    $sql = "SELECT A.problem_unit_name AS level_1, B.id_problem_unit AS ID, B.problem_unit_name AS level_2
+  FROM [hjelpomat].[dbo].[tbl.food_case_problem_unit] AS A
+   INNER JOIN [hjelpomat].[dbo].[tbl.food_case_problem_unit] AS B ON (A.id_problem_unit = B.parrent_problem_unit)
+  Order by A.parrent_problem_unit asc";
+//Sjekk av gjennomført spørring
+if(!$data=mssql_query($sql)){
+     return FALSE;
+    exit;
+}
+
+
+// Henter alle verdier
+$option = "";
+while($list=mssql_fetch_array($data)){
+$option.= "<option value=\"".$list['ID']."\">".$list['level_1']." - ".$list['level_2']."</option>";
+
+
+}
+//print ut
+return $option;
+}
 
 
 ?>
