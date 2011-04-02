@@ -26,7 +26,6 @@ function send_case_email(){
 }
 */
 
-//function  test_select(){
 require 'db_secure.php';
 	// Legger logindata i et array.
 	$dbLogin = db_login();
@@ -39,7 +38,7 @@ require 'db_secure.php';
 	}
 
 
-
+/*
 
 $sql = "select id_help_case_status, help_case_status_description  from [tbl.help_case_status]";
 if(!$data=mssql_query($sql)){
@@ -77,4 +76,40 @@ print_r($list);
 
 
 //echo test_select();
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+
+
+$sql = "select id_help_case_status, help_case_status_description  from [tbl.help_case_status]";
+//Sjekk av gjennomført spørring
+if(!$data=mssql_query($sql)){
+     return FALSE;
+    exit;
+}
+// Start av dropdown
+$start = "<select>";
+// Henter alle verdier
+$tekst = "";
+while($list=mssql_fetch_array($data)){
+$tekst.= "<option value=\"".$list['id_help_case_status']."\">".$list['help_case_status_description']."</option>";
+
+
+}
+//Slutt på dropdown
+$slutt = "</select>";
+
+echo $start.$tekst.$slutt;
+
+
 ?>

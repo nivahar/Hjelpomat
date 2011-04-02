@@ -37,10 +37,10 @@
 					</label>
 					<input type="number" name="emp_no" id="emp_no" max="9999" min="1" step="1" required />
 					
-					<label for="ikmat_cat">
+					<label for="ikmat_place">
 						Problemkategori <span class="mandatory">*</span>
 					</label>
-					<select name="ikmat_cat" id="ikmat_cat">
+					<select name="ikmat_place" id="ikmat_place">
 						<option value="select_ikmat" selected="selected">Velg hentelsessted...</option>
 						<optgroup label="Restaurant">
 							<option value="1">Vertshuset</option>
@@ -71,12 +71,27 @@
                                                     <option value="5">Nr3</option>
                                             </optgroup>
                                         </select>
+                                         <label for="ikmat_problem_type">
+                                                Hvilken enhet er det feil med <span class="mandatory">*</span>
+                                        </label>
+                                        <select name="ikmat_problem_type" id="ikmat_problem_type">
+                                            <option value="select_ikmat_unit" selected="selected_unit">Velg enhet...</option>
+                                            
+                                           
+                                        </select>
+
 
 										
 					<label for="ikmat_desc">
 						Problembeskrivelse <span class="mandatory">*</span>
 					</label>
 					<textarea name="ikmat_desc" id="ikmat_desc" required></textarea>
+
+                                        <label for="is_helpcase">
+                                            <input type="checkbox" name="is_helpcase">Huk av om denne saken trenger teknisk oppfølging
+                                        </label>
+
+
 					<p class="buttons">
 						<button type="submit">Registrer</button>
 						<button type="reset" onclick="return confirm('Vil du tømme skjemaet?');">Tøm skjema</button>
