@@ -20,6 +20,10 @@
 		{
 			$show_page = 'ikmat.php';
 		}
+		elseif($page == 'admin')
+		{
+			$show_page = 'admin.php';
+		}
 		else
 		{
 			$show_page = 'default.php';
