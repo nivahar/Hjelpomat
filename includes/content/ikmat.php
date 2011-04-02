@@ -65,6 +65,12 @@
 						Problembeskrivelse <span class="mandatory">*</span>
 					</label>
 					<textarea name="ikmat_desc" id="ikmat_desc" required></textarea>
+
+                                        <label for="is_helpcase">
+                                            <input type="checkbox" name="is_helpcase">Huk av om denne saken trenger teknisk oppfølging
+                                        </label>
+
+
 					<p class="buttons">
 						<button type="submit">Registrer</button>
 						<button type="reset" onclick="return confirm('Vil du tømme skjemaet?');">Tøm skjema</button>
