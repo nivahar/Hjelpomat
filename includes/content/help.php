@@ -77,6 +77,7 @@
    			$help_problem_type_description = $row['help_problem_type_description'];
    			$help_case_description = $row['help_case_description'];
    			$help_case_status_description = $row['help_case_status_description'];
+                        $help_case_solution = $row['help_case_solution'];
  	}
 
 		
@@ -103,13 +104,18 @@
 					</label>
 					<select name="help_cat" id="help_cat" class="validate[required]">
 						<option value="" selected="selected">Velg en kategori...</option>
-						'.get_helpdesk_status_drop_down().'
+						'.  get_helpdesk_type_drop_down().'
 					</select>
 					
 					<label for="help_desc">
 						Problembeskrivelse <span class="mandatory">*</span>
 					</label>
 					<textarea name="help_desc" id="help_desc" required class="validate[required]">'.$help_case_description.'</textarea>
+
+                                        <label for="help_solution">
+						Løsningsbeskrivelse <span class="mandatory">*</span>
+					</label>
+					<textarea name="help_solution" id="help_soultion" required class="validate[required]">'.$help_case_solution.'</textarea>
 					<p class="buttons">
 						<input type="submit" name="reg_help_submit" value="Oppdatér" />
 					</p>

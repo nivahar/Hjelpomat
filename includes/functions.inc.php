@@ -64,10 +64,10 @@
 					</li> 
 					<li> 
 						<a href="?page=help&amp;sub=adm">Administrer saker</a>
-					</li>
+					<!--</li>
     						<li>
 						<a href="?page=help_singlecase&amp;sub=adm">Admin Enkeltsak</a>
-					</li>';
+					</li>-->';
 				break;
 			case 'ikmat':
 				return '<li> 
@@ -447,7 +447,8 @@
  	// Kjør spørring
  	$data = mssql_query($sql);
  	// Tabell Overskrift
-	echo "<tr><th>ID-Sak</th><th>".
+	echo "<tr><th></th><th>
+                                ID-Sak</th><th>".
   				"Dato</th><th>".
     			//    "Bruker ID</th><th>".
   				"Ansatt-ID</th><th>".
@@ -458,7 +459,7 @@
   				"Saksbeskrivelse</th><th>".
   				"Løsning</th><th>".
   				"Status</th><th>".
-  				//"Helpdesk ja/nei</th><th>".
+  				"Er Helpdesk</th><th>".
     		"</th></tr>";
 		
 		// For alternerende bakgrunn på radene.
@@ -466,7 +467,8 @@
 		
 		while($row = mssql_fetch_array($data)){
 		//lager tabell
-     	echo "<tr class=\"row$rad\"><td>".$row['id_main_case']."</td><td>".
+     	echo "<tr class=\"row$rad\"><td>"."<input type=\"checkbox\" name=\"case_id\" value=\"".$row['id_main_case']."\" /></td><td>".
+                                $row['id_main_case']."</td><td>".
    				$row['created_date']."</td><td>".
     			//     $row['reg_user']."</td><td>".
    				$row['reg_employee']."</td><td>".
@@ -475,16 +477,34 @@
     			//     $row['case_problem_type']."</td><td>".
    				$row['help_problem_type_description']."</td><td>".
    				$row['help_case_description']."</td><td>".
+                                $row['help_case_solution']."</td><td>".
+                                "<select>".
                                 get_helpdesk_status_drop_down()."</td><td>".
-   				$row['help_case_solution']."</td><td>".
-   				$row['help_case_status']."</td><td>".
-   				$row['is_help_case']."</td><td>".
+   				"</select>".
+                        //        $row['help_case_status']."</td><td>".
+   				true_false($row['is_help_case'])."</td><td>".
    				"<input type=\"button\" value=\"Endre\" name=\"edit\" /></td><td>".
     		"</td></tr>";
     		
     		// Annenhver gang 1 og 0
     		$rad = 1 - $rad;
  	}
+
+}
+
+/*
+ * True false svar i klartekst
+ */
+
+function true_false($input){
+
+    if($input == '0'){
+        $svar = "Nei";
+    }
+    if($input == '1'){
+        $svar = "Ja";
+    }
+    return $svar;
 
 }
 

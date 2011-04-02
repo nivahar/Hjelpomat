@@ -115,4 +115,9 @@ $slutt = "</select>";
 echo $start.$tekst.$slutt;
 
 
+
+
+
+
+
 ?>
