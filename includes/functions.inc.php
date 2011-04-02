@@ -982,7 +982,7 @@ function sanitize_string($string_in)
  * Henter ut drop down valg for bruk i registrering av hellpdesk saker
  */
 
-function get_helpdesk_type_drop_down_2(){
+function get_helpdesk_type_drop_down(){
 
     $sql = "SELECT   A.help_problem_type_description AS level_1, B.id_help_problem_type AS ID, B.help_problem_type_description AS level_2
   FROM [hjelpomat].[dbo].[tbl.help_problem_type] AS A
