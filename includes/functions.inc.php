@@ -1064,4 +1064,34 @@ return $option;
 }
 
 
+
+ /*
+ * Henter ut drop down valg for typer ikmat avvik
+ */
+
+function get_ikmat_place_drop_down(){
+
+    $sql = "SELECT A.location_name AS level_1, B.id_food_case_location AS ID, B.location_name AS level_2
+    FROM [hjelpomat].[dbo].[tbl.food_case_location] AS A
+   INNER JOIN [hjelpomat].[dbo].[tbl.food_case_location] AS B ON (A.id_food_case_location= B.parent_food_case_location)
+  Order by A.parent_food_case_location asc";
+//Sjekk av gjennomført spørring
+if(!$data=mssql_query($sql)){
+     return FALSE;
+    exit;
+}
+
+
+// Henter alle verdier
+$option = "";
+while($list=mssql_fetch_array($data)){
+$option.= "<option value=\"".$list['ID']."\">".$list['level_1']." - ".$list['level_2']."</option>";
+
+
+}
+//print ut
+return $option;
+}
+
+
 ?>
