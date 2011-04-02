@@ -639,7 +639,7 @@
 }
 
 
-   function user_helpdesk_list(){
+   function user_helpdesk_list_2(){
 //Database kobling
   	//connect_to_tf();
 
@@ -982,7 +982,7 @@ function sanitize_string($string_in)
  * Henter ut drop down valg for bruk i registrering av hellpdesk saker
  */
 
-function get_helpdesk_type_drop_down(){
+function get_helpdesk_type_drop_down_2(){
 
     $sql = "SELECT   A.help_problem_type_description AS level_1, B.id_help_problem_type AS ID, B.help_problem_type_description AS level_2
   FROM [hjelpomat].[dbo].[tbl.help_problem_type] AS A
