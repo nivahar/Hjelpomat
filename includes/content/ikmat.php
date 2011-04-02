@@ -1,4 +1,25 @@
-			<h1>Registrer IK-mat hendelse</h1> 
+<?php 
+        //Hvis sak er registrert
+        if(isset($_POST['reg_ikmat_submit'])):
+			$title = $_POST['ikmat_title'];
+			$employee_number = $_POST['emp_no'];
+			$category_id = $_POST['ikmat_location'];
+                        $unit = $_POST['ikmat_unit'];
+			$description = $_POST['ikmat_desc'];
+
+                        // Save POST data to database
+			if(save_food_case($title,$employee_number,$category_id,$unit,$description)){
+				echo '<p class="success">Saken ble registrert.</p>
+					<h1>'.$_POST['ikmat_title'].'</h1>
+					<p>Ansattnr. '.$_POST['emp_no'].', kategori '.$_POST['ikmat_location'].', enhet '.$_POST['ikmat_unit'].'</p>
+                                        <h2>Beskrivelse</h2>
+					<p>'.$_POST['ikmat_desc'].'</p>';
+			}else{
+				echo '<p class="error">Saken ble ikke registrert.</p>';
+			}
+			
+		else: ?>
+                        <h1>Registrer IK-mat hendelse</h1>
 			<p>
 				Felter merket <span class="mandatory">*</span> er påkrevd!
 			</p>
@@ -63,3 +84,4 @@
 				</form>
 				
 			</div>
+                        <?php  endif; ?>
