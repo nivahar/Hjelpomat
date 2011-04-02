@@ -38,7 +38,7 @@
 					<input type="number" name="emp_no" id="emp_no" max="9999" min="1" step="1" required />
 					
 					<label for="ikmat_place">
-						Problemkategori <span class="mandatory">*</span>
+						Lokasjon<span class="mandatory">*</span>
 					</label>
 					<select name="ikmat_place" id="ikmat_place">
 						<option value="select_ikmat" selected="selected">Velg hentelsessted...</option>
@@ -61,15 +61,7 @@
                                         </label>
                                         <select name="ikmat_unit" id="ikmat_unit">
                                             <option value="select_ikmat_unit" selected="selected_unit">Velg enhet...</option>
-                                            <optgroup label="Isbitmaskin">
-                                                    <option value="1">Kompressor</option>
-                                                    <option value="2">Vanntilkobling</option>
-                                            </optgroup>
-                                            <optgroup label="Kjøleskap">
-                                                    <option value="3">Nr1</option>
-                                                    <option value="4">Nr2</option>
-                                                    <option value="5">Nr3</option>
-                                            </optgroup>
+                                            <?php echo get_ikmat_unit_drop_down();?>
                                         </select>
                                          <label for="ikmat_problem_type">
                                                 Hva slags type ikmat avvik er dette <span class="mandatory">*</span>
