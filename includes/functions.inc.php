@@ -3,6 +3,14 @@
 /*
  * Hovedmeny
  */
+	/**
+	 * page function.
+	 * 
+	 * @access public
+	 * @param mixed $page
+	 * @param mixed $subpage
+	 * @return void
+	 */
 	function page($page, $subpage){
 	// Shows the page content according to the selected page
 
@@ -35,6 +43,14 @@
 /*
  * Under meny / Del meny
  */
+ 
+	/**
+	 * submenu function.
+	 * 
+	 * @access public
+	 * @param mixed $page
+	 * @return void
+	 */
 	function submenu($page){
 	// Shows the submenu according to the selected page
 		
@@ -101,6 +117,17 @@
  * 3. lagre data om sak i hovedtabellen.
  * 
  */
+ 
+	/**
+	 * save_help_case function.
+	 * 
+	 * @access public
+	 * @param mixed $title
+	 * @param mixed $employee_number
+	 * @param mixed $category_id
+	 * @param mixed $description
+	 * @return void
+	 */
 	function save_help_case($title,$employee_number,$category_id,$description){
 
 		
@@ -156,6 +183,18 @@
 /*
  * Funksjon for å oppdatere en enkeltsak basert på input
  */
+ 
+	/**
+	 * update_help_case function.
+	 * 
+	 * @access public
+	 * @param mixed $case_id
+	 * @param mixed $title
+	 * @param mixed $employee_number
+	 * @param mixed $category_id
+	 * @param mixed $description
+	 * @return void
+	 */
 	function update_help_case($case_id,$title,$employee_number,$category_id,$description){
 
 
@@ -212,6 +251,17 @@
  * 3. Lagre food_case data i main_case
  *
  */
+ 
+ /**
+  * save_food_case function.
+  * 
+  * @access public
+  * @param mixed $title
+  * @param mixed $employee_number
+  * @param mixed $id_food_problem
+  * @param mixed $description
+  * @return void
+  */
  function save_food_case($title,$employee_number,$id_food_problem,$description){
 
 		// DEL 1 tbl.help_case
@@ -263,6 +313,13 @@
 /*
  * Henter alle kategorier
  */
+ 
+ /**
+  * get_categories function.
+  * 
+  * @access public
+  * @return void
+  */
  function get_categories(){
  	//connect_to_tf();
  	$sql = "SELECT * FROM [tbl.help_problem_type]";
@@ -281,6 +338,12 @@
 	* Henter avdelinger
 	*/
 
+     /**
+      * get_department function.
+      * 
+      * @access public
+      * @return void
+      */
      function get_department(){
    	// koble til server og base
    	//connect_to_tf();
@@ -300,6 +363,14 @@
  * Henter info om brukeren.
  * Tar bruker id som inndata.
  */
+ 
+	/**
+	 * user_info function.
+	 * 
+	 * @access public
+	 * @param mixed $userId
+	 * @return void
+	 */
 	function user_info($userId)
 	{
 		//connect_to_tf();
@@ -323,6 +394,14 @@
 /*
  * Sjekker bruker mot DB
  */
+ 
+	/**
+	 * user_exists function.
+	 * 
+	 * @access public
+	 * @param mixed $username
+	 * @return void
+	 */
 	function user_exists($username){
 		$sql = "SELECT user_name, id_user FROM [tbl.user]
 				WHERE user_name = '$username'";
@@ -341,6 +420,13 @@
 /*
  * Henter ut liste over alle heldesk saker fra view på sql server
  */
+ 
+   /**
+    * helpdesk_list function.
+    * 
+    * @access public
+    * @return void
+    */
    function helpdesk_list(){
 
  	// Spørring
@@ -409,6 +495,13 @@
  * $user_id
  */
 
+	/**
+	 * user_helpdesk_list function.
+	 * 
+	 * @access public
+	 * @param mixed $user_id
+	 * @return void
+	 */
 	function user_helpdesk_list($user_id){
 	
 	if($_SESSION['debug'])
@@ -480,6 +573,14 @@
 /*
  * GET MAIL ADDRESS FROM USER ID
  */
+ 
+/**
+ * get_user_email function.
+ * 
+ * @access public
+ * @param mixed $user_id
+ * @return void
+ */
 function get_user_email($user_id){
 
   	$sql="SELECT user_email from [tbl.user] where id_user = $user_id;";
@@ -494,6 +595,13 @@ function get_user_email($user_id){
 
 /*
  * GET NUMBER OF HELPCASE CASES
+ */
+ 
+/**
+ * get_count_helpdesk function.
+ * 
+ * @access public
+ * @return void
  */
 function get_count_helpdesk(){
 
@@ -510,6 +618,13 @@ function get_count_helpdesk(){
 /*
  * GET NUMBER OF FOOD CASES
  */
+ 
+/**
+ * get_count_food function.
+ * 
+ * @access public
+ * @return void
+ */
 function get_count_food(){
 
 	$sql="SELECT COUNT(id_main_case) AS food_cases from [v.food_case];";
@@ -525,6 +640,13 @@ function get_count_food(){
 
 /*
  * Hente ut saksstatuser for bruk i skjema
+ */
+ 
+/**
+ * get_helpdesk_status function.
+ * 
+ * @access public
+ * @return void
  */
 function get_helpdesk_status(){
 
@@ -543,6 +665,13 @@ function get_helpdesk_status(){
 
 /*
  * Hente ut saksstatuser for bruk i skjema
+ */
+ 
+/**
+ * get_helpdesk_status_drop_down function.
+ * 
+ * @access public
+ * @return void
  */
 function get_helpdesk_status_drop_down(){
 
@@ -571,6 +700,14 @@ function get_helpdesk_status_drop_down(){
 
 /*
  * Sanitering av strenger.
+ */
+ 
+/**
+ * sanitize_string function.
+ * 
+ * @access public
+ * @param mixed $string_in
+ * @return void
  */
 function sanitize_string($string_in)
 {
