@@ -572,10 +572,9 @@ function get_helpdesk_status_drop_down(){
 /*
  * Sanitering av strenger.
  */
- 
 function sanitize_string($string_in)
 {
-	$sting_in = $string_out;
+	$string_out = mysql_escape_string($string_in);
 	return $string_out;
 }
 
