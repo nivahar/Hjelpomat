@@ -12,7 +12,7 @@
 		if(isset($_GET['helplist_do'])) // debug
 		//if(isset($_POST['helplist_do']))
 		{
-			
+			echo "Her gjør jeg noe med sakene dine!";
 		}
 	}
 	else
