@@ -562,7 +562,9 @@
     			//     $row['help_case_solution']."</td><td>".
     			//     $row['help_case_status']."</td><td>".
    			//	$row['help_case_status_description']."</td><td>".
+                               " <select name=\"help_cat\" id=\"help_cat\" class=\"validate[required]\">".
                         	get_helpdesk_status_drop_down()."</td><td>".
+                                "</select>".
     			//     $row['is_help_case']."</td><td>".
     				'<a href="?page=help&sub=single&id='.$row['id_main_case'].'">Endre</a></td><td>'.
     		"</td></tr>";
@@ -886,8 +888,7 @@ function get_helpdesk_status_drop_down(){
 	     return FALSE;
 	    exit;
 	}
-	// Start av dropdown
-	$start = "<select>";
+	
 	// Henter alle verdier
 	$tekst = "";
 	while($list=mssql_fetch_array($data)){
@@ -895,10 +896,8 @@ function get_helpdesk_status_drop_down(){
 	
 	
 	}
-	//Slutt på dropdown
-	$slutt = "</select>";
 	
-	return $start.$tekst.$slutt;
+	return $tekst;
 }
 /*
  * Hente ut saksstatuser for bruk i skjema

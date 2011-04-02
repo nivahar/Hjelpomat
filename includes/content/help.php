@@ -103,15 +103,7 @@
 					</label>
 					<select name="help_cat" id="help_cat" class="validate[required]">
 						<option value="" selected="selected">Velg en kategori...</option>
-						<optgroup label="Attraksjoner">
-							<option value="1">Kontrollpanel</option>
-						</optgroup>
-						<optgroup label="Kasser">
-							<option value="2">Skjerm</option>
-							<option value="3">Tastatur</option>
-							<option value="4">Bongskriver</option>
-							<option value="5">Kasseskuff</option>
-						</optgroup>
+						'.get_helpdesk_status_drop_down().'
 					</select>
 					
 					<label for="help_desc">
