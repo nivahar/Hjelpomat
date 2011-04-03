@@ -104,7 +104,7 @@
 
 
 					<p class="buttons">
-						<button type="submit">Registrer</button>
+						<button type="submit" name="reg_ikmat_submit" value="Registrer"/>
 						<button type="reset" onclick="return confirm('Vil du tømme skjemaet?');">Tøm skjema</button>
 					</p>
 				</form>
