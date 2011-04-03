@@ -18,7 +18,35 @@
 				echo '<p class="error">Saken ble ikke registrert.</p>';
 			}
 			
-		else: ?>
+
+		// Hvis man har valgt å vise sine saker:
+		elseif($_GET['sub'] == "show"):
+?>
+		<form action="index.php?page=help&sub=show" method="get">
+			<table id="helpdesk_list">
+				<?php user_helpdesk_list($_SESSION['user_id']); ?>
+			</table>
+			<select name="action">
+				<option id="print">Skriv ut</option>
+				<option id="delete">Slett</option>
+			</select>
+			<input type="submit" name="helplist_do" value="Utfør" />
+		 </form>
+
+
+<?php
+		// Hvis man har valgt administrasjon:
+		elseif($_GET['sub'] == "adm"):
+	?>
+		<table id="helpdesk_list">
+			<?php helpdesk_list(); ?>
+		</table>
+
+<?php
+	// Default: å registrere sak.
+		else:
+	?>
+	
                         <h1>Registrer IK-mat hendelse</h1>
 			<p>
 				Felter merket <span class="mandatory">*</span> er påkrevd!
