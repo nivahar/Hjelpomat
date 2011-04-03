@@ -3,12 +3,14 @@
         if(isset($_POST['reg_ikmat_submit'])):
 			$title = $_POST['ikmat_title'];
 			$employee_number = $_POST['emp_no'];
-			$category_id = $_POST['ikmat_location'];
-                        $unit = $_POST['ikmat_unit'];
+			$ikmat_location = $_POST['ikmat_location'];
+                        $ikmat_unit = $_POST['ikmat_unit'];
+                        $ikmat_problem_type = $_POST['ikmat_problem_type'];
+
 			$description = $_POST['ikmat_desc'];
 
                         // Save POST data to database
-			if(save_food_case($title,$employee_number,$category_id,$unit,$description)){
+			if(save_food_case($title,$employee_number,$ikmat_location,$ikmat_unit,$ikmat_problem_type,$description)){
 				echo '<p class="success">Saken ble registrert.</p>
 					<h1>'.$_POST['ikmat_title'].'</h1>
 					<p>Ansattnr. '.$_POST['emp_no'].', kategori '.$_POST['ikmat_location'].', enhet '.$_POST['ikmat_unit'].'</p>
@@ -23,7 +25,7 @@
 		elseif($_GET['sub'] == "show"):
 ?>
 		<form action="index.php?page=help&sub=show" method="get">
-			<table id="helpdesk_list">
+			<table id="ikmat_list">
 				<?php user_helpdesk_list($_SESSION['user_id']); ?>
 			</table>
 			<select name="action">
@@ -38,7 +40,7 @@
 		// Hvis man har valgt administrasjon:
 		elseif($_GET['sub'] == "adm"):
 	?>
-		<table id="helpdesk_list">
+		<table id="ikmat_list">
 			<?php helpdesk_list(); ?>
 		</table>
 
@@ -68,7 +70,7 @@
 					<label for="ikmat_place">
 						Lokasjon<span class="mandatory">*</span>
 					</label>
-					<select name="ikmat_place" id="ikmat_place">
+					<select name="ikmat_location" id="ikmat_location">
 						<option value="select_ikmat" selected="selected">Velg hentelsessted...</option>
 						<?php echo get_ikmat_place_drop_down(); ?>
 					</select>

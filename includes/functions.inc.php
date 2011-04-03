@@ -262,12 +262,13 @@
   * @param mixed $description
   * @return void
   */
- function save_food_case($title,$employee_number,$id_food_problem,$description){
+ function save_food_case($title,$employee_number,$id_food_problem_location,$id_food_problem_unit,$id_food_problem_type,$food_problem_description){
 
 		// DEL 1 tbl.help_case
-		//Sette inn data unik fo helpdesk, input fra funksjon
-  		$sql = "INSERT INTO [tbl.food_case](food_case_title,id_food_problem_type, food_case_description) 
-  				VALUES('$title','$id_food_problem','$description')";
+		//Sette inn data unik for matproblemer, input fra funksjon
+                $status = "1";
+  		$sql = "INSERT INTO [tbl.food_case](food_case_title,id_food_problem_type, food_case_description, food_case_status, id_food_case_location, id_food_case_problem_unit )
+  				VALUES('$title','$id_food_problem_type','$food_problem_description','$status','$id_food_problem_location','$id_food_problem_unit')";
 		//Utføre sql kommando
   		if(!mssql_query($sql)){
   			return FALSE;
@@ -298,8 +299,8 @@
     	// tbl.main_case
 		$dato = 'GETDATE()'; // lagrer timestamp server.
     	//Sette inn data unik fo helpdesk, input fra funksjon
-		$sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case)
-				VALUES ($dato,'$reg_user','$employee_number','$food_case_id')";
+		$sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_food_case, is_food_case, is_help_case)
+				VALUES ($dato,'$reg_user','$employee_number','$food_case_id','1','1')";
     	// Lagre data i tbl.man_case
 		if(!mssql_query($sql)){
 			return FALSE;
