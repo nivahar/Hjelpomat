@@ -6,11 +6,11 @@
 			$ikmat_location = $_POST['ikmat_location'];
                         $ikmat_unit = $_POST['ikmat_unit'];
                         $ikmat_problem_type = $_POST['ikmat_problem_type'];
-
+                        $is_help_case = $_POST['is_help_case'];
 			$description = $_POST['ikmat_desc'];
 
                         // Save POST data to database
-			if(save_food_case($title,$employee_number,$ikmat_location,$ikmat_unit,$ikmat_problem_type,$description)){
+			if(save_food_case($title,$employee_number,$ikmat_location,$ikmat_unit,$ikmat_problem_type,$description,$is_help_case)){
 				echo '<p class="success">Saken ble registrert.</p>
 					<h1>'.$_POST['ikmat_title'].'</h1>
 					<p>Ansattnr. '.$_POST['emp_no'].', kategori '.$_POST['ikmat_location'].', enhet '.$_POST['ikmat_unit'].'</p>
@@ -98,13 +98,13 @@
 					</label>
 					<textarea name="ikmat_desc" id="ikmat_desc" required></textarea>
 
-                                        <label for="is_helpcase">
-                                            <input type="checkbox" name="is_helpcase">Huk av om denne saken trenger teknisk oppfølging
+                                        <label for="is_help_case">
+                                            <input type="checkbox" name="is_help_case" value="1">Huk av om denne saken trenger teknisk oppfølging
                                         </label>
 
 
 					<p class="buttons">
-						<button type="submit" name="reg_ikmat_submit" value="Registrer"/>
+						<button type="submit" name="reg_ikmat_submit" value="Register" />Registrer
 						<button type="reset" onclick="return confirm('Vil du tømme skjemaet?');">Tøm skjema</button>
 					</p>
 				</form>

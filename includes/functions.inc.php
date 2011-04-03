@@ -262,7 +262,7 @@
   * @param mixed $description
   * @return void
   */
- function save_food_case($title,$employee_number,$id_food_problem_location,$id_food_problem_unit,$id_food_problem_type,$food_problem_description){
+ function save_food_case($title,$employee_number,$id_food_problem_location,$id_food_problem_unit,$id_food_problem_type,$food_problem_description,$is_help_case){
 
 		// DEL 1 tbl.help_case
 		//Sette inn data unik for matproblemer, input fra funksjon
@@ -300,7 +300,7 @@
 		$dato = 'GETDATE()'; // lagrer timestamp server.
     	//Sette inn data unik fo helpdesk, input fra funksjon
 		$sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_food_case, is_food_case, is_help_case)
-				VALUES ($dato,'$reg_user','$employee_number','$food_case_id','1','1')";
+				VALUES ($dato,'$reg_user','$employee_number','$food_case_id','1','$is_help_case')";
     	// Lagre data i tbl.man_case
 		if(!mssql_query($sql)){
 			return FALSE;
