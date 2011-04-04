@@ -48,7 +48,12 @@
 	// Default: å registrere sak.
 		else:
 	?>
-	
+<script>
+  function toggle(checkboxID, toggleID) {
+  var checkbox = document.getElementById(checkboxID);
+  var toggle = document.getElementById(toggleID);
+  updateToggle = checkbox.checked ? toggle.disabled=true : toggle.disabled=false;
+}</script>
                         <h1>Registrer IK-mat hendelse</h1>
 			<p>
 				Felter merket <span class="mandatory">*</span> er påkrevd!
@@ -101,6 +106,8 @@
                                         <label for="is_help_case">
                                             <input type="checkbox" name="is_help_case" value="1">Huk av om denne saken trenger teknisk oppfølging
                                         </label>
+
+                                       
 
 
 					<p class="buttons">
