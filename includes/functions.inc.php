@@ -1091,27 +1091,86 @@ return $option;
 
 function get_ikmat_place_drop_down(){
 
-    $sql = "SELECT A.location_name AS level_1, B.id_food_case_location AS ID, B.location_name AS level_2
-    FROM [hjelpomat].[dbo].[tbl.food_case_location] AS A
-   INNER JOIN [hjelpomat].[dbo].[tbl.food_case_location] AS B ON (A.id_food_case_location= B.parent_food_case_location)
-  Order by A.parent_food_case_location asc";
-//Sjekk av gjennomført spørring
-if(!$data=mssql_query($sql)){
-     return FALSE;
-    exit;
+	$sql = "SELECT A.location_name AS level_1, B.id_food_case_location AS ID, B.location_name AS level_2
+	FROM [hjelpomat].[dbo].[tbl.food_case_location] AS A
+	INNER JOIN [hjelpomat].[dbo].[tbl.food_case_location] AS B ON (A.id_food_case_location= B.parent_food_case_location)
+	Order by A.parent_food_case_location asc";
+	//Sjekk av gjennomført spørring
+	if(!$data=mssql_query($sql)){
+	     return FALSE;
+	    exit;
+	}
+	
+	
+	// Henter alle verdier
+	$option = "";
+	while($list=mssql_fetch_array($data))
+	{
+		$option.= "<option value=\"".$list['ID']."\">".$list['level_1']." - ".$list['level_2']."</option>";
+	}
+	//print ut
+	return $option;
 }
 
 
-// Henter alle verdier
-$option = "";
-while($list=mssql_fetch_array($data)){
-$option.= "<option value=\"".$list['ID']."\">".$list['level_1']." - ".$list['level_2']."</option>";
 
+/*
+ * Oppretter pdf
+ * Returverdien må printes ut i en ny side.
+ */
 
+/**
+ * make_case_pdf function.
+ * 
+ * @access public
+ * @return void
+ */
+function make_case_pdf()
+{
+	// Tester en variabel i PDF-en.
+	$tiden = date('H.i:s');
+	
+	
+	// Oppretter en peker til PDF-en.
+	$minPdf = PDF_new();
+	
+	// Åpner PDFen for redigering.
+	PDF_open_file($minPdf, "");
+	
+	// Starter på en side med A4(?)-størrelse.
+	PDF_begin_page($minPdf, 595, 842);
+	
+	// Setter en font.
+	$minFont = PDF_findfont($minPdf, "Times-Roman", "host", 0);
+	PDF_setfont($minPdf, $minFont, 10);
+	
+	// Skriver til siden vi har startet, koordinater fra nederste venstre hjørne.
+	PDF_show_xy($minPdf, "Hurra for PDF!", 50, 750);
+	PDF_show_xy($minPdf, "Dette fungerer.", 50, 730);
+	PDF_show_xy($minPdf, "Klokka er $tiden", 50, 710);
+
+	// Avslutter siden.
+	PDF_end_page($minPdf);
+	
+	// Avslitter PDF-en.
+	PDF_close($minPdf);
+	
+	// Henter innholdet i bufferen (henter PDF-en, altså).
+	$buffer = PDF_get_buffer($minPdf);
+	
+	// Finner størrelsen på fila.
+	$lengde = strlen($buffer);
+	
+	// Setter filheadere så nettleseren skjønner at den får 
+	// servert en PDF-fil.
+	header("Content-type: application/pdf");
+	header("Content-Length: $lengde");
+	header("Content-Disposition: inline; filename=sak.pdf");
+	
+	// Serverer ut PDF-en til nettleseren.
+	return $buffer;
+	
+	// Sletter PDF-en fra minnet.
+	PDF_delete($minPdf);
 }
-//print ut
-return $option;
-}
-
-
 ?>
