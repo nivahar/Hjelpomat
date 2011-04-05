@@ -1167,10 +1167,10 @@ function make_case_pdf()
 	header("Content-Length: $lengde");
 	header("Content-Disposition: inline; filename=sak.pdf");
 	
-	// Serverer ut PDF-en til nettleseren.
-	return $buffer;
-	
 	// Sletter PDF-en fra minnet.
 	PDF_delete($minPdf);
+	
+	// Serverer ut PDF-en til nettleseren.
+	return $buffer;
 }
 ?>
