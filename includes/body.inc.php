@@ -46,7 +46,7 @@
 						</a> 
 					</li>
 				<?php
-					if($_SESSION['user_level'] == 2)
+					if($_SESSION['user_level'] >= 2)
 					{
 						echo '<li id="admin-menu">
 								<a href="?page=admin">
