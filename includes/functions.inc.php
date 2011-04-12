@@ -1202,8 +1202,8 @@ function make_case_pdf($caseID)
 	PDF_setfont($minPdf, $bodyFont, 10);
 	
 	// Skriver til siden vi har startet, koordinater fra nederste venstre hjørne.
-	PDF_show_xy($minPdf, "Beskrivelse, sak $caseID", 50, 750);
-	PDF_show_xy($minPdf, $caseInfo['help_case_title'], 50, 730);
+	PDF_show_xy($minPdf, "Beskrivelse", 50, 750);
+	PDF_show_xy($minPdf, $caseInfo['help_case_description'], 50, 730);
 	PDF_show_xy($minPdf, "Klokka er $tiden", 50, 710);
 
 	// Avslutter siden.

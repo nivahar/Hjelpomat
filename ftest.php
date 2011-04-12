@@ -52,7 +52,26 @@ if(!isset($_REQUEST['sendpdf'])):
 	include_once('includes/foot.inc.php');
 
 elseif(isset($_REQUEST['sendpdf'])):
+	/*
+	 * Kobling til database
+	 */
+	 
+	//Login data finnes i fil:
+	require 'includes/db_secure.php';
+	// Legger logindata i et array.
+	$dbLogin = db_login();
+	$dbConnection = mssql_connect($dbLogin['address'], $dbLogin['user'], $dbLogin['pass']);
+	
+	// Setter database
+	if(!mssql_select_db('hjelpomat', $dbConnection))
+	{
+		die('Kunne ikke koble til database');
+	}
+
 	require_once('includes/functions.inc.php');
+	
 	print make_case_pdf($_REQUEST['saksnummer']);
+
+	mssql_close($dbConnection);
 endif;
 ?>
