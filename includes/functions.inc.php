@@ -1173,4 +1173,47 @@ function make_case_pdf()
 	// Serverer ut PDF-en til nettleseren.
 	return $buffer;
 }
+
+
+
+/*
+ * Returnerer info om en enkeltsak.
+ */
+
+/**
+ * get_single_helpdesk_case function.
+ * 
+ * @access public
+ * @param mixed $caseID
+ * @return void
+ */
+function get_single_helpdesk_case($caseID)
+{
+	$sql = "SELECT [id_main_case]
+	, CAST([created_date] as CHAR(10)) AS [created_date]
+	,[reg_user]
+	,[reg_employee]
+	,[id_help_case]
+	,[help_case_title]
+	,[case_problem_type]
+	,[help_problem_type_description]
+	,[help_case_description]
+	,[help_case_solution]
+	,[help_case_status]
+	,[help_case_status_description]
+	,[is_help_case]
+	FROM [v.help_case]
+	WHERE [id_main_case] = '$caseID' ";
+	
+	if(!$data=mssql_query($sql)){
+		return FALSE;
+		exit;
+	}
+	
+	while($list = mssql_fetch_array($data))
+	{
+		$case = $list;
+	}
+	return $case;
+}
 ?>
