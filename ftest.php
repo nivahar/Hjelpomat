@@ -38,10 +38,8 @@ if(!isset($_REQUEST['sendpdf'])):
 		echo "Nei.";	
 	}
 	
-	echo "<br/><br/>Saksinfo: ";
-	$info = get_single_helpdesk_case(20);
-	print_r($info);
-	echo $info;
+	echo "<br/><br/><strong>Saksinfo</strong>: ";
+	print_r(get_single_helpdesk_case(20));
 
 ?>
 <br/><br/>

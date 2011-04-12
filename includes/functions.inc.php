@@ -865,6 +865,62 @@ function get_count_food(){
 }
 
 
+
+/*
+ * Returnerer info om en enkeltsak.
+ */
+
+/**
+ * get_single_helpdesk_case function.
+ * 
+ * @access public
+ * @param mixed $caseID
+ * @return void
+ */
+function get_single_helpdesk_case($caseID)
+{
+	$sql = "SELECT [id_main_case]
+	, CAST([created_date] as CHAR(10)) AS [created_date]
+	,[reg_user]
+	,[reg_employee]
+	,[id_help_case]
+	,[help_case_title]
+	,[case_problem_type]
+	,[help_problem_type_description]
+	,[help_case_description]
+	,[help_case_solution]
+	,[help_case_status]
+	,[help_case_status_description]
+	,[is_help_case]
+	FROM [v.help_case]
+	WHERE [id_main_case] = '$caseID' ";
+	
+	if(!$data=mssql_query($sql)){
+		return FALSE;
+		exit;
+	}
+	
+	while($list = mssql_fetch_array($data))
+	{
+		$case['id_main_case'] = $list['id_main_case'];
+		$case['created_date'] = $list['created_date'];
+		$case['reg_user'] = $list['reg_user'];
+		$case['reg_employee'] = $list['reg_employee'];
+		$case['id_help_case'] = $list['id_help_case'];
+		$case['help_case_title'] = $list['help_case_title'];
+		$case['case_problem_type'] = $list['case_problem_type'];
+		$case['help_problem_type_description'] = $list['help_problem_type_description'];
+		$case['help_case_description'] = $list['help_case_description'];
+		$case['help_case_solution'] = $list['help_case_solution'];
+		$case['help_case_status'] = $list['help_case_status'];
+		$case['help_case_status_description'] = $list['help_case_status_description'];
+		$case['is_help_case'] = $list['is_help_case'];
+	}
+	return $case;
+}
+
+
+
 /*
  * Hente ut saksstatuser for bruk i skjema
  */
@@ -1125,8 +1181,9 @@ function get_ikmat_place_drop_down(){
  * @access public
  * @return void
  */
-function make_case_pdf()
+function make_case_pdf($caseID)
 {
+	$caseInfo = get_single_helpdesk_case($caseID);
 	// Tester en variabel i PDF-en.
 	$tiden = date('H.i:s');
 	
@@ -1140,13 +1197,13 @@ function make_case_pdf()
 	// Starter på en side med A4(?)-størrelse.
 	PDF_begin_page($minPdf, 595, 842);
 	
-	// Setter en font.
-	$minFont = PDF_findfont($minPdf, "Times-Roman", "host", 0);
-	PDF_setfont($minPdf, $minFont, 10);
+	// Setter en brødtekstfont.
+	$bodyFont = PDF_findfont($minPdf, "Times-Roman", "host", 0);
+	PDF_setfont($minPdf, $bodyFont, 10);
 	
 	// Skriver til siden vi har startet, koordinater fra nederste venstre hjørne.
-	PDF_show_xy($minPdf, "Hurra for PDF!", 50, 750);
-	PDF_show_xy($minPdf, "Dette fungerer.", 50, 730);
+	PDF_show_xy($minPdf, "Beskrivelse, sak $caseID", 50, 750);
+	PDF_show_xy($minPdf, $caseInfo['help_case_title'], 50, 730);
 	PDF_show_xy($minPdf, "Klokka er $tiden", 50, 710);
 
 	// Avslutter siden.
@@ -1174,46 +1231,4 @@ function make_case_pdf()
 	return $buffer;
 }
 
-
-
-/*
- * Returnerer info om en enkeltsak.
- */
-
-/**
- * get_single_helpdesk_case function.
- * 
- * @access public
- * @param mixed $caseID
- * @return void
- */
-function get_single_helpdesk_case($caseID)
-{
-	$sql = "SELECT [id_main_case]
-	, CAST([created_date] as CHAR(10)) AS [created_date]
-	,[reg_user]
-	,[reg_employee]
-	,[id_help_case]
-	,[help_case_title]
-	,[case_problem_type]
-	,[help_problem_type_description]
-	,[help_case_description]
-	,[help_case_solution]
-	,[help_case_status]
-	,[help_case_status_description]
-	,[is_help_case]
-	FROM [v.help_case]
-	WHERE [id_main_case] = '$caseID' ";
-	
-	if(!$data=mssql_query($sql)){
-		return FALSE;
-		exit;
-	}
-	
-	while($list = mssql_fetch_array($data))
-	{
-		$case = $list;
-	}
-	return $case;
-}
 ?>
