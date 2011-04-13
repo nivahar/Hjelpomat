@@ -1197,6 +1197,9 @@ function make_case_pdf($caseID)
 	// Starter på en side med A4(?)-størrelse.
 	PDF_begin_page($minPdf, 595, 842);
 	
+	// Setter UTF-8 tegnsett.
+	pdf_set_parameter($minPdf, "textformat", "utf8");
+	
 	// Setter en brødtekstfont.
 	$bodyFont = PDF_findfont($minPdf, "Times-Roman", "host", 0);
 	PDF_setfont($minPdf, $bodyFont, 10);
