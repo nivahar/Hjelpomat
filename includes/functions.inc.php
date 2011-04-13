@@ -1171,6 +1171,38 @@ function get_ikmat_place_drop_down(){
 
 
 /*
+ * Funksjon som hjelper med setting av font i PDF.
+ */
+ 
+
+/**
+ * pdf_font function.
+ * 
+ * @access public
+ * @param mixed $pdf
+ * @param mixed $size
+ * @param string $face (default: 'arial')
+ * @return void
+ */
+/*
+function pdf_font($pdf,$size,$face='arial')
+{
+	//Set the path  
+	$path=$_SERVER['DOCUMENT_ROOT'];
+	${$face} = $face."=$path/fonts/".$face.".ttf";
+
+	pdf_set_parameter($pdf, 'FontOutline',${$face});
+	
+	$font=pdf_findfont($pdf,$face,"host",0);
+
+	pdf_setfont($pdf,$font,$size);
+}
+*/
+
+
+
+
+/*
  * Oppretter pdf
  * Returverdien må printes ut i en ny side.
  */
@@ -1198,10 +1230,19 @@ function make_case_pdf($caseID)
 	PDF_begin_page($minPdf, 595, 842);
 	
 	// Setter UTF-8 tegnsett.
-	pdf_set_parameter($minPdf, "textformat", "utf8");
+	//pdf_set_parameter($minPdf, "textformat", "utf8");
 	
-	// Setter en brødtekstfont.
-	$bodyFont = PDF_findfont($minPdf, "Times-Roman", "host", 0);
+	// Setter fonter.
+	$bodyFont = PDF_setfont($minPdf, "Times-Roman", "utf8");
+	$headFont = PDF_setfont($minPdf, "Helvetica-Bold", "utf8");
+	$fatFont = PDF_setfont($minPdf, "Times-Bold", "utf8");
+		
+	// Aktiverer font.
+	PDF_setfont($minPdf, $headFont, 18);
+	
+	PDF_show_xy($minPdf, $caseInfo['help_case_title'], 50, 780);
+	
+	// Aktiverer font.	
 	PDF_setfont($minPdf, $bodyFont, 10);
 	
 	// Skriver til siden vi har startet, koordinater fra nederste venstre hjørne.
