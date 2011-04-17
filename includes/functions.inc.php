@@ -569,7 +569,19 @@ function true_false($input){
     		"</th></tr>";
 	$radnummer = 0;
  	while($row = mssql_fetch_array($data)){
-   	//lager tabell
+	
+	// Begrenser lengden på saksbeskrivelsen og setter tre prikker dersom beskrivelsen blir kuttet.
+	if(strlen($row['help_case_description']) > 40)
+	{
+		$dotdot = "…";
+	}
+	else
+	{
+		$dotdot = "";
+	}
+	$beskrivelse = substr($row['help_case_description'], 0, 40).$dotdot;
+	
+	//lager tabell
      	echo "<tr class=\"row$radnummer\"><td>"."<input type=\"checkbox\" name=\"case_id\" value=\"".$row['id_main_case']."\" /></td><td>".
    				$row['id_main_case']."</td><td>".
    				$row['created_date']."</td><td>".
@@ -579,7 +591,7 @@ function true_false($input){
    				$row['help_case_title']."</td><td>".
     			//     $row['case_problem_type']."</td><td>".
    				$row['help_problem_type_description']."</td><td>".
-   				$row['help_case_description']."</td><td>".
+   				$beskrivelse."</td><td>".
     			//     $row['help_case_solution']."</td><td>".
     			//     $row['help_case_status']."</td><td>".
    			//	$row['help_case_status_description']."</td><td>".
