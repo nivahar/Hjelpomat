@@ -1260,6 +1260,7 @@ function make_case_pdf($caseID)
 	PDF_show_xy($minPdf, "Ikke utført", 220, 73);
 	PDF_show_xy($minPdf, "Trenger ytterligere utbedring", 380, 73);
 	
+
 	// Lager en tekstboks for utfylling av kommentar og avkryssning av (ikke) utført.
 	PDF_rect($minPdf, 30, 100, 535, 150);
 	PDF_rect($minPdf, 30, 70, 15,15);	//Fullført
