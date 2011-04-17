@@ -1198,7 +1198,7 @@ function make_case_pdf($caseID)
 {
 	$caseInfo = get_single_helpdesk_case($caseID);
 	// Tester en variabel i PDF-en.
-	$tiden = date('H.i:s');
+	$timestamp = date('j/n - Y  H.i:s');
 	
 	
 	// Oppretter en peker til PDF-en.
@@ -1215,22 +1215,59 @@ function make_case_pdf($caseID)
 	
 	// Setter fonter.
 	$bodyFont = PDF_findfont($minPdf, "Times-Roman", "host", 0);
-	$fatFont = PDF_findfont($minPdf, "Times-Bold", "host", 0);
+	$fatFont = PDF_findfont($minPdf, "Helvetica-Bold", "host", 0);
 	$headFont = PDF_findfont($minPdf, "Helvetica-Bold", "host", 0);
+	$italicBodyFont = PDF_findfont($minPdf, "Times-Italic", "host", 0);
 		
-	// Aktiverer font.
+		
+	// Aktiverer overskriftfont.
 	PDF_setfont($minPdf, $headFont, 18);
 	
-	PDF_show_xy($minPdf, $caseInfo['help_case_title'], 50, 780);
+	// Skriver på siden
+	PDF_show_xy($minPdf, $caseInfo['help_case_title'], 30, 720);
 	
-	// Aktiverer font.	
-	PDF_setfont($minPdf, $bodyFont, 10);
+	
+	// Aktiverer brødtekstfont.	
+	PDF_setfont($minPdf, $bodyFont, 12);
 	
 	// Skriver til siden vi har startet, koordinater fra nederste venstre hjørne.
-	PDF_show_xy($minPdf, "Beskrivelse", 50, 750);
-	PDF_show_xy($minPdf, $caseInfo['help_case_description'], 50, 730);
-	PDF_show_xy($minPdf, "Klokka er $tiden", 50, 710);
-
+	PDF_show_xy($minPdf, $caseInfo['help_problem_type_description'], 30, 750);
+	// Beskrivelse
+	PDF_show_xy($minPdf, $caseInfo['help_case_description'], 30, 700);
+	
+	
+	// Aktiverer fotnotefont
+	PDF_setfont($minPdf, $bodyFont, 10);
+	
+	// Skriver på siden.
+	PDF_show_xy($minPdf, $timestamp, 500, 800);	// Dato og tidspunkt for utskrift.
+	PDF_show_xy($minPdf, $timestamp, 30, 800);	// Bruker som lagde saken.
+	
+	
+	
+	// Aktiverer kursiv tekst.
+	PDF_setfont($minPdf, $italicBodyFont, 12);
+	
+	// Overskrift for tekstboks.
+	PDF_show_xy($minPdf, "Kommentar", 50, 260);
+	
+	
+	// Aktiverer fet tekst.
+	PDF_setfont($minPdf, $fatFont, 14);
+	
+	// Skriver tekst til sjekkboksene nederst.
+	PDF_show_xy($minPdf, "Fullført", 50, 73);
+	PDF_show_xy($minPdf, "Ikke utført", 220, 73);
+	PDF_show_xy($minPdf, "Trenger ytterligere utbedring", 380, 73);
+	
+	// Lager en tekstboks for utfylling av kommentar og avkryssning av (ikke) utført.
+	PDF_rect($minPdf, 30, 100, 535, 150);
+	PDF_rect($minPdf, 30, 70, 15,15);	//Fullført
+	PDF_rect($minPdf, 200, 70, 15,15);	//Ikke utført
+	PDF_rect($minPdf, 360, 70, 15,15);	//Trenger mer..
+	PDF_stroke($minPdf);
+	
+	
 	// Avslutter siden.
 	PDF_end_page($minPdf);
 	
