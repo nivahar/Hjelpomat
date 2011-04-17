@@ -3,6 +3,7 @@
 ?>
 		
 <?php
+        # Auth check
 	if($_SESSION['loggedin'])
 	{
 		include_once('includes/body.inc.php');
@@ -15,6 +16,7 @@
 			echo "Her gjør jeg noe med sakene dine!";
 		}
 	}
+        # Login page
 	else
 	{
 		include_once('login.php');
@@ -22,5 +24,6 @@
 ?>
 
 <?php
+        # Footnote of page
 	include_once('includes/foot.inc.php');
 ?>
