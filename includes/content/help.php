@@ -122,7 +122,7 @@
 				</form>';
 				
 		
-		// Default: å registrere sak. 
+		// Default: å registrere sak.
 		else: 
 	?>
 			<h1>Registrer sak</h1> 
@@ -155,7 +155,9 @@
 					</label>
 					<textarea name="help_desc" id="help_desc" required class="validate[required]"></textarea>
 					<p class="buttons">
-						<input type="submit" name="reg_help_submit" value="Registrer" />
+						<!-- <input type="submit" name="reg_help_submit" value="Registrer" /> -->
+
+                                                <button type="submit" name="reg_help_submit" value="Register" />Registrer
 						<button type="reset" onclick="return confirm('Vil du tømme skjemaet?');">Tøm skjema</button>
 					</p>
 				</form>
