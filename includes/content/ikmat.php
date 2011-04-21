@@ -76,7 +76,7 @@
 						Lokasjon<span class="mandatory">*</span>
 					</label>
 					<select name="ikmat_location" id="ikmat_location">
-						<option value="select_ikmat" selected="selected">Velg hentelsessted...</option>
+						<option value="select_ikmat" selected="selected">Velg hendelsessted...</option>
 						<?php echo get_ikmat_place_drop_down(); ?>
 					</select>
 
