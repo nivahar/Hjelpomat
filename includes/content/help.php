@@ -16,13 +16,12 @@
 			}else{
 				echo '<p class="error">Saken ble ikke registrert. Pokker.</p>';
 			}
-		
-		
-		
-		// Hvis man har valgt å vise sine saker:
-		elseif($_GET['sub'] == "show"):
+
+                        // Hvis man har valgt å vise sine saker:
+                        elseif($_GET['sub'] == "show"):
 ?>
-		<form action="index.php?page=help&sub=show" method="get">
+
+                 <form action="index.php?page=help&sub=show" method="get">
 			<table id="helpdesk_list">
 				<?php user_helpdesk_list($_SESSION['user_id']); ?>
 			</table>

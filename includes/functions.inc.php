@@ -41,7 +41,7 @@
 	}
 
 /*
- * Under meny / Del meny
+ * Undermeny / Delmeny
  */
  
 	/**
@@ -114,7 +114,7 @@
  *
  * 1. Lagre detaljer om en helpdesk sak som er unikt for helpdesk
  * 2. Hente ID til sak registrert i 1 for å kunne lagre den i felles tabellen
- * 3. lagre data om sak i hovedtabellen.
+ * 3. Lagre data om sak i hovedtabellen.
  * 
  */
  
@@ -168,7 +168,7 @@
     	// tbl.main_case
 		$dato = 'GETDATE()'; // lagrer timestamp server.
     		$is_help_case = '1';
-    	//Sette inn data unik fo helpdesk, input fra funksjon
+    	//Sette inn data unik for helpdesk, input fra funksjon
 		$sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case,is_help_case)
 				VALUES ($dato,'$reg_user','$employee_number','$help_case_id','$is_help_case')";
     	//Lagre data i tbl.man_case
@@ -247,7 +247,7 @@
  * Funksjon save food case
  *
  * 1. Lagre food_case data
- * 2. finne id av nr 1
+ * 2. Finne id av nr 1
  * 3. Lagre food_case data i main_case
  *
  */
@@ -448,7 +448,7 @@
  	// Kjør spørring
  	$data = mssql_query($sql);
  	// Tabell Overskrift
-	echo "<tr><th></th><th>
+	echo "<tr><th>Velg</th><th>
                                 ID-Sak</th><th>".
   				"Dato</th><th>".
     			//    "Bruker ID</th><th>".
@@ -510,7 +510,7 @@ function true_false($input){
 }
 
 /*
- * Henter ut liste over alle heldesk saker fra view på sql server
+ * Henter ut liste over alle helpdesk saker fra view på sql server
  * Input parameter brukerens id som må hentes fra session.
  *
  * Tar Alle Felter i databasen
