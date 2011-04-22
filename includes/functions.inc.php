@@ -449,10 +449,10 @@
                                 $data = mssql_query($sql);
  	// Tabell Overskrift
                                 echo "<tr><th>Velg</th><th>".
-                                "ID-Sak</th><th>".
+                                "ID</th><th>".
   				"Dato</th><th>".
                       	  //    "Bruker ID</th><th>".
-  				"Ansatt-ID</th><th>".
+  				"Ansatt</th><th>".
     			  //    "HelpcaseID</th><th>".
   				"Tittel</th><th>".
     			  //    "Problemtype ID</th><th>".
@@ -460,13 +460,34 @@
   				"Saksbeskrivelse</th><th>".
   				"Løsning</th><th>".
   				"Status</th><th>".
-  				"Er Helpdesk</th><th>".
-                                "</th></tr>";
+  				"Helpdesk</th><th>".
+    		"</th></tr>";
 		
 		// For alternerende bakgrunn på radene.
 		$rad = 0;
 		
 		while($row = mssql_fetch_array($data)){
+        // Begrenser lengden på saksbeskrivelsen og setter tre prikker dersom beskrivelsen blir kuttet.
+	if(strlen($row['help_case_description']) > 40)
+	{
+		$dotdot = "…";
+	}
+	else
+	{
+		$dotdot = "";
+	}
+	$beskrivelse = substr($row['help_case_description'], 0, 40).$dotdot;
+        // Begrenser lengden på løsningen og setter tre prikker dersom beskrivelsen blir kuttet.
+	if(strlen($row['help_case_solution']) > 40)
+	{
+		$dotdot = "…";
+	}
+	else
+	{
+		$dotdot = "";
+	}
+	$beskrivelselosning = substr($row['help_case_solution'], 0, 40).$dotdot;
+                
 		//lager tabell
      	echo "<tr class=\"row$rad\"><td>"."<input type=\"checkbox\" name=\"case_id\" value=\"".$row['id_main_case']."\" /></td><td>".
                                 $row['id_main_case']."</td><td>".
@@ -477,8 +498,10 @@
    				$row['help_case_title']."</td><td>".
     			//     $row['case_problem_type']."</td><td>".
    				$row['help_problem_type_description']."</td><td>".
-   				$row['help_case_description']."</td><td>".
-                                $row['help_case_solution']."</td><td>".
+   				//$row['help_case_description']."</td><td>".
+                                $beskrivelse."</td><td>".
+                               // $row['help_case_solution']."</td><td>".
+                                $beskrivelselosning."</td><td>".
                                 "<select>".
                                 get_helpdesk_status_drop_down()."</td><td>".
    				"</select>".
