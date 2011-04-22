@@ -446,22 +446,22 @@
 	FROM [v.help_case]";
 
  	// Kjør spørring
- 	$data = mssql_query($sql);
+                                $data = mssql_query($sql);
  	// Tabell Overskrift
-	echo "<tr><th>Velg</th><th>
-                                ID-Sak</th><th>".
+                                echo "<tr><th>Velg</th><th>".
+                                "ID-Sak</th><th>".
   				"Dato</th><th>".
-    			//    "Bruker ID</th><th>".
+                      	  //    "Bruker ID</th><th>".
   				"Ansatt-ID</th><th>".
-    			//    "HelpcaseID</th><th>".
+    			  //    "HelpcaseID</th><th>".
   				"Tittel</th><th>".
-    			//    "Problemtype ID</th><th>".
+    			  //    "Problemtype ID</th><th>".
   				"Problemtype</th><th>".
   				"Saksbeskrivelse</th><th>".
   				"Løsning</th><th>".
   				"Status</th><th>".
   				"Er Helpdesk</th><th>".
-    		"</th></tr>";
+                                "</th></tr>";
 		
 		// For alternerende bakgrunn på radene.
 		$rad = 0;
@@ -550,24 +550,24 @@ function true_false($input){
 	WHERE [reg_user] = '$user_id' ";
 
  	// Kjør spørring
- 	$data = mssql_query($sql);
+                                $data = mssql_query($sql);
  	// Tabell Overskrift
-  	echo "<tr><th>Velg</th><th>".
+                           echo "<tr><th>Velg</th><th>".
   				"ID-sak</th><th>".
   				"Dato</th><th>".
-    			//    "Bruker ID</th><th>".
+                          //    "Bruker ID</th><th>".
   				"Ansatt-ID</th><th>".
-    			//    "HelpcaseID</th><th>".
+    			  //    "HelpcaseID</th><th>".
   				"Tittel</th><th>".
-    			//    "Problemtype ID</th><th>".
+    			  //    "Problemtype ID</th><th>".
   				"Problemtype</th><th>".
   				"Saksbeskrivelse</th><th>".
-    			//    "Løsning</th><th>".
-    			//    "Status id</th><th>".
+    			  //    "Løsning</th><th>".
+    			  //    "Status id</th><th>".
   				"Status</th><th>".
-    			//    "Helpdesk ja/nei</th><th>".
-    		"</th></tr>";
-	$radnummer = 0;
+    			  //    "Helpdesk ja/nei</th><th>".
+                                "</th></tr>";
+                                $radnummer = 0;
  	while($row = mssql_fetch_array($data)){
 	
 	// Begrenser lengden på saksbeskrivelsen og setter tre prikker dersom beskrivelsen blir kuttet.
