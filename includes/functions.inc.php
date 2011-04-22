@@ -674,7 +674,7 @@ function true_false($input){
 		$rad = 0;
 		while($row = mssql_fetch_array($data)){
    	//lager tabell
-     	echo "<tr class=\"row$rad\"><td>".$row['id_food_case']."</td><td>".
+     	echo "<tr class=\"row$rad\"><td>"."<input type=\"checkbox\ name=\"case_id\"value=\"".$row['id_food_case']."\" /></td><td>".
    				$row['created_date']."</td><td>".
     			//     $row['reg_user']."</td><td>".
    				$row['reg_employee']."</td><td>".
