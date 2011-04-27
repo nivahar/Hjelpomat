@@ -52,10 +52,23 @@ if(!isset($_REQUEST['sendpdf'])):
 	include_once('includes/foot.inc.php');
 
 elseif(isset($_REQUEST['sendpdf'])):
+	require_once('includes/functions.inc.php');
+	
+	/*// Setter FPDF-konstant og inkluderer FPDF-fila.
+	define('FPDF_FONTPATH','/var/www/includes/font/');
+	require('includes/fpdf.php');
+	
+	$pdf=new FPDF();
+	$pdf->AddPage();
+	$pdf->SetFont('Arial','B',16);
+	$pdf->Cell(40,10,'Hello World!');
+	$pdf->Output();*/
+	print_case_pdf(1);
+	
+	
 	/*
 	 * Kobling til database
 	 */
-	 
 	//Login data finnes i fil:
 	require 'includes/db_secure.php';
 	// Legger logindata i et array.
@@ -70,7 +83,7 @@ elseif(isset($_REQUEST['sendpdf'])):
 
 	require_once('includes/functions.inc.php');
 	
-	print make_case_pdf($_REQUEST['saksnummer']);
+	//print make_case_pdf($_REQUEST['saksnummer']);
 
 	mssql_close($dbConnection);
 endif;
