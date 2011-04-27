@@ -1207,6 +1207,34 @@ function get_ikmat_place_drop_down(){
 
 
 /*
+ * Oppretter PDF med det frie biblioteket FPDF.
+ */
+ 
+/**
+ * print_case_pdf function.
+ * 
+ * @access public
+ * @param mixed $caseID
+ * @return void
+ */
+function print_case_pdf($caseID)
+{
+	// Setter FPDF-konstant og inkluderer FPDF-fila.
+	define('FPDF_FONTPATH','/var/www/includes/font/');
+	require('fpdf.php');
+	
+	$pdf=new FPDF();
+	$pdf->AddPage();
+	$pdf->SetFont('Arial', '', 16);
+	$pdf->Cell(40,10,'Hello World!');
+	$pdf->Output();
+}
+
+
+
+
+
+/*
  * Oppretter pdf
  * Returverdien må printes ut i en ny side.
  */
