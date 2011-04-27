@@ -649,7 +649,7 @@ function true_false($input){
 	,[food_case_solution]
 	,[food_case_status]
         ,[id_food_case_location]
-	,[is_food_case]
+	
 	FROM [v.food_case]";
 
  	// KjÃ¸r spÃ¸rring
