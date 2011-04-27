@@ -3,7 +3,7 @@
 	require_once('includes/functions.inc.php');
 	
 	// For utvikling:
-	$_SESSION['debug'] = TRUE; // TRUE viser debug-info (utvikling), FALSE skjuler (default).
+	$_SESSION['debug'] = FALSE; // TRUE viser debug-info (utvikling), FALSE skjuler (default).
 	
 	/*
 	 * Kobling til database
