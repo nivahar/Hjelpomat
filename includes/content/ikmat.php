@@ -26,7 +26,8 @@
 ?>
 		<form action="index.php?page=help&sub=show" method="get">
 			<table id="ikmat_list">
-				<?php user_helpdesk_list($_SESSION['user_id']); ?>
+				<?php #user_ikmat_list($_SESSION['user_id']);
+                                ikmat_list();?>
 			</table>
 			<select name="action">
 				<option id="print">Skriv ut</option>
@@ -41,7 +42,7 @@
 		elseif($_GET['sub'] == "adm"):
 	?>
 		<table id="ikmat_list">
-			<?php helpdesk_list(); ?>
+			<?php #helpdesk_list(); ?>
 		</table>
 
 <?php

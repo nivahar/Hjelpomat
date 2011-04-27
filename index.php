@@ -4,6 +4,7 @@
 		
 <?php
         # Auth check
+        # Autentisering
 	if($_SESSION['loggedin'])
 	{
 		include_once('includes/body.inc.php');
