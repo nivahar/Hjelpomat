@@ -5,9 +5,10 @@
 			$employee_number = $_POST['emp_no'];
 			$category_id = $_POST['help_cat'];
 			$description = $_POST['help_desc'];
+                        $user_id = $_SESSION['user_id'];
 
 			// Save POST data to database
-			if(save_help_case($title,$employee_number,$category_id,$description)){
+			if(save_help_case($title,$employee_number,$category_id,$description,$user_id)){
 				echo '<p class="success">Saken ble registrert.</p>
 					<h1>'.$_POST['help_title'].'</h1>
 					<p>Ansattnr. '.$_POST['emp_no'].', kategori '.$_POST['help_cat'].'</p>

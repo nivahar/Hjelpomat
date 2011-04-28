@@ -8,9 +8,9 @@
                         $ikmat_problem_type = $_POST['ikmat_problem_type'];
                         $is_help_case = $_POST['is_help_case'];
 			$description = $_POST['ikmat_desc'];
-
+                        $user_id = $_SESSION['user_id'];
                         // Save POST data to database
-			if(save_food_case($title,$employee_number,$ikmat_location,$ikmat_unit,$ikmat_problem_type,$description,$is_help_case)){
+			if(save_food_case($title,$employee_number,$ikmat_location,$ikmat_unit,$ikmat_problem_type,$description,$is_help_case,$user_id)){
 				echo '<p class="success">Saken ble registrert.</p>
 					<h1>'.$_POST['ikmat_title'].'</h1>
 					<p>Ansattnr. '.$_POST['emp_no'].', kategori '.$_POST['ikmat_location'].', enhet '.$_POST['ikmat_unit'].'</p>
@@ -27,7 +27,7 @@
 		<form action="index.php?page=help&sub=show" method="get">
 			<table id="ikmat_list">
 				<?php #user_ikmat_list($_SESSION['user_id']);
-                                ikmat_list();?>
+                                user_ikmat_list($_SESSION['user_id']);?>
 			</table>
 			<select name="action">
 				<option id="print">Skriv ut</option>
@@ -42,7 +42,7 @@
 		elseif($_GET['sub'] == "adm"):
 	?>
 		<table id="ikmat_list">
-			<?php #helpdesk_list(); ?>
+			<?php ikmat_list(); ?>
 		</table>
 
 <?php
@@ -107,6 +107,7 @@
                                         <label for="is_help_case">
                                             <input type="checkbox" name="is_help_case" value="1">Huk av om denne saken trenger teknisk oppfølging
                                         </label>
+                                        <input type="hidden" id="user_id" name="user_id" value="<?php $_SESSION['user_id']?>" />
 
                                        
 

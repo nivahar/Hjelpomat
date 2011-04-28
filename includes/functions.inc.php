@@ -56,21 +56,32 @@
 		
 		switch ($page){
 			case 'help':
-				return '<li> 
+				if($_SESSION['user_level'] >= 2)
+					{
+                                        return '<li>
 						<a href="?page=help&amp;sub=register">Registrer sak</a> 
 					</li> 
 					<li> 
 						<a href="?page=help&amp;sub=show">Vis dine saker</a>
 					</li> 
+					<li>
+                                                <a href="?page=help&amp;sub=adm">Administrer saker</a>
+                                        </li>';
+                                        }
+                                        else{
+                                         return '<li> 
+						<a href="?page=help&amp;sub=register">Registrer sak</a> 
+					</li> 
 					<li> 
-						<a href="?page=help&amp;sub=adm">Administrer saker</a>
-					<!--</li>
-    						<li>
-						<a href="?page=help_singlecase&amp;sub=adm">Admin Enkeltsak</a>
-					</li>-->';
+						<a href="?page=help&amp;sub=show">Vis dine saker</a>
+					</li>';
+                                       
+                                        }
 				break;
 			case 'ikmat':
-				return '<li> 
+                                if($_SESSION['user_level'] >= 2)
+					{
+                                        return '<li>
 						<a href="?page=ikmat&amp;sub=register">Registrer hendelse</a> 
 					</li> 
 					<li> 
@@ -79,9 +90,20 @@
 					<li> 
 						<a href="?page=ikmat&amp;sub=adm">Administrer saker</a> 
 					</li>';
+                                        }
+                                        else{
+                                        return '<li>
+						<a href="?page=ikmat&amp;sub=register">Registrer hendelse</a>
+					</li>
+					<li>
+						<a href="?page=ikmat&amp;sub=show">Vis hendelser</a>
+					</li>';
+					}
 				break;
 			case 'drift':
-				return '<li> 
+                                if($_SESSION['user_level'] >= 2)
+					{
+                                        return '<li>
 						<a href="?page=drift&amp;sub=register">Registrer sak</a> 
 					</li> 
 					<li> 
@@ -90,6 +112,15 @@
 					<li> 
 						<a href="?page=drift&amp;sub=adm">Administrer saker</a> 
 					</li>';
+                                        }
+                                        else{
+                                        return '<li>
+						<a href="?page=drift&amp;sub=register">Registrer sak</a>
+					</li>
+					<li>
+						<a href="?page=drift&amp;sub=show">Vis saker</a>
+					</li>';
+                                        }
 				break;
 			/* Deaktivert standard undermeny
 			default:
@@ -128,7 +159,7 @@
 	 * @param mixed $description
 	 * @return void
 	 */
-	function save_help_case($title,$employee_number,$category_id,$description){
+	function save_help_case($title,$employee_number,$category_id,$description,$user_id){
 
 		
 		// Verdi må settes for status på sak for at sak skal dukke opp
@@ -162,7 +193,7 @@
 
     	
 		//TEMP
-		$reg_user = '1078'; // må settes til aktiv bruker - session ?
+		//$reg_user = '1078'; // må settes til aktiv bruker - session ?
 
     	//DEL 3
     	// tbl.main_case
@@ -170,7 +201,7 @@
     		$is_help_case = '1';
     	//Sette inn data unik for helpdesk, input fra funksjon
 		$sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_help_case,is_help_case)
-				VALUES ($dato,'$reg_user','$employee_number','$help_case_id','$is_help_case')";
+				VALUES ($dato,'$user_id','$employee_number','$help_case_id','$is_help_case')";
     	//Lagre data i tbl.man_case
 		if(!mssql_query($sql)){
 			return FALSE;
@@ -262,7 +293,7 @@
   * @param mixed $description
   * @return void
   */
- function save_food_case($title,$employee_number,$id_food_problem_location,$id_food_problem_unit,$id_food_problem_type,$food_problem_description,$is_help_case){
+ function save_food_case($title,$employee_number,$id_food_problem_location,$id_food_problem_unit,$id_food_problem_type,$food_problem_description,$is_help_case,$user_id){
 
 		// DEL 1 tbl.help_case
 		//Sette inn data unik for matproblemer, input fra funksjon
@@ -293,14 +324,14 @@
 
 
     	//Midlertidig
-		$reg_user = '1078'; // må settes til aktiv bruker - session ?
+	//	$reg_user = '1078'; // må settes til aktiv bruker - session ?
 
     	//DEL 3
     	// tbl.main_case
 		$dato = 'GETDATE()'; // lagrer timestamp server.
     	//Sette inn data unik fo helpdesk, input fra funksjon
 		$sql = "INSERT INTO [tbl.main_case](created_date,reg_user,reg_employee,id_food_case, is_food_case, is_help_case)
-				VALUES ($dato,'$reg_user','$employee_number','$food_case_id','1','$is_help_case')";
+				VALUES ($dato,'$user_id','$employee_number','$food_case_id','1','$is_help_case')";
     	// Lagre data i tbl.man_case
 		if(!mssql_query($sql)){
 			return FALSE;
@@ -641,21 +672,25 @@ function true_false($input){
  	$sql = "SELECT [id_main_case]
 	, CAST([created_date] as CHAR(10)) AS [created_date]
 	,[reg_user]
-	,[reg_employee]
-	,[id_food_case]
-	,[food_case_title]
-	,[id_food_problem_type]
-	,[food_case_description]
-	,[food_case_solution]
-	,[food_case_status]
-        ,[id_food_case_location]
-	
-	FROM [v.food_case]";
+      ,[reg_employee]
+      ,[case_closed]
+      ,[id_food_case]
+      ,[food_case_title]
+      ,[id_food_problem_type]
+      ,[food_problem_description]
+      ,[food_case_description]
+      ,[food_case_solution]
+      ,[food_case_status]
+      ,[food_case_status_name]
+      ,[id_food_case_location]
+      ,[location_name]
+  FROM [hjelpomat].[dbo].[v.food_case]";
 
  	// KjÃ¸r spÃ¸rring
  	$data = mssql_query($sql);
  	// Tabell Overskrift
 	echo "<tr><th>ID-Sak</th><th>".
+                            
   				"Dato</th><th>".
     			//    "Bruker ID</th><th>".
   				"Ansatt-ID</th><th>".
@@ -664,17 +699,17 @@ function true_false($input){
     			//    "Problemtype ID</th><th>".
   				"Problemtype</th><th>".
   				"Saksbeskrivelse</th><th>".
-  				"LÃ¸sning</th><th>".
+  			
   				"Status</th><th>".
                                 "Lokasjon</th><th>".
-  				"Helpdesk ja/nei</th><th>".
+  			//	"Helpdesk ja/nei</th><th>".
                                 "</th></tr>";
 
 		// For alternerende bakgrunn pÃ¥ radene.
 		$rad = 0;
 		while($row = mssql_fetch_array($data)){
    	//lager tabell
-     	echo "<tr class=\"row$rad\"><td>"."<input type=\"checkbox\ name=\"case_id\"value=\"".$row['id_food_case']."\" /></td><td>".
+     	echo "<tr class=\"row$rad\"><td>"."<input type=\"checkbox\" name=\"case_id\"value=\"".$row['id_food_case']."\" /></td><td>".
    				$row['created_date']."</td><td>".
     			//     $row['reg_user']."</td><td>".
    				$row['reg_employee']."</td><td>".
@@ -683,9 +718,14 @@ function true_false($input){
     			//     $row['case_problem_type']."</td><td>".
    				$row['id_food_problem_type']."</td><td>".
    				$row['food_case_description']."</td><td>".
-   				$row['food_case_solution']."</td><td>".
-   				$row['food_case_status']."</td><td>".
-                                $row['id_food_case_location']."</td><td>".
+   			//	$row['food_case_solution']."</td><td>".
+                                 "<select>".
+                                 get_food_status_drop_down()."</td><td>".
+   				"</select>".
+   			//	$row['food_case_status']."</td><td>".
+                        //  	$row['food_case_status_name']."</td><td>".
+                        //        $row['id_food_case_location']."</td><td>".
+                                $row['location_name']."</td><td>".
    				$row['is_food_case']."</td><td>".
    				"<input type=\"button\" value=\"Endre\" name=\"edit\" /></td><td>".
     		"</td></tr>";
@@ -767,8 +807,10 @@ function true_false($input){
  */
 
 
-
-   function user_ikmat_list(){
+/*
+ * Henter ut liste over alle ikmat saker fra view pÃ¥ sql server
+ */
+   function user_ikmat_list($user_id){
 //Database kobling
   	//connect_to_tf();
 
@@ -776,60 +818,71 @@ function true_false($input){
  	$sql = "SELECT [id_main_case]
 	, CAST([created_date] as CHAR(10)) AS [created_date]
 	,[reg_user]
-	,[reg_employee]
-	,[id_food_case]
-	,[food_case_title]
-	,[id_food_problem_type]
-	,[food_case_description]
-	,[food_case_solution]
-	,[food_case_status]
-        ,[id_food_case_location]
-	,[is_food_case]
-        FROM [v.food_case]
-	WHERE [reg_user] = '1078' ";
+      ,[reg_employee]
+      ,[case_closed]
+      ,[id_food_case]
+      ,[food_case_title]
+      ,[id_food_problem_type]
+      ,[food_problem_description]
+      ,[food_case_description]
+      ,[food_case_solution]
+      ,[food_case_status]
+      ,[food_case_status_name]
+      ,[id_food_case_location]
+      ,[location_name]
+  FROM [hjelpomat].[dbo].[v.food_case]
+  where reg_user = $user_id ";
 
  	// KjÃ¸r spÃ¸rring
  	$data = mssql_query($sql);
  	// Tabell Overskrift
-  	echo "<tr><th>Velg</th><th>".
-  				"ID-sak</th><th>".
+	echo "<tr><th>ID-Sak</th><th>".
+
   				"Dato</th><th>".
     			//    "Bruker ID</th><th>".
   				"Ansatt-ID</th><th>".
-    			//    "HelpcaseID</th><th>".
+    			//    "FoodcaseID</th><th>".
   				"Tittel</th><th>".
     			//    "Problemtype ID</th><th>".
   				"Problemtype</th><th>".
   				"Saksbeskrivelse</th><th>".
-    			//    "LÃ¸sning</th><th>".
-    			//    "Status id</th><th>".
+
   				"Status</th><th>".
                                 "Lokasjon</th><th>".
-    			//    "Ikmat ja/nei</th><th>".
-    		"</th></tr>";
+  			//	"Helpdesk ja/nei</th><th>".
+                                "</th></tr>";
 
- 	while($row = mssql_fetch_array($data)){
+		// For alternerende bakgrunn pÃ¥ radene.
+		$rad = 0;
+		while($row = mssql_fetch_array($data)){
    	//lager tabell
-     	echo "<tr><td>"."<input type=\"checkbox\" name=\"case_id\" value=\"case_id\" /></th><th>".
-   				$row['id_main_case']."</td><td>".
+     	echo "<tr class=\"row$rad\"><td>"."<input type=\"checkbox\" name=\"case_id\"value=\"".$row['id_food_case']."\" /></td><td>".
    				$row['created_date']."</td><td>".
     			//     $row['reg_user']."</td><td>".
    				$row['reg_employee']."</td><td>".
-    			//     $row['id_food_case']."</td><td>".
+    			//     $row['id_help_case']."</td><td>".
    				$row['food_case_title']."</td><td>".
     			//     $row['case_problem_type']."</td><td>".
    				$row['id_food_problem_type']."</td><td>".
    				$row['food_case_description']."</td><td>".
-    			//     $row['food_case_solution']."</td><td>".
-    			//     $row['food_case_status']."</td><td>".
-   				$row['food_case_status']."</td><td>".
-                                $row['id_food_case_location']."</td><td>".
-    			//     $row['is_food_case']."</td><td>".
-    				"<input type=\"button\" value=\"Endre\" name=\"edit\" /></td><td>".
+   			//	$row['food_case_solution']."</td><td>".
+                                 "<select>".
+                                 get_food_status_drop_down()."</td><td>".
+   				"</select>".
+   			//	$row['food_case_status']."</td><td>".
+                        //  	$row['food_case_status_name']."</td><td>".
+                        //        $row['id_food_case_location']."</td><td>".
+                                $row['location_name']."</td><td>".
+   				$row['is_food_case']."</td><td>".
+   				"<input type=\"button\" value=\"Endre\" name=\"edit\" /></td><td>".
     		"</td></tr>";
+
+    		// Annenhver gang 1 og 0
+    		$rad = 1 - $rad;
  	}
 
 }
+
 
 
 /*
@@ -1009,6 +1062,33 @@ function get_helpdesk_status_drop_down(){
 	
 	}
 	
+	return $tekst;
+}
+/**
+ * get_helpdesk_status_drop_down function.
+ *
+ * @access public
+ * @return void
+ */
+function get_food_status_drop_down(){
+
+	//Spørring
+	$sql = "SELECT [id_food_case_status],[food_case_status_name]
+         FROM [hjelpomat].[dbo].[tbl.food_case_status]";
+	//Sjekk av gjennomført spørring
+	if(!$data=mssql_query($sql)){
+	     return FALSE;
+	    exit;
+	}
+
+	// Henter alle verdier
+	$tekst = "";
+	while($list=mssql_fetch_array($data)){
+	$tekst.= "<option value=\"".$list['id_food_case_status']."\">".$list['food_case_status_name']."</option>";
+
+	
+	}
+
 	return $tekst;
 }
 /*
