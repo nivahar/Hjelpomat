@@ -44,7 +44,7 @@ if(!isset($_REQUEST['sendpdf'])):
 ?>
 <br/><br/>
 <form action="" method="get">
-	<label for="saksnummer">Saksnummer</label><br/>
+	<label name="saksnummer" for="saksnummer">Saksnummer</label><br/>
 	<input name="saksnummer" placeholder="Saksnummer" /><br/>
 	<input type="submit" name="sendpdf" value="PDF meg!" />
 </form>
@@ -63,7 +63,7 @@ elseif(isset($_REQUEST['sendpdf'])):
 	$pdf->SetFont('Arial','B',16);
 	$pdf->Cell(40,10,'Hello World!');
 	$pdf->Output();*/
-	print_case_pdf(1);
+	print_case_pdf($_GET['saksnummer']);
 	
 	
 	/*

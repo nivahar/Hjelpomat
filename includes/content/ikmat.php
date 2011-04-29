@@ -1,4 +1,12 @@
 <?php 
+        if(isset($_POST['delete'])):
+
+        $test = delete_case($_POST['case_id']);
+              if($test != true){
+                  echo "Feil under sletting av sak";
+              }
+        endif;
+
         //Hvis sak er registrert
         if(isset($_POST['reg_ikmat_submit'])):
 			$title = $_POST['ikmat_title'];
@@ -21,6 +29,9 @@
 			}
 			
 
+
+        
+          
 		// Hvis man har valgt å vise sine saker:
 		elseif($_GET['sub'] == "show"):
 ?>

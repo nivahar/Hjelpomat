@@ -28,6 +28,10 @@
 		{
 			$show_page = 'ikmat.php';
 		}
+                elseif($page == 'driftstans')
+		{
+			$show_page = 'driftstans.php';
+		}
 		elseif($page == 'admin')
 		{
 			$show_page = 'admin.php';
@@ -104,24 +108,25 @@
                                 if($_SESSION['user_level'] >= 2)
 					{
                                         return '<li>
-						<a href="?page=drift&amp;sub=register">Registrer sak</a> 
+						<a href="?page=driftstans&amp;sub=register">Registrer sak</a>
 					</li> 
 					<li> 
-						<a href="?page=drift&amp;sub=show">Vis saker</a> 
+						<a href="?page=driftstans&amp;sub=show">Vis saker</a>
 					</li> 
 					<li> 
-						<a href="?page=drift&amp;sub=adm">Administrer saker</a> 
+						<a href="?page=driftstans&amp;sub=adm">Administrer saker</a>
 					</li>';
                                         }
                                         else{
                                         return '<li>
-						<a href="?page=drift&amp;sub=register">Registrer sak</a>
+						<a href="?page=driftstans&amp;sub=register">Registrer sak</a>
 					</li>
 					<li>
-						<a href="?page=drift&amp;sub=show">Vis saker</a>
+						<a href="?page=driftstans&amp;sub=show">Vis saker</a>
 					</li>';
                                         }
 				break;
+                         
 			/* Deaktivert standard undermeny
 			default:
 				return '<li> 
@@ -1196,7 +1201,34 @@ $option.= "<option value=\"".$list['ID']."\">".$list['level_1']." - ".$list['lev
 //print ut
 return $option;
 }
+/*
+ * Henter ut drop down valg for bruk i registrering av hellpdesk saker
+ */
 
+function get_helpdesk_type_drop_down_pre_value($type_id,$type_name){
+
+    $sql = "SELECT   A.help_problem_type_description AS level_1, B.id_help_problem_type AS ID, B.help_problem_type_description AS level_2
+  FROM [hjelpomat].[dbo].[tbl.help_problem_type] AS A
+  INNER JOIN [hjelpomat].[dbo].[tbl.help_problem_type] AS B ON (A.id_help_problem_type = B.parent_help_problem_id)
+  Order by A.parent_help_problem_id asc";
+//Sjekk av gjennomført spørring
+if(!$data=mssql_query($sql)){
+     return FALSE;
+    exit;
+}
+
+
+// Henter alle verdier
+$option = "";
+$option.="<OPTION SELECTED VALUE=$type_id>$type_name</OPTION>";
+while($list=mssql_fetch_array($data)){
+$option.= "<option value=\"".$list['ID']."\">".$list['level_1']." - ".$list['level_2']."</option>";
+
+
+}
+//print ut
+return $option;
+}
 
 
         
@@ -1284,6 +1316,28 @@ function get_ikmat_place_drop_down(){
 }
 
 
+/*
+ * Delete case
+ * Setter flagg til slettet så de ikke dukke ropp i lister
+ *
+ */
+/**
+ * Delete case
+ * @access public
+ * @param mixed $caseId
+ * @return true/false
+ */
+function delete_case($case_id){
+    
+    $sql="UPDATE [tbl.main_case]SET is_deleted = 1 WHERE id_main_case = $case_id";
+    if(!$data=mssql_query($sql)){
+	     return FALSE;
+	    exit;
+	}
+    return TRUE;
+}
+
+
 
 
 /*
@@ -1305,8 +1359,10 @@ function print_case_pdf($caseID)
 	
 	$pdf=new FPDF();
 	$pdf->AddPage();
-	$pdf->SetFont('Arial', '', 16);
-	$pdf->Cell(40,10,'Hello World!');
+	$pdf->SetFont('Arial', '', 28);
+	$pdf->Cell(40,10,'Saksnummer: '.$caseID);
+     // $pdf->Cell(y-akse,x-akse,'Saksnummer: '.$caseID);
+        $pdf->Cell(40,30,'Hjelpomat helpdesk Print');
 	$pdf->Output();
 }
 

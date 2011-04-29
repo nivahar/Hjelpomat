@@ -6,6 +6,7 @@
 			$category_id = $_POST['help_cat'];
 			$description = $_POST['help_desc'];
                         $user_id = $_SESSION['user_id'];
+                        $solution = $_POST['help_solution'];
 
 			// Save POST data to database
 			if(save_help_case($title,$employee_number,$category_id,$description,$user_id)){
@@ -74,6 +75,7 @@
    			$created_date = $row['created_date'];
    			$reg_employee = $row['reg_employee'];
    			$help_case_title = $row['help_case_title'];
+                        $help_problem_type = $row['help_problem_type'];
    			$help_problem_type_description = $row['help_problem_type_description'];
    			$help_case_description = $row['help_case_description'];
    			$help_case_status_description = $row['help_case_status_description'];
@@ -104,7 +106,7 @@
 					</label>
 					<select name="help_cat" id="help_cat" class="validate[required]">
 						<option value="" selected="selected">Velg en kategori...</option>
-						'.  get_helpdesk_type_drop_down().'
+						'. get_helpdesk_type_drop_down_pre_value($help_problem_type,$help_problem_type_description).'
 					</select>
 					
 					<label for="help_desc">
