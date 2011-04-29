@@ -114,6 +114,12 @@
 					</label>
 					<textarea name="help_desc" id="help_desc" required class="validate[required]">'.$help_case_description.'</textarea>
 
+                                        <label for="help_desc">
+						Status på Sak <span class="mandatory">*</span>
+					</label>
+                                        <select name="help_cat" id="help_cat" class="validate[required]">
+                        	                '.get_helpdesk_status_drop_down().'</td><td>
+                                        </select>
                                         <label for="help_solution">
 						Løsningsbeskrivelse <span class="mandatory">*</span>
 					</label>

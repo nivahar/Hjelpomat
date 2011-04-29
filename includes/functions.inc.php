@@ -1061,6 +1061,7 @@ function get_helpdesk_status_drop_down(){
 	
 	// Henter alle verdier
 	$tekst = "";
+      //  $tekst.= "<option selected value=\"".$list['id_help_case_status']."\">".$list['help_case_status_description']."</option>";
 	while($list=mssql_fetch_array($data)){
 	$tekst.= "<option value=\"".$list['id_help_case_status']."\">".$list['help_case_status_description']."</option>";
 	
@@ -1314,6 +1315,87 @@ function get_ikmat_place_drop_down(){
 	//print ut
 	return $option;
 }
+
+/*
+ * Henter verdier for driftstans registreringsskjema
+ * hvor feil skal registreres
+ */
+
+function get_operation_unit_drop_down(){
+
+	$sql = "SELECT [id_operation_unit]
+      ,[operation_unit_name]
+  FROM [hjelpomat].[dbo].[tbl.operation_unit]
+  order by operation_unit_name asc";
+	//Sjekk av gjennomført spørring
+	if(!$data=mssql_query($sql)){
+	     return FALSE;
+	    exit;
+	}
+
+
+	// Henter alle verdier
+	$option = "";
+	while($list=mssql_fetch_array($data))
+	{
+		$option.= "<option value=\"".$list['id_operation_unit']."\">".$list['operation_unit_name']."</option>";
+	}
+	//print ut
+	return $option;
+}
+
+/*
+ * Henter verdier for driftstans registreringsskjema
+ * hvor feil skal registreres
+ */
+
+function get_operation_error_type_drop_down(){
+
+	$sql = "SELECT [id_operation_error_type]
+      ,[operation_error]
+  FROM [hjelpomat].[dbo].[tbl.operation_error_type]
+  order by [operation_error] asc";
+	//Sjekk av gjennomført spørring
+	if(!$data=mssql_query($sql)){
+	     return FALSE;
+	    exit;
+	}
+
+
+	// Henter alle verdier
+	$option = "";
+	while($list=mssql_fetch_array($data))
+	{
+		$option.= "<option value=\"".$list['id_operation_error_type']."\">".$list['operation_error']."</option>";
+	}
+	//print ut
+	return $option;
+}
+
+
+function save_operation_error($date,$user_id,$type_id,$unit_id,$emp1,$emp2,$from_time,$to_time,$comment){
+
+	$sql = "INSERT INTO [tbl.operation_error_main]([error_date]
+      ,[user_id]
+      ,[operation_error_type_id]
+      ,[operation_error_unit]
+      ,[managing_employee_one]
+      ,[managing_employee_two]
+      ,[from_time]
+      ,[to_time]
+      ,[operation_comment])
+      VALUES ('$date','$user_id','$type_id','$unit_id','$emp1','$emp2','$from_time','$to_time','$comment')";
+
+
+    //Sjekk av gjennomført spørring
+	if(!$data=mssql_query($sql)){
+	     return FALSE;
+	    exit;
+	}
+
+        return TRUE;
+}
+
 
 
 /*
