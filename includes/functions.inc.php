@@ -89,10 +89,10 @@
 						<a href="?page=ikmat&amp;sub=register">Registrer hendelse</a> 
 					</li> 
 					<li> 
-						<a href="?page=ikmat&amp;sub=show">Vis hendelser</a> 
+						<a href="?page=ikmat&amp;sub=show">Vis Registrerte Hendelser</a>
 					</li> 
 					<li> 
-						<a href="?page=ikmat&amp;sub=adm">Administrer saker</a> 
+						<a href="?page=ikmat&amp;sub=adm">Administrer Hendelser</a>
 					</li>';
                                         }
                                         else{
