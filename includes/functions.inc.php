@@ -1439,12 +1439,19 @@ function print_case_pdf($caseID)
 	define('FPDF_FONTPATH','/var/www/includes/font/');
 	require('fpdf.php');
 	
-	$pdf=new FPDF();
-	$pdf->AddPage();
-	$pdf->SetFont('Arial', '', 28);
+	$caseInfo = get_single_helpdesk_case($caseID); // Henter saken fra databasen.
+	
+	$pdf=new FPDF(); // Starter PDF-en.
+	$pdf->AddPage(); // Ny side.
+	
+	//    SetFont('fontnavn', 'fet/kursin', størrelse);
+	$pdf->SetFont('Arial', '', 28); // Setter font.
+	
 	$pdf->Cell(40,10,'Saksnummer: '.$caseID);
-     // $pdf->Cell(y-akse,x-akse,'Saksnummer: '.$caseID);
-        $pdf->Cell(40,30,'Hjelpomat helpdesk Print');
+	
+	// $pdf->Cell(y-akse,x-akse,'Saksnummer: '.$caseID);
+	$pdf->Cell(40,30,$caseInfo['help_case_title']);
+	
 	$pdf->Output();
 }
 
